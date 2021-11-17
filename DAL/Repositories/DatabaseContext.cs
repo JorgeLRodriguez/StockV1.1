@@ -16,13 +16,13 @@ namespace DAL.Repositories
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-        public virtual IDbSet<Cliente> Cliente { get; set; }
-        public IDbSet<Articulo> Articulo { get; set; }
-        public IDbSet<Comprobante> Comprobante { get; set; }
-        public IDbSet<ComprobanteDetalle> ComprobanteDetalle { get; set; }
-        public IDbSet<Numerador> Numerador { get; set; }
-        public IDbSet<Etiqueta> Etiqueta { get; set; }    
-        public IDbSet<Destinatario> Destinatario { get; set; }
-        public IDbSet<Deposito> Deposito { get; set; }
+        public virtual IDbSet<Client> Cliente { get; set; }
+        public IDbSet<Article> Articulo { get; set; }
+        public IDbSet<Voucher> Comprobante { get; set; }
+        public IDbSet<VoucherDetail> ComprobanteDetalle { get; set; }
+        public IDbSet<Numerator> Numerador { get; set; }
+        public IDbSet<Label> Etiqueta { get; set; }    
+        public IDbSet<Addressee> Destinatario { get; set; }
+        public IDbSet<Deposit> Deposito { get; set; }
     }
 }

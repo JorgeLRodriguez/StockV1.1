@@ -4,4 +4,13 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DAL\Contracts\" />
+    <Folder Include="DAL\Repositories\File\" />
+    <Folder Include="DAL\Repositories\Tools\" />
+    <Folder Include="DAL\Repositories\SqlServer\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Services\Logger\" />
+  </ItemGroup>
+
 </Project>

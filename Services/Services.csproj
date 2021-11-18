@@ -5,12 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\Contracts\" />
-    <Folder Include="DAL\Repositories\File\" />
-    <Folder Include="DAL\Repositories\Tools\" />
-    <Folder Include="DAL\Repositories\SqlServer\" />
-    <Folder Include="Domain\" />
+    <Folder Include="DAL\Repositories\SqlServer\Adapters\" />
+    <Folder Include="Domain\DV\" />
+    <Folder Include="Domain\SecurityComposite\" />
     <Folder Include="Services\Logger\" />
+    <Folder Include="Services\Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ namespace Domain
     public class IdentityBase
     {
         [Key, Required]
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime? CreatedOn { get; set; }
         [StringLength(20)]

@@ -45,7 +45,7 @@ namespace DAL.Repositories
             entity.ChangedOn = DateTime.Now;
             _db.Entry(entity).State = EntityState.Modified;
         }
-        public virtual void Delete(int id)
+        public virtual void Delete(Guid id)
         {
             var entity = _db.Set<T>().Find(id);
             _db.Set<T>().Remove(entity);
@@ -57,7 +57,7 @@ namespace DAL.Repositories
             _db.Set<T>().Add(entity);
             return entity;
         }
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
             return _db.Set<T>().SingleOrDefault(x => x.ID == id);
         }

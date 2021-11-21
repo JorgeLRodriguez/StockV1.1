@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.BLL.Contracts
 {
-    interface ICryptography
+    interface ICryptographyService
     {
         string Encrypt(string planeText);
         string Decrypt(string cipherText);

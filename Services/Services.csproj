@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <Folder Include="DAL\Repositories\SqlServer\Adapters\" />
-    <Folder Include="Domain\DV\" />
-    <Folder Include="Domain\SecurityComposite\" />
     <Folder Include="Services\Logger\" />
-    <Folder Include="Services\Extensions\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,11 +7,11 @@ namespace Services.BLL.Services
     /// <summary>
     /// Ofrece un punto de acceso a los servicios de criptografía desde la BLL
     /// </summary>
-    class Cryptography : ICryptography
+    class CryptographyService : ICryptographyService
     {
         private readonly CSP _csp;
-        private static Cryptography _default;
-        public static Cryptography Default
+        private static CryptographyService _default;
+        public static CryptographyService Default
         {
             get
             {
@@ -22,7 +22,7 @@ namespace Services.BLL.Services
             }
             set { _default = value; }
         }
-        public Cryptography(string base64SaltKey)
+        public CryptographyService(string base64SaltKey)
         {
             _csp = new CSP(base64SaltKey);
         }

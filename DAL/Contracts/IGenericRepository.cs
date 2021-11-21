@@ -10,10 +10,10 @@ namespace DAL.Contracts
         IEnumerable<T> Get(Expression<Func<T, bool>> filter = null,
         Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
         string includeProperties = "");
-        T GetById(int id);
+        T GetById(Guid id);
         T Create(T entity);
         void Update(T entity);
-        void Delete(int id);
+        void Delete(Guid id);
         void SaveChanges();
     }
 }

@@ -56,4 +56,3 @@ namespace Domain
         public virtual ICollection<Label> Labels { get; set; }
     }
 }
-}

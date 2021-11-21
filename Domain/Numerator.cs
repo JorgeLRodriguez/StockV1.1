@@ -8,5 +8,9 @@ namespace Domain
 {
     public class Numerator
     {
+        public string VoucherType { get; set; }
+        public string Letter { get; set; }
+        public int Branch { get; set; }
+        public int Number { get; set; }
     }
 }

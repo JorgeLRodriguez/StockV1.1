@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\Repositories\SqlServer\Adapters\" />
     <Folder Include="Services\Logger\" />
   </ItemGroup>
 

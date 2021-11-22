@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.SecurityComposite
 {
-    public enum TipoPermiso
+    public enum PermitType
     {
         PuedeHacerA,
         PuedeHacerB,

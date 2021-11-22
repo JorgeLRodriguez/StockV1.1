@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Services.BLL.Services
 {
-    class UsuarioService : IUsuarioService
+    class UserService : IUserService
     {
         UsuariosRepository _usuarios;
-        public UsuarioService()
+        public UserService()
         {
             _usuarios = new UsuariosRepository();
         }

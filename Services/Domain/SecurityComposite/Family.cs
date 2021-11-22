@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.SecurityComposite
 {
-    public class Familia : Componente
+    public class Family : Component
     {
-        private IList<Componente> _hijos;
-        public Familia()
+        private IList<Component> _hijos;
+        public Family()
         {
-            _hijos = new List<Componente>();
+            _hijos = new List<Component>();
         }
 
-        public override IList<Componente> Hijos
+        public override IList<Component> Hijos
         {
             get
             {
@@ -25,9 +25,9 @@ namespace Services.Domain.SecurityComposite
 
         public override void VaciarHijos()
         {
-            _hijos = new List<Componente>();
+            _hijos = new List<Component>();
         }
-        public override void AgregarHijo(Componente c)
+        public override void AgregarHijo(Component c)
         {
             _hijos.Add(c);
         }

@@ -25,11 +25,11 @@ namespace Services.Services.Security
             return _usuario != null;
         }
 
-        bool isInRole(Componente c, TipoPermiso permiso, bool existe)
+        bool isInRole(Component c, PermitType permiso, bool existe)
         {
 
 
-            if (c.Permiso.Equals(permiso))
+            if (c.Permit.Equals(permiso))
                 existe = true;
             else
             {
@@ -38,20 +38,17 @@ namespace Services.Services.Security
                     existe = isInRole(item, permiso, existe);
                     if (existe) return true;
                 }
-
-
-
             }
 
             return existe;
         }
 
-        public bool IsInRole(TipoPermiso permiso)
+        public bool IsInRole(PermitType permiso)
         {
             bool existe = false;
             foreach (var item in _usuario.Permisos)
             {
-                if (item.Permiso.Equals(permiso))
+                if (item.Permit.Equals(permiso))
                     return true;
                 else
                 {

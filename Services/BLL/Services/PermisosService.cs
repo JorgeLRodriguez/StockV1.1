@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Services.BLL.Services
 {
-    class PermisosService : IPermisosService
+    class PermisosService : IPermitsService
     {
         PermisosRepository _permisos;
         public PermisosService()
@@ -17,11 +17,11 @@ namespace Services.BLL.Services
             _permisos = new PermisosRepository();
         }
 
-        public bool Existe(Componente c, int id)
+        public bool Existe(Component c, int id)
         {
             bool existe = false;
 
-            if (c.Id.Equals(id))
+            if (c.ID.Equals(id))
                 existe = true;
             else
 
@@ -43,13 +43,13 @@ namespace Services.BLL.Services
         }
 
 
-        public Componente GuardarComponente(Componente p, bool esfamilia)
+        public Component GuardarComponente(Component p, bool esfamilia)
         {
             return _permisos.GuardarComponente(p, esfamilia);
         }
 
 
-        public void GuardarFamilia(Familia c)
+        public void GuardarFamilia(Family c)
         {
             _permisos.GuardarFamilia(c);
         }
@@ -59,12 +59,12 @@ namespace Services.BLL.Services
             return _permisos.GetAllPatentes();
         }
 
-        public IList<Familia> GetAllFamilias()
+        public IList<Family> GetAllFamilias()
         {
             return _permisos.GetAllFamilias();
         }
 
-        public IList<Componente> GetAll(string familia)
+        public IList<Component> GetAll(string familia)
         {
             return _permisos.GetAll(familia);
 
@@ -76,7 +76,7 @@ namespace Services.BLL.Services
 
         }
 
-        public void FillFamilyComponents(Familia familia)
+        public void FillFamilyComponents(Family familia)
         {
             _permisos.FillFamilyComponents(familia);
         }

@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.SecurityComposite
 {
-    public class Usuario
+    public class User
     {
-        public Usuario()
+        public User()
         {
-            _permisos = new List<Componente>();
+            _permisos = new List<Component>();
         }
-        List<Componente> _permisos;
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public List<Componente> Permisos
+        List<Component> _permisos;
+        public Guid ID { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public List<Component> Permisos
         {
             get
             {
@@ -24,7 +25,7 @@ namespace Services.Domain.SecurityComposite
         }
         public override string ToString()
         {
-            return Nombre;
+            return Name;
         }
     }
 }

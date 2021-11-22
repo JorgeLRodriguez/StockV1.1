@@ -2,9 +2,9 @@
 
 namespace Services.BLL.Contracts
 {
-    interface ISesionService
+    public interface ISesionService
     {
-        public void Login(Usuario u);
+        public void Login(User u);
         public void Logout();
     }
 }

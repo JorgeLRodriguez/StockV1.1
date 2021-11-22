@@ -23,10 +23,13 @@ namespace Services.Factory
         {
             GetUserTranslator = new UserTranslator();
             GetGlobalConfig = GlobalConfig.Instance;
+            GetSesionService = new SesionService();
+           
         }
         #endregion
         public IUserTranslator GetUserTranslator { get; }
         public ILanguageSubscriber GetLanguageSubscriber { get; }
+        public ISesionService GetSesionService { get; }
         public GlobalConfig GetGlobalConfig { get; }
     }
 }

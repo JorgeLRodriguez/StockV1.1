@@ -41,7 +41,7 @@ namespace BLL
         }
         private IEnumerable<Type> EnumerarTiposCompatibles(Type tipoEsperado)
         {
-            return typeof(Usuario).Assembly
+            return typeof(User).Assembly
                 .GetTypes()
                 .Where(entityType => entityType.IsClass
                                      && !entityType.IsAbstract

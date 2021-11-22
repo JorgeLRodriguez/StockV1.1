@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.SecurityComposite
 {
-    public class Patente : Componente
+    public class Patente : Component
     {
-        public override IList<Componente> Hijos
+        public override IList<Component> Hijos
         {
             get
             {
-                return new List<Componente>();
+                return new List<Component>();
             }
 
         }
 
-        public override void AgregarHijo(Componente c)
+        public override void AgregarHijo(Component c)
         {
 
         }

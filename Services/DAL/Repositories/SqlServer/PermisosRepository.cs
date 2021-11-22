@@ -13,7 +13,7 @@ namespace Services.DAL.Repositories.SqlServer
     {
         public Array GetAllPermission()
         {
-            return Enum.GetValues(typeof(TipoPermiso));
+            return Enum.GetValues(typeof(PermitType));
         }
         private string GetConnectionString()
         {
@@ -25,7 +25,7 @@ namespace Services.DAL.Repositories.SqlServer
             return ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         }
 
-        public Componente GuardarComponente(Componente p, bool esfamilia)
+        public Component GuardarComponente(Component p, bool esfamilia)
         {
             try
             {
@@ -37,17 +37,17 @@ namespace Services.DAL.Repositories.SqlServer
                 var sql = $@"insert into permiso (nombre,permiso) values (@nombre,@permiso);  SELECT ID AS LastID FROM permiso WHERE ID = @@Identity;       ";
 
                 cmd.CommandText = sql;
-                cmd.Parameters.Add(new SqlParameter("nombre", p.Nombre));
+                cmd.Parameters.Add(new SqlParameter("nombre", p.Name));
 
 
                 if (esfamilia)
                     cmd.Parameters.Add(new SqlParameter("permiso", DBNull.Value));
 
                 else
-                    cmd.Parameters.Add(new SqlParameter("permiso", p.Permiso.ToString()));
+                    cmd.Parameters.Add(new SqlParameter("permiso", p.Permit.ToString()));
 
-                var id = cmd.ExecuteScalar();
-                p.Id = (int)id;
+                var ID = cmd.ExecuteScalar();
+                p.ID = (Guid)ID;
                 return p;
             }
             catch (Exception e)
@@ -61,7 +61,7 @@ namespace Services.DAL.Repositories.SqlServer
         }
 
 
-        public void GuardarFamilia(Familia c)
+        public void GuardarFamilia(Family c)
         {
 
             try
@@ -75,7 +75,7 @@ namespace Services.DAL.Repositories.SqlServer
                 var sql = $@"delete from permiso_permiso where id_permiso_padre=@id;       ";
 
                 cmd.CommandText = sql;
-                cmd.Parameters.Add(new SqlParameter("id", c.Id));
+                cmd.Parameters.Add(new SqlParameter("ID", c.ID));
                 cmd.ExecuteNonQuery();
 
                 foreach (var item in c.Hijos)
@@ -87,8 +87,8 @@ namespace Services.DAL.Repositories.SqlServer
                     sql = $@"insert into permiso_permiso (id_permiso_padre,id_permiso_hijo) values (@id_permiso_padre,@id_permiso_hijo) ";
 
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SqlParameter("id_permiso_padre", c.Id));
-                    cmd.Parameters.Add(new SqlParameter("id_permiso_hijo", item.Id));
+                    cmd.Parameters.Add(new SqlParameter("id_permiso_padre", c.ID));
+                    cmd.Parameters.Add(new SqlParameter("id_permiso_hijo", item.ID));
 
                     cmd.ExecuteNonQuery();
                 }
@@ -121,16 +121,16 @@ namespace Services.DAL.Repositories.SqlServer
             {
 
 
-                var id = reader.GetInt32(reader.GetOrdinal("id"));
-                var nombre = reader.GetString(reader.GetOrdinal("nombre"));
-                var permiso = reader.GetString(reader.GetOrdinal("permiso"));
+                var id = reader.GetGuid(reader.GetOrdinal("ID"));
+                var nombre = reader.GetString(reader.GetOrdinal("Name"));
+                var permiso = reader.GetString(reader.GetOrdinal("Permit"));
 
 
                 Patente c = new Patente();
 
-                c.Id = id;
-                c.Nombre = nombre;
-                c.Permiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso);
+                c.ID = id;
+                c.Name = nombre;
+                c.Permit = (PermitType)Enum.Parse(typeof(PermitType), permiso);
                 lista.Add(c);
 
             }
@@ -140,7 +140,7 @@ namespace Services.DAL.Repositories.SqlServer
 
             return lista;
         }
-        public IList<Familia> GetAllFamilias()
+        public IList<Family> GetAllFamilias()
         {
 
             var cnn = new SqlConnection(GetConnectionString());
@@ -154,20 +154,20 @@ namespace Services.DAL.Repositories.SqlServer
 
             var reader = cmd.ExecuteReader();
 
-            var lista = new List<Familia>();
+            var lista = new List<Family>();
 
             while (reader.Read())
             {
 
 
-                var id = reader.GetInt32(reader.GetOrdinal("id"));
-                var nombre = reader.GetString(reader.GetOrdinal("nombre"));
+                var ID = reader.GetGuid(reader.GetOrdinal("ID"));
+                var Name = reader.GetString(reader.GetOrdinal("Name"));
 
 
-                Familia c = new Familia();
+                Family c = new Family();
 
-                c.Id = id;
-                c.Nombre = nombre;
+                c.ID = ID;
+                c.Name = Name;
                 lista.Add(c);
 
             }
@@ -177,7 +177,7 @@ namespace Services.DAL.Repositories.SqlServer
 
             return lista;
         }
-        public IList<Componente> GetAll(string familia)
+        public IList<Component> GetAll(string familia)
         {
 
 
@@ -214,17 +214,17 @@ namespace Services.DAL.Repositories.SqlServer
 
             var reader = cmd.ExecuteReader();
 
-            var lista = new List<Componente>();
+            var lista = new List<Component>();
 
             while (reader.Read())
             {
-                int id_padre = 0;
+                Guid id_padre = new();
                 if (reader["id_permiso_padre"] != DBNull.Value)
                 {
-                    id_padre = reader.GetInt32(reader.GetOrdinal("id_permiso_padre"));
+                    id_padre = reader.GetGuid(reader.GetOrdinal("id_permiso_padre"));
                 }
 
-                var id = reader.GetInt32(reader.GetOrdinal("id"));
+                var ID = reader.GetGuid(reader.GetOrdinal("ID"));
                 var nombre = reader.GetString(reader.GetOrdinal("nombre"));
 
                 var permiso = string.Empty;
@@ -232,18 +232,18 @@ namespace Services.DAL.Repositories.SqlServer
                     permiso = reader.GetString(reader.GetOrdinal("permiso"));
 
 
-                Componente c;
+                Component c;
 
                 if (string.IsNullOrEmpty(permiso))//usamos este campo para identificar. Solo las patentes van a tener un permiso del sistema relacionado
-                    c = new Familia();
+                    c = new Family();
 
                 else
                     c = new Patente();
 
-                c.Id = id;
-                c.Nombre = nombre;
+                c.ID = ID;
+                c.Name = nombre;
                 if (!string.IsNullOrEmpty(permiso))
-                    c.Permiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permiso);
+                    c.Permit = (PermitType)Enum.Parse(typeof(PermitType), permiso);
 
                 var padre = GetComponent(id_padre, lista);
 
@@ -270,10 +270,10 @@ namespace Services.DAL.Repositories.SqlServer
 
 
 
-        private Componente GetComponent(int id, IList<Componente> lista)
+        private Component GetComponent(Guid id, IList<Component> lista)
         {
 
-            Componente component = lista != null ? lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
+            Component component = lista != null ? lista.Where(i => i.ID.Equals(id)).FirstOrDefault() : null;
 
             if (component == null && lista != null)
             {
@@ -281,7 +281,7 @@ namespace Services.DAL.Repositories.SqlServer
                 {
 
                     var l = GetComponent(id, c.Hijos);
-                    if (l != null && l.Id == id) return l;
+                    if (l != null && l.ID == id) return l;
                     else
                     if (l != null)
                         return GetComponent(id, l.Hijos);
@@ -306,34 +306,34 @@ namespace Services.DAL.Repositories.SqlServer
             var cmd2 = new SqlCommand();
             cmd2.Connection = cnn;
             cmd2.CommandText = $@"select p.* from usuarios_permisos up inner join permiso p on up.id_permiso=p.id where id_usuario=@id;";
-            cmd2.Parameters.AddWithValue("id", u.Id);
+            cmd2.Parameters.AddWithValue("ID", u.ID);
 
             var reader = cmd2.ExecuteReader();
             u.Permisos.Clear();
             while (reader.Read())
             {
 
-                var idp = reader.GetInt32(reader.GetOrdinal("id"));
-                var nombrep = reader.GetString(reader.GetOrdinal("nombre"));
+                var idp = reader.GetGuid(reader.GetOrdinal("ID"));
+                var nombrep = reader.GetString(reader.GetOrdinal("Name"));
 
                 var permisop = String.Empty;
-                if (reader["permiso"] != DBNull.Value)
-                    permisop = reader.GetString(reader.GetOrdinal("permiso"));
+                if (reader["Permit"] != DBNull.Value)
+                    permisop = reader.GetString(reader.GetOrdinal("Permit"));
 
-                Componente c1;
+                Component c1;
                 if (!String.IsNullOrEmpty(permisop))
                 {
                     c1 = new Patente();
-                    c1.Id = idp;
-                    c1.Nombre = nombrep;
-                    c1.Permiso = (TipoPermiso)Enum.Parse(typeof(TipoPermiso), permisop);
+                    c1.ID = idp;
+                    c1.Name = nombrep;
+                    c1.Permit = (PermitType)Enum.Parse(typeof(PermitType), permisop);
                     u.Permisos.Add(c1);
                 }
                 else
                 {
-                    c1 = new Familia();
-                    c1.Id = idp;
-                    c1.Nombre = nombrep;
+                    c1 = new Family();
+                    c1.ID = idp;
+                    c1.Name = nombrep;
 
                     var f = GetAll("=" + idp);
 
@@ -350,10 +350,10 @@ namespace Services.DAL.Repositories.SqlServer
             reader.Close();
 
         }
-        public void FillFamilyComponents(Familia familia)
+        public void FillFamilyComponents(Family familia)
         {
             familia.VaciarHijos();
-            foreach (var item in GetAll("=" + familia.Id))
+            foreach (var item in GetAll("=" + familia.ID))
             {
                 familia.AgregarHijo(item);
             }

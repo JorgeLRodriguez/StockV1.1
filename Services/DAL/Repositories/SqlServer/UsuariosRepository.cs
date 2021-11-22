@@ -44,8 +44,8 @@ namespace Services.DAL.Repositories.SqlServer
             while (reader.Read())
             {
                 User c = new User();
-                c.Id = reader.GetInt32(reader.GetOrdinal("id_usuario"));
-                c.Nombre = reader.GetString(reader.GetOrdinal("nombre"));
+                c.ID = reader.GetGuid(reader.GetOrdinal("ID"));
+                c.Name = reader.GetString(reader.GetOrdinal("Name"));
                 lista.Add(c);
             }
 
@@ -74,7 +74,7 @@ namespace Services.DAL.Repositories.SqlServer
                 cmd.Connection = cnn;
 
                 cmd.CommandText = $@"delete from usuarios_permisos where id_usuario=@id;";
-                cmd.Parameters.Add(new SqlParameter("id", u.Id));
+                cmd.Parameters.Add(new SqlParameter("ID", u.ID));
                 cmd.ExecuteNonQuery();
 
                 foreach (var item in u.Permisos)
@@ -83,8 +83,8 @@ namespace Services.DAL.Repositories.SqlServer
                     cmd.Connection = cnn;
 
                     cmd.CommandText = $@"insert into usuarios_permisos (id_usuario,id_permiso) values (@id_usuario,@id_permiso) "; ;
-                    cmd.Parameters.Add(new SqlParameter("id_usuario", u.Id));
-                    cmd.Parameters.Add(new SqlParameter("id_permiso", item.Id));
+                    cmd.Parameters.Add(new SqlParameter("id_usuario", u.ID));
+                    cmd.Parameters.Add(new SqlParameter("id_permiso", item.ID));
 
                     cmd.ExecuteNonQuery();
                 }

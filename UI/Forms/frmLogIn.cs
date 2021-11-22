@@ -1,5 +1,6 @@
 ﻿using Services.BLL.Contracts;
 using Services.Domain.Language;
+using Services.Domain.SecurityComposite;
 using Services.Factory;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,9 @@ namespace UI.Forms
             Cursor = Cursors.WaitCursor;
             try
             {
-                //_serviciosAplicacion.Usuario.IniciarSesion(txtuser.Text, txtpsw.Text);
-                //new MainMenufrm(_serviciosAplicacion).Show();
+                //_serviciosAplicacion.GetSesionService.Login.IniciarSesion(txtuser.Text, txtpsw.Text);
+                _serviciosAplicacion.GetSesionService.Login(new User() { Name = txtuser.Text , Password = txtpsw.Text });
+                new frmMain(_serviciosAplicacion).Show();
                 Hide();
             }
             catch (Exception ex)

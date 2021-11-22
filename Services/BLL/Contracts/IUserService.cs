@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services.BLL.Contracts
 {
-    interface IUsuarioService
+    interface IUserService
     {
         public List<User> GetAll();
         public void GuardarPermisos(User u);

@@ -16,7 +16,7 @@ namespace Services.BLL.Contracts
         public IList<Patente> GetAllPatentes();
         public IList<Familia> GetAllFamilias();
         public IList<Componente> GetAll(string familia);
-        public void FillUserComponents(Usuario u);
+        public void FillUserComponents(User u);
         public void FillFamilyComponents(Familia familia);
     }
 }

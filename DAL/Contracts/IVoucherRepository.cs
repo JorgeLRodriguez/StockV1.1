@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Contracts
 {
-    interface IVoucherRepository
+    public interface IVoucherRepository
     {
     }
 }

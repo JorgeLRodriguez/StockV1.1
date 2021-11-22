@@ -70,7 +70,7 @@ namespace Services.BLL.Services
 
         }
 
-        public void FillUserComponents(Usuario u)
+        public void FillUserComponents(User u)
         {
             _permisos.FillUserComponents(u);
 

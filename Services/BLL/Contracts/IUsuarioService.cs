@@ -9,7 +9,7 @@ namespace Services.BLL.Contracts
 {
     interface IUsuarioService
     {
-        public List<Usuario> GetAll();
-        public void GuardarPermisos(Usuario u);
+        public List<User> GetAll();
+        public void GuardarPermisos(User u);
     }
 }

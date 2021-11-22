@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace UI.Forms
 {
-    public partial class LogIn : Form , ILanguageSubscriber
+    public partial class frmLogIn : Form , ILanguageSubscriber
     {
         private readonly IUserTranslator _traductorUsuario;
         private readonly ApplicationServices _serviciosAplicacion;
-        public LogIn(ApplicationServices serviciosAplicacion)
+        public frmLogIn(ApplicationServices serviciosAplicacion)
         {
             InitializeComponent();
             _serviciosAplicacion = serviciosAplicacion;

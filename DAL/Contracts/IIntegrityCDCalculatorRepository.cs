@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace DAL.Contracts
 {
-    class IntegridadSistema
+    public interface IIntegrityCDCalculatorRepository
     {
+        bool ComprobarIntegridad(Type tipoEntidad);
     }
 }

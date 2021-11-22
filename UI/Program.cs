@@ -1,3 +1,4 @@
+using BLL;
 using Services.BLL.Contracts;
 using Services.BLL.Services;
 using Services.Factory;
@@ -20,27 +21,20 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-
-
-
-
             ConfigurarLogPath();
             var ServiciosAplicacion = ApplicationServices.Current;
             var TraductorUsuario = ServiciosAplicacion.GetUserTranslator;
             ConfigureDefaultLanguage(TraductorUsuario);
             if (!ComprobarIntegridadDelSistema(TraductorUsuario))
                 return;
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn(ServiciosAplicacion));
+            Application.Run(new frmLogIn(ServiciosAplicacion));
         }
         public static void ConfigureDefaultLanguage(IUserTranslator traductorUsuario)
         {
-            var codigoIdiomaPorDefecto = "en-US";
+            var codigoIdiomaPorDefecto = Settings.Default.Language;
             var idiomaPorDefecto =
                 traductorUsuario.SupportedLanguages.Single(
                     i => i.ISOCode.Equals(codigoIdiomaPorDefecto, StringComparison.InvariantCultureIgnoreCase));
@@ -51,22 +45,22 @@ namespace UI
         }
         public static bool ComprobarIntegridadDelSistema(IUserTranslator traductorUsuario)
         {
-            //try
-            //{
-            //    var integridadSistema = new IntegridadSistema(Settings.Default.Corrupto);
-            //    integridadSistema.ComprobarIntegridad();
-            //}
-            //catch (IntegridadSistema.SistemaCorruptoException ex)
-            //{
-            //    MessageBox.Show(traductorUsuario.Traducir(ex.ConstanteError), traductorUsuario.Traducir(ConstantesTexto.Stock),
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return false;
-            //}
+            try
+            {
+                var integridadSistema = new SystemIntegrity(Settings.Default.Corrupted);
+                integridadSistema.ComprobarIntegridad();
+            }
+            catch (SystemIntegrity.SistemaCorruptoException ex)
+            {
+                MessageBox.Show(traductorUsuario.Translate(ex.ConstanteError), traductorUsuario.Translate("Stock"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
         public static void ConfigurarLogPath()
         {
-            //GlobalConfig.Instance.LogPath = Settings.Default.LogPath;
+            GlobalConfig.Instance.LogPath = Settings.Default.LogPath;
         }
     }
 }

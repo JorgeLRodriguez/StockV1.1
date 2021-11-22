@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Domain.DV
+namespace Domain.Integrity
 {
-    interface IHorizontalCheckDigit
+    public interface IHorizontalCheckDigit
     {
-        byte[] HCD { get; set; }
+        byte[] DVH { get; set; }
     }
 }

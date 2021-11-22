@@ -1,13 +1,14 @@
-﻿using System.Data.Entity;
+﻿using System.Configuration;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Domain;
 
 namespace DAL.Repositories
 {
-    public class DatabaseContext : DbContext
+    public class DatabaseContext : DatabaseContextCD
     {
         private static DatabaseContext _instance;
-        public DatabaseContext() : base("name=DefaultConnection"){}
+        public DatabaseContext() : base(ConfigurationManager.ConnectionStrings["cnn"].ToString(), new CDCalculatorRepository()) {}
         public static DatabaseContext Instance()
         {
             return _instance = _instance ?? new DatabaseContext();

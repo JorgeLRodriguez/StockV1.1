@@ -10,7 +10,7 @@ namespace Services.Services.Security
     public class ServicesUser
     {
         static ServicesUser _sesion;
-        Usuario _usuario;
+        User _usuario;
 
         public static ServicesUser GetInstance
         {
@@ -70,7 +70,7 @@ namespace Services.Services.Security
         }
 
 
-        public void Login(Usuario u)
+        public void Login(User u)
         {
             _sesion._usuario = u;
 

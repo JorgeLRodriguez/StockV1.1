@@ -26,7 +26,7 @@ namespace Services.DAL.Repositories.SqlServer
             return ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         }
 
-        public List<Usuario> GetAll()
+        public List<User> GetAll()
         {
             var cnn = new SqlConnection(GetConnectionString());
             cnn.Open();
@@ -39,11 +39,11 @@ namespace Services.DAL.Repositories.SqlServer
 
             var reader = cmd.ExecuteReader();
 
-            var lista = new List<Usuario>();
+            var lista = new List<User>();
 
             while (reader.Read())
             {
-                Usuario c = new Usuario();
+                User c = new User();
                 c.Id = reader.GetInt32(reader.GetOrdinal("id_usuario"));
                 c.Nombre = reader.GetString(reader.GetOrdinal("nombre"));
                 lista.Add(c);
@@ -62,7 +62,7 @@ namespace Services.DAL.Repositories.SqlServer
 
             return lista;
         }
-        public void GuardarPermisos(Usuario u)
+        public void GuardarPermisos(User u)
         {
 
             try

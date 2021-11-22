@@ -17,12 +17,12 @@ namespace Services.BLL.Services
             _usuarios = new UsuariosRepository();
         }
 
-        public List<Usuario> GetAll()
+        public List<User> GetAll()
         {
             return _usuarios.GetAll();
         }
 
-        public void GuardarPermisos(Usuario u)
+        public void GuardarPermisos(User u)
         {
             _usuarios.GuardarPermisos(u);
         }

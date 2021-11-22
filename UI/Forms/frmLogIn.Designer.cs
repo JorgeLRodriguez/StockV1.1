@@ -1,7 +1,7 @@
 ﻿
 namespace UI.Forms
 {
-    partial class LogIn
+    partial class frmLogIn
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogIn));
             this.leftpanel = new System.Windows.Forms.Panel();
             this.mainiconpic = new System.Windows.Forms.PictureBox();
             this.txtuser = new System.Windows.Forms.TextBox();

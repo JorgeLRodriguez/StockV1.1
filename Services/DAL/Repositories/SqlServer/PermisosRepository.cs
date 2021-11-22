@@ -297,7 +297,7 @@ namespace Services.DAL.Repositories.SqlServer
 
         }
 
-        public void FillUserComponents(Usuario u)
+        public void FillUserComponents(User u)
         {
 
             var cnn = new SqlConnection(GetConnectionString());

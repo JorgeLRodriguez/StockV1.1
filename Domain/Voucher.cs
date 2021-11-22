@@ -1,47 +1,45 @@
-﻿using System;
+﻿using Domain.Integrity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Voucher
+    public class Voucher : IdentityBase, IHorizontalCheckDigit
     {
-        //[Required, DatoSensible, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
-        //[Display(Name = ConstantesTexto.Cliente)]
+        [Required, SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
+        [Display(Name = "Cliente")]
         public int Client_ID { get; set; }
         [ForeignKey("Client_ID")]
         public virtual Client Client { get; set; }
-        //[Required, DatoSensible, StringLength(3, MinimumLength = 3)]
-        //[Display(Name = ConstantesTexto.Tipo)]
+        [Required, SensitiveData, StringLength(3, MinimumLength = 3)]
+        [Display(Name = "Tipo")]
         public string VoucherType { get; set; }
-        //[Required, DatoSensible, StringLength(3, MinimumLength = 1)]
-        //[Display(Name = ConstantesTexto.Letra)]
+        [Required, SensitiveData, StringLength(3, MinimumLength = 1)]
+        [Display(Name = "Letra")]
         public string Letter { get; set; }
-        //[Required, DatoSensible, Range(1, 1)]
-        //[Display(Name = ConstantesTexto.Sucursal)]
+        [Required, SensitiveData, Range(1, 1)]
+        [Display(Name = "Sucursal")]
         public int Branch { get; set; }
-        //[Required, DatoSensible, Range(1, int.MaxValue)]
-        //[Display(Name = ConstantesTexto.NumeroComprobante)]
+        [Required, SensitiveData, Range(1, int.MaxValue)]
+        [Display(Name = "NumeroComprobante")]
         public int Number { get; set; }
-        //[DatoSensible, StringLength(10, MinimumLength = 1), RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
-        //[Display(Name = ConstantesTexto.Remito)]
+        [SensitiveData, StringLength(10, MinimumLength = 1), RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
+        [Display(Name = "Remito")]
         public string InvoiceClientNumber { get; set; }
-        //[DatoSensible, Required]
-        //[Display(Name = ConstantesTexto.Fecha)]
+        [SensitiveData, Required]
+        [Display(Name = "Fecha")]
         public DateTime? VoucherDate { get; set; }
-        //[DatoSensible]
-        //[Display(Name = ConstantesTexto.Cierre)]
+        [SensitiveData]
+        [Display(Name = "Cierre")]
         public string Closure { get; set; }
-        [ RegularExpression("^[0-9]*$"), Range(0, int.MaxValue)]
-        //[Display(Name = ConstantesTexto.Destinatario)]
+        [RegularExpression("^[0-9]*$"), Range(0, int.MaxValue)]
+        [Display(Name = "Destinatario")]
         public int? Addressee_ID { get; set; }
         [ForeignKey("Destinatario_ID")]
         public virtual Addressee Addressee { get; set; }
-        //[Display(Name = ConstantesTexto.Observacion)]
+        [Display(Name = "Observacion")]
         public string Observations { get; set; }
         public byte[] DVH { get; set; }
         [NotMapped]

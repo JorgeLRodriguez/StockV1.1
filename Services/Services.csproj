@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Domain\Language\language.en-US" />
+    <None Remove="Domain\Language\language.es-AR" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Domain\Language\language.en-US">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Domain\Language\language.es-AR">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DAL\Repositories\SqlServer\Adapters\" />
     <Folder Include="Services\Logger\" />
   </ItemGroup>

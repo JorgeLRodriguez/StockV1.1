@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Domain
+namespace Services.BLL.Contracts
 {
-    class Language
+    public interface ITranslator
     {
-        public string ISOCode { get; set; }
-        public string Name { get; set; }
+        string Translate(string constanteDeTexto);
+       
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.SecurityComposite
 {
-    public class Patente : Component
+    public class Patent : Component
     {
         public override IList<Component> Hijos
         {

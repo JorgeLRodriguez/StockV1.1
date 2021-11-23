@@ -27,6 +27,10 @@ namespace Services.DAL.Repositories.SqlServer
         {
             get => "SELECT [ID] ,[Name] ,[Password] FROM [dbo].[User] WHERE [Name] = @name AND [Password] = @password";
         }
+        private string FillComponentsStatement
+        {
+            get => "select p.* from User_Permits up inner join Permits p on up.Permits_ID=p.ID where User_ID=@ID";
+        }
         #endregion
         public User Login(string name, string password)
         {
@@ -43,6 +47,35 @@ namespace Services.DAL.Repositories.SqlServer
                 }
             }
             return User;
+        }
+        public void FillUserComponents(User u)
+        {
+            using (var dr = SqlHelper.ExecuteReader(FillComponentsStatement, System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter("@ID", u.ID) }))
+            {
+                u.Permisos.Clear();
+                while (dr.Read())
+                {
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+
+                    if (dr["Permit"] != DBNull.Value)
+                    {
+                        u.Permisos.Add(PatentAdapter.Current.Adapt(values));
+                    }
+                    else
+                    {
+                        var f = FamilyAdapter.Current.Adapt(values);
+
+                        var c = ComponentRepository.Current.GetAll("=" + f.ID);
+
+                        foreach (var family in c)
+                        {
+                            f.AgregarHijo(family);
+                        }
+                        u.Permisos.Add(f);
+                    }
+                }
+            }
         }
     }
 }

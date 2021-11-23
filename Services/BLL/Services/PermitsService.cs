@@ -9,76 +9,63 @@ using System.Threading.Tasks;
 
 namespace Services.BLL.Services
 {
-    class PermisosService : IPermitsService
+    class PermitsService : IPermitsService
     {
         PermisosRepository _permisos;
-        public PermisosService()
+        public PermitsService()
         {
             _permisos = new PermisosRepository();
         }
-
         public bool Existe(Component c, int id)
         {
             bool existe = false;
-
             if (c.ID.Equals(id))
                 existe = true;
             else
-
                 foreach (var item in c.Hijos)
                 {
-
                     existe = Existe(item, id);
                     if (existe) return true;
                 }
-
             return existe;
-
         }
-
-
         public Array GetAllPermission()
         {
-            return _permisos.GetAllPermission();
+            return PermitsRepository.Current.GetAll();
         }
-
-
         public Component GuardarComponente(Component p, bool esfamilia)
         {
-            return _permisos.GuardarComponente(p, esfamilia);
+            return ComponentRepository.Current.SaveComponent(p, esfamilia);
         }
-
-
         public void GuardarFamilia(Family c)
         {
-            _permisos.GuardarFamilia(c);
+            FamilyRepository.Current.Save(c);
         }
-
-        public IList<Patente> GetAllPatentes()
+        public IList<Patent> GetAllPatentes()
         {
-            return _permisos.GetAllPatentes();
+            return PatentRepository.Current.GetAll();
         }
 
         public IList<Family> GetAllFamilias()
         {
-            return _permisos.GetAllFamilias();
+            return FamilyRepository.Current.GetAll();
         }
 
         public IList<Component> GetAll(string familia)
         {
-            return _permisos.GetAll(familia);
+            return ComponentRepository.Current.GetAll(familia);
 
         }
 
         public void FillUserComponents(User u)
         {
-            _permisos.FillUserComponents(u);
+            UserRepository.Current.FillUserComponents(u);
 
         }
 
         public void FillFamilyComponents(Family familia)
         {
-            _permisos.FillFamilyComponents(familia);
+            FamilyRepository.Current.FillFamilyComponents(familia);
         }
     }
 }

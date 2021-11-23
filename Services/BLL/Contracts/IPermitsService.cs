@@ -13,7 +13,7 @@ namespace Services.BLL.Contracts
         public Array GetAllPermission();
         public Component GuardarComponente(Component p, bool esfamilia);
         public void GuardarFamilia(Family c);
-        public IList<Patente> GetAllPatentes();
+        public IList<Patent> GetAllPatentes();
         public IList<Family> GetAllFamilias();
         public IList<Component> GetAll(string familia);
         public void FillUserComponents(User u);

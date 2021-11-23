@@ -17,18 +17,19 @@ namespace Services.BLL.Services
 
             if (String.IsNullOrEmpty(u.Name) || String.IsNullOrEmpty(u.Password))
                 throw new ApplicationException("AtLogInEmptyorNull");
-            //var usuarioActual = SessionManager.Instance.UsuarioActual;
+
             try
             {
                 u = UserRepository.Current.Login(u.Name,u.Password);
                 if (u != null)
                 {
-                    (new PermisosRepository()).FillUserComponents(u);
+                    //(new PermisosRepository()).FillUserComponents(u);
+                    UserRepository.Current.FillUserComponents(u);
                     ServicesUser.GetInstance.Login(u);
+                    return;
                 }
                 else
 
-                //usuarioActual = SessionManager.Instance.UsuarioActual;
                 //if (usuarioActual == null)
                 {
                     //Registro el intento fallido de Login
@@ -41,10 +42,7 @@ namespace Services.BLL.Services
                 //Log.Save(this, ex);
                 throw ex;
             }
-            //return u ?? 
             throw new Exception("AtLogInIncorrecto");
-            //(new PermisosRepository()).FillUserComponents(u);
-            //ServicesUser.GetInstance.Login(u);
         }
         public void Logout()
         {

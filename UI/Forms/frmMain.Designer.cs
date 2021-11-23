@@ -109,7 +109,7 @@ namespace UI.Forms
             this.btnListStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnListStock.FlatAppearance.BorderSize = 0;
             this.btnListStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListStock.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListStock.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnListStock.ForeColor = System.Drawing.SystemColors.Control;
             this.btnListStock.Location = new System.Drawing.Point(0, 175);
             this.btnListStock.Name = "btnListStock";
@@ -127,7 +127,7 @@ namespace UI.Forms
             this.btnIxC.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnIxC.FlatAppearance.BorderSize = 0;
             this.btnIxC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIxC.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIxC.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnIxC.ForeColor = System.Drawing.SystemColors.Control;
             this.btnIxC.Location = new System.Drawing.Point(0, 140);
             this.btnIxC.Name = "btnIxC";
@@ -145,7 +145,7 @@ namespace UI.Forms
             this.btnHxI.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHxI.FlatAppearance.BorderSize = 0;
             this.btnHxI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHxI.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHxI.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnHxI.ForeColor = System.Drawing.SystemColors.Control;
             this.btnHxI.Location = new System.Drawing.Point(0, 105);
             this.btnHxI.Name = "btnHxI";
@@ -163,7 +163,7 @@ namespace UI.Forms
             this.btnMovim.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMovim.FlatAppearance.BorderSize = 0;
             this.btnMovim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMovim.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMovim.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnMovim.ForeColor = System.Drawing.SystemColors.Control;
             this.btnMovim.Location = new System.Drawing.Point(0, 70);
             this.btnMovim.Name = "btnMovim";
@@ -181,7 +181,7 @@ namespace UI.Forms
             this.btnInventario.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInventario.FlatAppearance.BorderSize = 0;
             this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventario.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventario.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInventario.ForeColor = System.Drawing.SystemColors.Control;
             this.btnInventario.Location = new System.Drawing.Point(0, 35);
             this.btnInventario.Name = "btnInventario";
@@ -199,7 +199,7 @@ namespace UI.Forms
             this.btndeposito.Dock = System.Windows.Forms.DockStyle.Top;
             this.btndeposito.FlatAppearance.BorderSize = 0;
             this.btndeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btndeposito.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndeposito.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btndeposito.ForeColor = System.Drawing.SystemColors.Control;
             this.btndeposito.Location = new System.Drawing.Point(0, 0);
             this.btndeposito.Name = "btndeposito";
@@ -217,11 +217,11 @@ namespace UI.Forms
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReportes.FlatAppearance.BorderSize = 0;
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnReportes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.IconChar = FontAwesome.Sharp.IconChar.ChartPie;
             this.btnReportes.IconColor = System.Drawing.Color.White;
+            this.btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReportes.IconSize = 40;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.Location = new System.Drawing.Point(0, 585);
@@ -229,7 +229,6 @@ namespace UI.Forms
             this.btnReportes.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnReportes.Rotation = 0D;
             this.btnReportes.Size = new System.Drawing.Size(250, 60);
             this.btnReportes.TabIndex = 3;
             this.btnReportes.Text = "Reportes";
@@ -258,7 +257,7 @@ namespace UI.Forms
             this.btnEtiq.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEtiq.FlatAppearance.BorderSize = 0;
             this.btnEtiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEtiq.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEtiq.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEtiq.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEtiq.Location = new System.Drawing.Point(0, 105);
             this.btnEtiq.Name = "btnEtiq";
@@ -276,7 +275,7 @@ namespace UI.Forms
             this.btnLayout.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLayout.FlatAppearance.BorderSize = 0;
             this.btnLayout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLayout.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLayout.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLayout.ForeColor = System.Drawing.SystemColors.Control;
             this.btnLayout.Location = new System.Drawing.Point(0, 70);
             this.btnLayout.Name = "btnLayout";
@@ -294,7 +293,7 @@ namespace UI.Forms
             this.btnPxE.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPxE.FlatAppearance.BorderSize = 0;
             this.btnPxE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPxE.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPxE.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPxE.ForeColor = System.Drawing.SystemColors.Control;
             this.btnPxE.Location = new System.Drawing.Point(0, 35);
             this.btnPxE.Name = "btnPxE";
@@ -312,7 +311,7 @@ namespace UI.Forms
             this.btnArticulos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnArticulos.FlatAppearance.BorderSize = 0;
             this.btnArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArticulos.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArticulos.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnArticulos.ForeColor = System.Drawing.SystemColors.Control;
             this.btnArticulos.Location = new System.Drawing.Point(0, 0);
             this.btnArticulos.Name = "btnArticulos";
@@ -330,11 +329,11 @@ namespace UI.Forms
             this.btnABM.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnABM.FlatAppearance.BorderSize = 0;
             this.btnABM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnABM.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnABM.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnABM.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnABM.ForeColor = System.Drawing.Color.White;
             this.btnABM.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
             this.btnABM.IconColor = System.Drawing.Color.White;
+            this.btnABM.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnABM.IconSize = 40;
             this.btnABM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnABM.Location = new System.Drawing.Point(0, 380);
@@ -342,7 +341,6 @@ namespace UI.Forms
             this.btnABM.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnABM.Name = "btnABM";
             this.btnABM.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnABM.Rotation = 0D;
             this.btnABM.Size = new System.Drawing.Size(250, 60);
             this.btnABM.TabIndex = 2;
             this.btnABM.Text = "Administrar";
@@ -373,7 +371,7 @@ namespace UI.Forms
             this.btnImportar.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnImportar.FlatAppearance.BorderSize = 0;
             this.btnImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnImportar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnImportar.Location = new System.Drawing.Point(0, 175);
             this.btnImportar.Name = "btnImportar";
@@ -391,7 +389,7 @@ namespace UI.Forms
             this.btnajuste.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnajuste.FlatAppearance.BorderSize = 0;
             this.btnajuste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnajuste.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnajuste.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnajuste.ForeColor = System.Drawing.SystemColors.Control;
             this.btnajuste.Location = new System.Drawing.Point(0, 140);
             this.btnajuste.Name = "btnajuste";
@@ -410,7 +408,7 @@ namespace UI.Forms
             this.btntransf.Dock = System.Windows.Forms.DockStyle.Top;
             this.btntransf.FlatAppearance.BorderSize = 0;
             this.btntransf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btntransf.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntransf.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btntransf.ForeColor = System.Drawing.SystemColors.Control;
             this.btntransf.Location = new System.Drawing.Point(0, 105);
             this.btntransf.Name = "btntransf";
@@ -428,7 +426,7 @@ namespace UI.Forms
             this.btnpicking.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnpicking.FlatAppearance.BorderSize = 0;
             this.btnpicking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnpicking.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpicking.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnpicking.ForeColor = System.Drawing.SystemColors.Control;
             this.btnpicking.Location = new System.Drawing.Point(0, 70);
             this.btnpicking.Name = "btnpicking";
@@ -446,7 +444,7 @@ namespace UI.Forms
             this.btnscaneo.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnscaneo.FlatAppearance.BorderSize = 0;
             this.btnscaneo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnscaneo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnscaneo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnscaneo.ForeColor = System.Drawing.SystemColors.Control;
             this.btnscaneo.Location = new System.Drawing.Point(0, 35);
             this.btnscaneo.Name = "btnscaneo";
@@ -464,7 +462,7 @@ namespace UI.Forms
             this.btnrecepcion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnrecepcion.FlatAppearance.BorderSize = 0;
             this.btnrecepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnrecepcion.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrecepcion.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnrecepcion.ForeColor = System.Drawing.SystemColors.Control;
             this.btnrecepcion.Location = new System.Drawing.Point(0, 0);
             this.btnrecepcion.Name = "btnrecepcion";
@@ -482,11 +480,11 @@ namespace UI.Forms
             this.btnStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStock.FlatAppearance.BorderSize = 0;
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnStock.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStock.ForeColor = System.Drawing.Color.White;
             this.btnStock.IconChar = FontAwesome.Sharp.IconChar.Dolly;
             this.btnStock.IconColor = System.Drawing.Color.White;
+            this.btnStock.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStock.IconSize = 40;
             this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStock.Location = new System.Drawing.Point(0, 142);
@@ -494,7 +492,6 @@ namespace UI.Forms
             this.btnStock.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnStock.Name = "btnStock";
             this.btnStock.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnStock.Rotation = 0D;
             this.btnStock.Size = new System.Drawing.Size(250, 60);
             this.btnStock.TabIndex = 1;
             this.btnStock.Text = "Stock";
@@ -559,11 +556,11 @@ namespace UI.Forms
             this.btnconfig.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnconfig.FlatAppearance.BorderSize = 0;
             this.btnconfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnconfig.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnconfig.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfig.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnconfig.ForeColor = System.Drawing.Color.White;
             this.btnconfig.IconChar = FontAwesome.Sharp.IconChar.Cogs;
             this.btnconfig.IconColor = System.Drawing.Color.White;
+            this.btnconfig.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnconfig.IconSize = 40;
             this.btnconfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnconfig.Location = new System.Drawing.Point(734, 0);
@@ -571,7 +568,6 @@ namespace UI.Forms
             this.btnconfig.MinimumSize = new System.Drawing.Size(200, 75);
             this.btnconfig.Name = "btnconfig";
             this.btnconfig.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnconfig.Rotation = 0D;
             this.btnconfig.Size = new System.Drawing.Size(200, 75);
             this.btnconfig.TabIndex = 4;
             this.btnconfig.Text = "Config";
@@ -582,7 +578,7 @@ namespace UI.Forms
             // 
             // labtitle
             // 
-            this.labtitle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labtitle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labtitle.ForeColor = System.Drawing.Color.MediumSpringGreen;
             this.labtitle.Location = new System.Drawing.Point(91, 27);
             this.labtitle.Name = "labtitle";
@@ -596,6 +592,7 @@ namespace UI.Forms
             this.iconCurrentChildForm.ForeColor = System.Drawing.Color.MediumSpringGreen;
             this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.iconCurrentChildForm.IconColor = System.Drawing.Color.MediumSpringGreen;
+            this.iconCurrentChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconCurrentChildForm.IconSize = 52;
             this.iconCurrentChildForm.Location = new System.Drawing.Point(19, 17);
             this.iconCurrentChildForm.Name = "iconCurrentChildForm";
@@ -604,7 +601,7 @@ namespace UI.Forms
             this.iconCurrentChildForm.TabIndex = 0;
             this.iconCurrentChildForm.TabStop = false;
             // 
-            // MainMenufrm
+            // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.panelMain);
@@ -613,7 +610,7 @@ namespace UI.Forms
             this.Controls.Add(this.panelLeft);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MainMenufrm";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenufrm_FormClosed);

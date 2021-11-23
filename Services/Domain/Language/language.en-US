@@ -2,7 +2,7 @@
 Contraseña:Password
 Stock:Stock
 Administrar:Manage
-Acceder:LogIn
+Acceder:Log In
 Reportes:Reports
 Config:Setting
 Inicio:Home
@@ -10,17 +10,17 @@ Recepcion:Reception
 Scaneo:Scanning
 Picking:Picking
 Transferencia:Transfer
-Ajuste:InventoryAdjustment
+Ajuste:Inventory Adjustment
 Articulos:Articles
-PxE:Positionsbystate
+PxE:Positions by state
 Layout:Layout
 Etiq:Tags
 Deposito:Deposit
 Inventario:Inventory
 Movimientos:Movements
-HxI:Historybyitem
-IxC:InventorybyClient
-ListStock:Stocklisting
+HxI:History by item
+IxC:Inventory by Client
+ListStock:Stock listing
 Importar:Import
 Cliente:Client
 Guardar:Save
@@ -28,37 +28,70 @@ Fecha:Date
 Remito:Invoice
 Comprobante:Receipt
 Motivo:Reason
-ComplCant:Completequantity
-CierreParcial:PartialClose
-CierreDef:DefinitiveClose
+ComplCant:Complete quantity
+CierreParcial:Partial Close
+CierreDef:Definitive Close
 Imprimir:Print
 Conf:Confirm
-MostrarConf:ShowConfirmed
+MostrarConf:Show Confirmed
 Origen:Origin
 Destino:Destination
 Observacion:Obvservation
 Atencion:Attention
-logInEmptyorNull:Textboxesmustbecompleted.
-LogInIncorrecto:Incorrectuserorpassword,verify.
+AtLogInEmptyorNull:Text boxes must be completed.
+AtLogInIncorrecto:Incorrect user or password, verify.
 Tipo:Type
 Letra:Letter
 Agregar:Add
 Eliminar:Delete
 Descripcion:Description
 Cantidad:Quantity
-loginCorrecto:loggedinsystem.
-ErrorCampoVacio:Mustcompleteallthefields.
-ErrorValorNumerico:Mustenteronlynumbers.
-CantidadTotal:Totalquantity
+loginCorrecto:logged in system.
+ErrorCampoVacio:Must complete all the fields.
+ErrorValorNumerico:Must enter only numbers.
+CantidadTotal:Total quantity
 Original:Original
 Duplicado:Duplicate
 Triplicado:Triplicate
 Codigo:Code
-SeleCopia:SelectCopy
-ErrorFechaMenAct:Cannotenteradatelessthanthecurrentone.
-ErrorFaltanLineas:Mustenterlines.
-ProcesoCorrecto:Correctprocess.
-ComprobanteGenerado:Thevoucherhasbeengeneratedsuccessfully.
-ErrorSinRegistros:Norecordsfound.
+SeleCopia:Select Copy
+ErrorFechaMenAct:Cannot enter a date less than the current one.
+ErrorFaltanLineas:Must enter lines.
+ProcesoCorrecto:Correct process.
+ComprobanteGenerado:The voucher has been generated successfully.
+ErrorSinRegistros:No records found.
 Generado:Generated
-EtiquetasGeneradas:Tagsgenerated
+EtiquetasGeneradas:Tags generated
+Login:Login
+InformeRecepcion:Reception Report
+ImpComprobante:Voucher printing
+ErrorSistemaCorrupto:Integrity check failed! The system is in unoperable state. Contact with your administrator.
+Articulo:Article
+ComprobanteDetalle:Voucher detail
+Sucursal:Subsidiary
+NumeroComprobante:Voucher number
+Cierre:Closing
+Destinatario:Addressee
+Linea:Line
+ImpEtiq:Label printing
+ProductoVencido:Product expired
+ProductoDefectuoso:Reject
+EmbalajeDefectuoso:Defective packaging
+ProductoApto:Suitable product
+Expedicion:Expedition
+Suprimir:Remove
+InformeScaneo:Scan Report
+AtItemSinScan:There are unscanned items.
+Estado:Status
+Impreso:Printed
+NoImpreso:Not printed
+Despachado:Dispatched
+InformePicking:Picking Report
+CodigoPostal:Zip Code
+Confirmado:Confirmed
+ConfComprobante:Do you want to confirm the receipt?
+ProcCorrecto:Correct process.
+Domicilio:Adress
+Pasillo:Aisle
+Columna:Column
+Fila:Row

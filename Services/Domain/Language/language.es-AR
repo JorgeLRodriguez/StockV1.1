@@ -10,17 +10,17 @@ Recepcion:Recepción
 Scaneo:Scaneo
 Picking:Picking
 Transferencia:Transferencia
-Ajuste:AjustedeInventario
+Ajuste:Ajuste de Inventario
 Articulos:Artículos
-PxE:PosicionesxEstado
+PxE:Posiciones x Estado
 Layout:Layout
 Etiq:Etiquetas
 Deposito:Depósito
 Inventario:Inventario
 Movimientos:Movimientos
-HxI:HistorialxItem
-IxC:InventarioxCliente
-ListStock:ListadoStock
+HxI:Historial x Item
+IxC:Inventario x Cliente
+ListStock:Listado Stock
 Importar:Importar
 Cliente:Cliente
 Guardar:Guardar
@@ -28,37 +28,70 @@ Fecha:Fecha
 Remito:Remito
 Comprobante:Comprobante
 Motivo:Motivo
-ComplCant:CompletarCantidad
-CierreParcial:CierreParcial
-CierreDef:CierreDefinitivo
+ComplCant:Completar Cantidad
+CierreParcial:Cierre Parcial
+CierreDef:Cierre Definitivo
 Imprimir:Imprimir
 Conf:Confirmar
-MostrarConf:MostrarConfirmados
+MostrarConf:Mostrar Confirmados
 Origen:Origen
 Destino:Destino
 Observacion:Observación
 Atencion:Atención
-logInEmptyorNull:Haycampossincompletar.
-LogInIncorrecto:Usuarioocontraseñaincorrectos,verifique.
+AtLogInEmptyorNull:Hay campos sin completar.
+AtLogInIncorrecto:Usuario o contraseña incorrectos, verifique.
 Tipo:Tipo
 Letra:Letra
 Agregar:Agregar
 Eliminar:Eliminar
 Descripcion:Descripción
 Cantidad:Cantidad
-loginCorrecto:ingresóalsistema.
-ErrorCampoVacio:Debecompletartodosloscampos.
-ErrorValorNumerico:Debeingresarsolonúmeros.
-CantidadTotal:Cantidadtotal
+loginCorrecto:ingresó al sistema.
+ErrorCampoVacio:Debe completar todos los campos.
+ErrorValorNumerico:Debe ingresar solo números.
+CantidadTotal:Cantidad total
 Original:Original
 Duplicado:Duplicado
 Triplicado:Triplicado
 Codigo:Código
-SeleCopia:Seleccionarcopia
-ErrorFechaMenAct:Nosepuedeingresarunafechamenoralaactual.
-ErrorFaltanLineas:Debeingresarlíneas.
-ProcesoCorrecto:Procesocorrecto.
-ComprobanteGenerado:Elcomprobantehasidogeneradoexitosamente.
-ErrorSinRegistros:Noseencontraronregistros.
+SeleCopia:Seleccionar copia
+ErrorFechaMenAct:No se puede ingresar una fecha menor a la actual.
+ErrorFaltanLineas:Debe ingresar líneas.
+ProcesoCorrecto:Proceso correcto.
+ComprobanteGenerado:El comprobante ha sido generado exitosamente.
+ErrorSinRegistros:No se encontraron registros.
 Generado:Generado
-EtiquetasGeneradas:Etiquetasgeneradas
+EtiquetasGeneradas:Etiquetas generadas
+Login:Login
+InformeRecepcion:Informe de Recepción
+ImpComprobante:Impresión de Comprobante
+ErrorSistemaCorrupto:¡Error de integridad! El sistema se encuentra inoperable. Contacte con el administrador del sistema.
+Articulo:Articulo
+ComprobanteDetalle:Detalle de Comprobante
+Sucursal:Sucursal
+NumeroComprobante:Número de Comprobante
+Cierre:Cierre
+Destinatario:Destinatario
+Linea:Linea
+ImpEtiq:Impresión de Etiquetas
+ProductoVencido:Producto vencido
+ProductoDefectuoso:Producto defectuoso
+EmbalajeDefectuoso:Embalaje defectuoso
+ProductoApto:Producto apto
+Expedicion:Expedición
+Suprimir:Suprimir
+InformeScaneo:Informe de Scaneo
+AtItemSinScan:Hay items sin scanear.
+Estado:Estado
+Impreso:Impreso
+NoImpreso:No impreso
+Despachado:Despachado
+InformePicking:Informe de Picking
+CodigoPostal:Código Postal
+Confirmado:Confirmado
+ConfComprobante:¿Desea confirmar el comprobante?
+ProcCorrecto:Proceso correcto.
+Domicilio:Domicilio
+Pasillo:Pasillo
+Columna:Columna
+Fila:Fila

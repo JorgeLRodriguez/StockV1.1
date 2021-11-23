@@ -74,10 +74,10 @@ namespace UI.Forms
             this.txtuser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtuser.ForeColor = System.Drawing.Color.White;
-            this.txtuser.Location = new System.Drawing.Point(463, 115);
+            this.txtuser.Location = new System.Drawing.Point(466, 115);
             this.txtuser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtuser.Name = "txtuser";
-            this.txtuser.Size = new System.Drawing.Size(396, 19);
+            this.txtuser.Size = new System.Drawing.Size(393, 19);
             this.txtuser.TabIndex = 1;
             // 
             // txtpsw
@@ -176,7 +176,7 @@ namespace UI.Forms
             this.pswlab.Text = "Contraseña:";
             this.pswlab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // LogIn
+            // frmLogIn
             // 
             this.AcceptButton = this.btnlogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -194,8 +194,9 @@ namespace UI.Forms
             this.Controls.Add(this.leftpanel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "LogIn";
+            this.Name = "frmLogIn";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogIn";

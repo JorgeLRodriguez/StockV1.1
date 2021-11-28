@@ -13,20 +13,24 @@ namespace Services.BLL.Services
     {
         private Language _preferredLanguage;
         private string filePath = String.Empty;
-
         private readonly ILanguageRepository _languageRepository;
         private readonly IList<ILanguageSubscriber> _subscribers = new List<ILanguageSubscriber>();
-
-        public UserTranslator()
-            : this(new LanguageRepository())
+        #region Singleton
+        private readonly static UserTranslator _instance = new();
+        public static UserTranslator Current
         {
+            get
+            {
+                return _instance;
+            }
         }
+        private UserTranslator() : this (new LanguageRepository()){}
+        #endregion
         private UserTranslator(ILanguageRepository language)
         {
             _languageRepository = language;
             filePath = @"Domain\Language\language.";
         }
-
         public Language PreferredLanguage
         {
             get { return _preferredLanguage; }
@@ -36,24 +40,20 @@ namespace Services.BLL.Services
                 this.NotifyLanguageChanged(_preferredLanguage);
             }
         }
-
         public IList<Language> SupportedLanguages
         {
             get { return _languageRepository.GetSupportedLanguages(); }
         }
-
         public void Subscribe(ILanguageSubscriber nuevoSubscriptor)
         {
             _subscribers.Add(nuevoSubscriptor);
             //Notifico al nuevo subscriptor la configuración actual
             nuevoSubscriptor.LanguageChanged(this.PreferredLanguage);
         }
-
         public void Unsubscribe(ILanguageSubscriber subscriber)
         {
             _subscribers.Remove(subscriber);
         }
-
         public string Translate(string key)
         {
             string translatedWord = key;

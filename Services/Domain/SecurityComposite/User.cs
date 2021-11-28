@@ -10,17 +10,17 @@ namespace Services.Domain.SecurityComposite
     {
         public User()
         {
-            _permisos = new List<Component>();
+            _permissions = new List<Component>();
         }
-        List<Component> _permisos;
+        List<Component> _permissions;
         public Guid ID { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
-        public List<Component> Permisos
+        public List<Component> Permissions
         {
             get
             {
-                return _permisos;
+                return _permissions;
             }
         }
         public override string ToString()

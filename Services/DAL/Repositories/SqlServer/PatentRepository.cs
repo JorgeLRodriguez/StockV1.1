@@ -9,7 +9,7 @@ namespace Services.DAL.Repositories.SqlServer
     class PatentRepository : IPatentRepository
     {
         #region Singleton
-        private readonly static PatentRepository _instance = new PatentRepository();
+        private readonly static PatentRepository _instance = new();
         public static PatentRepository Current
         {
             get
@@ -22,7 +22,7 @@ namespace Services.DAL.Repositories.SqlServer
         }
         #endregion
         #region Statements
-        private string SelectAllStatement
+        private static string SelectAllStatement
         {
             get => "SELECT [ID] ,[Name] ,[Permit] FROM [dbo].[Permits] WHERE Permit is not null";
         }

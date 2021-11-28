@@ -43,7 +43,7 @@ namespace UI {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\jorge\\Documents")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\jorge\\Documents\\info.log")]
         public string LogPath {
             get {
                 return ((string)(this["LogPath"]));

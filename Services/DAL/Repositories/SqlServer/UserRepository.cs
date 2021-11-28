@@ -3,6 +3,7 @@ using Services.DAL.Repositories.SqlServer.Adapters;
 using Services.DAL.Repositories.Tools;
 using Services.Domain.SecurityComposite;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace Services.DAL.Repositories.SqlServer
@@ -23,7 +24,7 @@ namespace Services.DAL.Repositories.SqlServer
         }
         #endregion
         #region Statements
-        private string SelectOneStatement
+        private string LogInStatement
         {
             get => "SELECT [ID] ,[Name] ,[Password] FROM [dbo].[User] WHERE [Name] = @name AND [Password] = @password";
         }
@@ -31,11 +32,27 @@ namespace Services.DAL.Repositories.SqlServer
         {
             get => "select p.* from User_Permits up inner join Permits p on up.Permits_ID=p.ID where User_ID=@ID";
         }
-        #endregion
+        private string GetByIDStatement
+        {
+            get => "SELECT [ID] ,[Name] FROM [dbo].[User] WHERE [ID] = @ID";
+        }
+        private string GetAllStatement
+        {
+            get => "SELECT [ID] ,[Name] ,[Password] FROM [dbo].[User]";
+        }
+        private string InsertPermissionStatement
+        {
+            get => $@"INSERT INTO [dbo].[User_Permits] ([User_ID] ,[Permits_ID]) VALUES (@User_ID ,@Permit_ID)";
+        }
+        private string DeletePermissionsSatatement
+        {
+            get => "DELETE FROM [dbo].[User_Permits] WHERE User_ID = @User_ID";
+        }
+        #endregion     
         public User Login(string name, string password)
         {
             User User = default;
-            using (var dr = SqlHelper.ExecuteReader(SelectOneStatement, System.Data.CommandType.Text,
+            using (var dr = SqlHelper.ExecuteReader(LogInStatement, System.Data.CommandType.Text,
                                                     new SqlParameter[] { new SqlParameter("@name", name)
                                                     , new SqlParameter("@password", password)})) 
             {
@@ -52,7 +69,7 @@ namespace Services.DAL.Repositories.SqlServer
         {
             using (var dr = SqlHelper.ExecuteReader(FillComponentsStatement, System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter("@ID", u.ID) }))
             {
-                u.Permisos.Clear();
+                u.Permissions.Clear();
                 while (dr.Read())
                 {
                     object[] values = new object[dr.FieldCount];
@@ -60,7 +77,7 @@ namespace Services.DAL.Repositories.SqlServer
 
                     if (dr["Permit"] != DBNull.Value)
                     {
-                        u.Permisos.Add(PatentAdapter.Current.Adapt(values));
+                        u.Permissions.Add(PatentAdapter.Current.Adapt(values));
                     }
                     else
                     {
@@ -72,9 +89,53 @@ namespace Services.DAL.Repositories.SqlServer
                         {
                             f.AgregarHijo(family);
                         }
-                        u.Permisos.Add(f);
+                        u.Permissions.Add(f);
                     }
                 }
+            }
+        }
+        public User GetByID(Guid ID)
+        {
+            using (var dr = SqlHelper.ExecuteReader(GetByIDStatement, System.Data.CommandType.Text,
+                                                    new SqlParameter[] { new SqlParameter("@ID", ID)}))
+            {
+                if (dr.Read())
+                {
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    return UserAdapter.Current.Adapt(values);
+                }
+            }
+            return null;
+        }
+        public List<User> GetAll()
+        {
+            List<User> list = new List<User>();
+            using (var dr = SqlHelper.ExecuteReader(GetAllStatement, System.Data.CommandType.Text))
+            {
+                while (dr.Read())
+                {
+                    object[] values = new object[dr.FieldCount];
+                    dr.GetValues(values);
+                    list.Add(UserAdapter.Current.Adapt(values));
+                }
+            }
+            return list;
+        }
+        public void SavePermit(User u)
+        {
+            try
+            {
+                SqlHelper.ExecuteNonQuery(DeletePermissionsSatatement, System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter("@ID", u.ID) });
+
+                foreach (var item in u.Permissions)
+                {
+                    SqlHelper.ExecuteNonQuery(InsertPermissionStatement, System.Data.CommandType.Text, new SqlParameter[] { new SqlParameter("@ID", u.ID) });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

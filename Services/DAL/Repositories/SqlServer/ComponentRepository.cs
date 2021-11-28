@@ -119,9 +119,9 @@ namespace Services.DAL.Repositories.SqlServer
                 c.ID = ID;
                 return c;
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw;
             }
         }
     }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.Logger
 {
-    enum Severity
+    public enum Severity
     {
+        Informative = 0,
+        Warning = 1,
+        Critical = 2
     }
 }

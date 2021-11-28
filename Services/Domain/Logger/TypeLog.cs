@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Services.Domain.Logger
 {
-    enum TypeLog
+    public enum TypeLog
     {
+        SQL = 1,
+        File = 2
     }
 }

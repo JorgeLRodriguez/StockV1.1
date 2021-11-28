@@ -1,13 +1,10 @@
 using BLL;
 using Services.BLL.Contracts;
-using Services.BLL.Services;
 using Services.Factory;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Forms;
 
@@ -21,8 +18,9 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            ConfigurarLogPath();
+            //ConfigurarLogPath();
             var ServiciosAplicacion = ApplicationServices.Current;
+            ServiciosAplicacion.GetGlobalConfig.LogPath = Settings.Default.LogPath;
             var TraductorUsuario = ServiciosAplicacion.GetUserTranslator;
             ConfigureDefaultLanguage(TraductorUsuario);
             if (!ComprobarIntegridadDelSistema(TraductorUsuario))
@@ -57,10 +55,6 @@ namespace UI
                 return false;
             }
             return true;
-        }
-        public static void ConfigurarLogPath()
-        {
-            GlobalConfig.Instance.LogPath = Settings.Default.LogPath;
         }
     }
 }

@@ -1,17 +1,11 @@
 ﻿using Services.Domain.SecurityComposite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Services.Security
 {
     public class ServicesUser
     {
         static ServicesUser _sesion;
-        User _usuario;
-
+        User _user = default;
         public static ServicesUser GetInstance
         {
             get
@@ -22,13 +16,10 @@ namespace Services.Services.Security
         }
         public bool IsLoggedIn()
         {
-            return _usuario != null;
+            return _user != null;
         }
-
         bool isInRole(Component c, PermitType permiso, bool existe)
         {
-
-
             if (c.Permit.Equals(permiso))
                 existe = true;
             else
@@ -42,11 +33,10 @@ namespace Services.Services.Security
 
             return existe;
         }
-
         public bool IsInRole(PermitType permiso)
         {
             bool existe = false;
-            foreach (var item in _usuario.Permisos)
+            foreach (var item in _user.Permissions)
             {
                 if (item.Permit.Equals(permiso))
                     return true;
@@ -57,25 +47,23 @@ namespace Services.Services.Security
                 }
 
             }
-
             return existe;
         }
-
         public void Logout()
         {
-            _sesion._usuario = null;
+            _sesion._user = null;
         }
-
-
         public void Login(User u)
         {
-            _sesion._usuario = u;
-
+            _sesion._user = u;
         }
-
         private ServicesUser()
         {
-
+        }
+        public User UserLogged
+        {
+            get { return _user; }
+            private set { _user = value; }
         }
     }
 }

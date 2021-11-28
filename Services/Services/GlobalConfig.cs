@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Services.BLL.Services
+namespace Services.Services
 {
     public class GlobalConfig
     {
         #region "Singleton"
-
         private static readonly Lazy<GlobalConfig> DefaultInstance = new Lazy<GlobalConfig>(() => new GlobalConfig());
-
         public static GlobalConfig Instance
         {
             get { return DefaultInstance.Value; }
         }
-
         #endregion
 
         /// <summary>

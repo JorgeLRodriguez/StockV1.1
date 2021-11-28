@@ -10,6 +10,6 @@ namespace Services.BLL.Contracts
     interface IUserService
     {
         public List<User> GetAll();
-        public void GuardarPermisos(User u);
+        public void SavePermission(User u);
     }
 }

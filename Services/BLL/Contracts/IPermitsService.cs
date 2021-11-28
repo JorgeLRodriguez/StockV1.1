@@ -9,7 +9,7 @@ namespace Services.BLL.Contracts
 {
     interface IPermitsService
     {
-        public bool Existe(Component c, int id);
+        public bool Exists(Component c, int id);
         public Array GetAllPermission();
         public Component GuardarComponente(Component p, bool esfamilia);
         public void GuardarFamilia(Family c);

@@ -1,5 +1,6 @@
 ﻿using Services.BLL.Contracts;
 using Services.BLL.Services;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Services.Factory
         }
         private ApplicationServices()
         {
-            GetUserTranslator = new UserTranslator();
+            GetUserTranslator = UserTranslator.Current;
             GetGlobalConfig = GlobalConfig.Instance;
             GetSesionService = new SesionService();
            

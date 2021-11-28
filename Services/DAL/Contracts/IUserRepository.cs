@@ -11,5 +11,8 @@ namespace Services.DAL.Contracts
     public interface IUserRepository
     {
         User Login(string name, string password);
+        User GetByID(Guid ID);
+        List<User> GetAll();
+        void SavePermit(User u);
     }
 }

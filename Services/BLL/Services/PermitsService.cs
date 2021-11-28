@@ -11,12 +11,10 @@ namespace Services.BLL.Services
 {
     class PermitsService : IPermitsService
     {
-        PermisosRepository _permisos;
         public PermitsService()
         {
-            _permisos = new PermisosRepository();
         }
-        public bool Existe(Component c, int id)
+        public bool Exists(Component c, int id)
         {
             bool existe = false;
             if (c.ID.Equals(id))
@@ -24,7 +22,7 @@ namespace Services.BLL.Services
             else
                 foreach (var item in c.Hijos)
                 {
-                    existe = Existe(item, id);
+                    existe = Exists(item, id);
                     if (existe) return true;
                 }
             return existe;
@@ -45,24 +43,19 @@ namespace Services.BLL.Services
         {
             return PatentRepository.Current.GetAll();
         }
-
         public IList<Family> GetAllFamilias()
         {
             return FamilyRepository.Current.GetAll();
         }
-
         public IList<Component> GetAll(string familia)
         {
             return ComponentRepository.Current.GetAll(familia);
-
         }
-
         public void FillUserComponents(User u)
         {
             UserRepository.Current.FillUserComponents(u);
 
         }
-
         public void FillFamilyComponents(Family familia)
         {
             FamilyRepository.Current.FillFamilyComponents(familia);

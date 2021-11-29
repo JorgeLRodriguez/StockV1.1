@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    interface IClientService
+    public interface IClientService
     {
+        IEnumerable<Client> Get();
+        Client GetByCuit(string cuit);
     }
 }

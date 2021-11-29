@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Label : IdentityBase
+    public class Label
     {
-        //[Display(Name = ConstantesTexto.Comprobante)]
-        public int Voucher_ID { get; set; }
-        [ForeignKey("Comprobante_ID"), Required]
+        [Key, Required]
+        public Guid ID { get; set; }
+        [Display(Name = "Comprobante")]
+        public Guid Voucher_ID { get; set; }
+        [ForeignKey("Voucher_ID"), Required]
         public virtual Voucher Voucher { get; set; }
         [Required]
-        //[Display(Name = ConstantesTexto.Articulo)]
-        public int Article_ID { get; set; }
+        [Display(Name = "Articulo")]
+        public Guid Article_ID { get; set; }
 
         [ForeignKey("Article_ID")]
         public virtual Article Article { get; set; }

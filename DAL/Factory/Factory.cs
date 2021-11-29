@@ -21,13 +21,21 @@ namespace DAL.Factory
             _db = new DatabaseContext();
             CDCalculatorRepository = new CDCalculatorRepository();
             ArticleRepository = new GenericRepository<Article>(_db);
+            ClientRepository = new GenericRepository<Client>(_db);
+            NumeratorRepository = new GenericRepository<Numerator>(_db);
             IntegrityCDCalculatorRepository = new IntegrityCDCalculatorRepository(_db);
-            VoucherRepository = new VoucherRepository();
+            VoucherRepository = new VoucherRepository(_db);
         }
         #endregion
         public ICDCalculatorRepository CDCalculatorRepository { get; }
         public IGenericRepository<Article> ArticleRepository { get; }
+        public IGenericRepository<Client> ClientRepository { get; }
+        public IGenericRepository<Numerator> NumeratorRepository { get; }
         public IIntegrityCDCalculatorRepository IntegrityCDCalculatorRepository { get; }
         public IVoucherRepository VoucherRepository { get; }
+        public void SaveChanges()
+        {
+            _db.SaveChanges();
+        }
     }
 }

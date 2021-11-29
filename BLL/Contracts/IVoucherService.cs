@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    interface IVoucherService
+    public interface IVoucherService
     {
+        Voucher Create(Voucher voucher);
+        RejectionType[] GetTipoRechazo();
+        IEnumerable<Voucher> GetScanVoucher();
+        IEnumerable<Voucher> GetPickingVoucher();
+        IEnumerable<Voucher> GetTransferVoucher();
+        void Update(Voucher voucher);
     }
 }

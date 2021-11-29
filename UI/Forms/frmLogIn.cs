@@ -3,27 +3,20 @@ using Services.Domain.Language;
 using Services.Domain.SecurityComposite;
 using Services.Factory;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Forms
 {
     public partial class frmLogIn : Form , ILanguageSubscriber
     {
-        private readonly IUserTranslator _traductorUsuario;
-        private readonly ApplicationServices _serviciosAplicacion;
-        public frmLogIn(ApplicationServices serviciosAplicacion)
+        private readonly IUserTranslator _userTranslator;
+        private readonly ApplicationServices _applicationServices;
+        public frmLogIn(ApplicationServices applicationServices)
         {
             InitializeComponent();
-            _serviciosAplicacion = serviciosAplicacion;
-            _traductorUsuario = serviciosAplicacion.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_traductorUsuario);
+            _applicationServices = applicationServices;
+            _userTranslator = _applicationServices.GetUserTranslator;
+            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
         }
         private void Clean()
         {
@@ -37,15 +30,14 @@ namespace UI.Forms
             Cursor = Cursors.WaitCursor;
             try
             {
-                //_serviciosAplicacion.GetSesionService.Login.IniciarSesion(txtuser.Text, txtpsw.Text);
-                _serviciosAplicacion.GetSesionService.Login(new User() { Name = txtuser.Text , Password = txtpsw.Text });
-                new frmMain(_serviciosAplicacion).Show();
+                _applicationServices.GetSesionService.Login(new User() { Name = txtuser.Text , Password = txtpsw.Text });
+                new frmMain(_applicationServices).Show();
                 Hide();
             }
             catch (Exception ex)
             {
                 Clean();
-                this.MostrarDialogoError(_traductorUsuario, ex.Message);
+                this.MostrarDialogoError(_userTranslator, ex.Message);
             }
         }
         private void btnclose_Click(object sender, EventArgs e)
@@ -58,10 +50,10 @@ namespace UI.Forms
         }
         public void LanguageChanged(Language newLanguage)
         {
-            usrlab.Text = _traductorUsuario.Translate("Usuario") + ":";
-            pswlab.Text = _traductorUsuario.Translate("Contraseña") + ":";
-            btnlogin.Text = _traductorUsuario.Translate("Acceder");
-            Text = _traductorUsuario.Translate("Login");
+            usrlab.Text = _userTranslator.Translate("Usuario") + ":";
+            pswlab.Text = _userTranslator.Translate("Contraseña") + ":";
+            btnlogin.Text = _userTranslator.Translate("Acceder");
+            Text = _userTranslator.Translate("Login");
         }
     }
 }

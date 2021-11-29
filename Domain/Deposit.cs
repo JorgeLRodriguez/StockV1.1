@@ -1,27 +1,24 @@
-﻿using System;
+﻿using Domain.Integrity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Deposit : IdentityBase
+    public class Deposit : IdentityBase, IHorizontalCheckDigit
     {
-    //    [DatoSensible, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
-    //    [Display(Name = ConstantesTexto.Cliente)]
+        [SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
+        [Display(Name = "Cliente")]
         public int Client_ID { get; set; }
-        //[ForeignKey("Cliente_ID")]
+        //[ForeignKey("Client_ID")]
         public virtual Client Client { get; set; }
-        //[Required, DatoSensible, StringLength(50, MinimumLength = 3)]
-        //[Display(Name = ConstantesTexto.Descripcion)]
+        [Required, SensitiveData, StringLength(50, MinimumLength = 3)]
+        [Display(Name = "Descripcion")]
         public string DepositName { get; set; }
-        //[Required, DatoSensible, StringLength(100, MinimumLength = 3)]
-        //[Display(Name = ConstantesTexto.Domicilio)]
+        [Required, SensitiveData, StringLength(100, MinimumLength = 3)]
+        [Display(Name = "Domicilio")]
         public string Address { get; set; }
         public byte[] DVH { get; set; }
-        //public virtual ICollection<Pallet> Pallet { get; set; }
+        public virtual ICollection<Pallet> Pallet { get; set; }
     }
 }

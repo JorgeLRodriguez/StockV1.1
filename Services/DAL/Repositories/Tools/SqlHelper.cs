@@ -10,7 +10,7 @@ namespace Services.DAL.Repositories.Tools
         readonly static string conString;
         static SqlHelper()
         {
-            conString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+            conString = ConfigurationManager.ConnectionStrings["cnnSec"].ConnectionString;
         }
         public static Int32 ExecuteNonQuery(String commandText,
             CommandType commandType, params SqlParameter[] parameters)

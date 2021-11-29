@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Forms.Stock;
 
 namespace UI.Forms
 {
@@ -117,8 +118,9 @@ namespace UI.Forms
         }
         private void btnrecepcion_Click(object sender, EventArgs e)
         {
-            //Form recfrm = Recepcionfrm.GetInstance(_serviciosAplicacion);
-            //openChildFormInPanel(recfrm);
+            Form recfrm = frmReception.GetInstance(_serviciosAplicacion);
+            openChildFormInPanel(recfrm);
+            //new frmReception().ShowDialog();
         }
         private void btnscaneo_Click(object sender, EventArgs e)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    interface ICSVService
+    public interface ICSVService
     {
     }
 }

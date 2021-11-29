@@ -8,9 +8,9 @@ namespace Domain
 {
     public class Voucher : IdentityBase, IHorizontalCheckDigit
     {
-        [Required, SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
+        [Required, SensitiveData]
         [Display(Name = "Cliente")]
-        public int Client_ID { get; set; }
+        public Guid Client_ID { get; set; }
         [ForeignKey("Client_ID")]
         public virtual Client Client { get; set; }
         [Required, SensitiveData, StringLength(3, MinimumLength = 3)]
@@ -36,8 +36,8 @@ namespace Domain
         public string Closure { get; set; }
         [RegularExpression("^[0-9]*$"), Range(0, int.MaxValue)]
         [Display(Name = "Destinatario")]
-        public int? Addressee_ID { get; set; }
-        [ForeignKey("Destinatario_ID")]
+        public Guid? Addressee_ID { get; set; }
+        [ForeignKey("Addressee_ID")]
         public virtual Addressee Addressee { get; set; }
         [Display(Name = "Observacion")]
         public string Observations { get; set; }

@@ -20,15 +20,6 @@ namespace Services.Domain.Logger
         public DateTime DateTime { get; set; }
         [Required, EnumDataType(typeof(Severity))]
         public Severity Severity { get; set; }
-        //public Log(Guid _ID, Event _Event, User _User, string _Message, DateTime _Datetime, Severity _Severity)
-        //{
-        //    ID = _ID;
-        //    Event = _Event;
-        //    User = _User;
-        //    Message = _Message;
-        //    DateTime = _Datetime;
-        //    Severity = _Severity;
-        //}
         public Log(){}
         public override string ToString()
         {

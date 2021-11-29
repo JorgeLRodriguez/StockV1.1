@@ -1,13 +1,27 @@
 ﻿using DAL.Contracts;
-using System;
-using System.Collections.Generic;
+using Domain;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class VoucherRepository : IVoucherRepository
+    class VoucherRepository : GenericRepository<Voucher>,  IVoucherRepository
     {
+        private readonly DatabaseContext _db;
+        public VoucherRepository(DatabaseContext db) : base(db)
+        {
+            _db = db;
+        }
+        public RejectionType[] GetRejectionTypes()
+        {
+            //Enumero por reflexión los tipos de rechazo disponibles en el sistema
+            var properties = typeof(RejectionType).GetFields();
+            return properties
+                .Select(property => new RejectionType
+                {
+                    ID = (int)property.GetRawConstantValue(),
+                    Description = property.Name
+                })
+                .ToArray();
+        }
     }
 }

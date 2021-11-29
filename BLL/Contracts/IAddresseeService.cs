@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    interface IAddresseeService
+    public interface IAddresseeService
     {
+        Addressee Create(Addressee addressee);
+        void Update(Addressee addressee);
+        void Delete(Guid ID);
+        IEnumerable<Addressee> Get();
     }
 }

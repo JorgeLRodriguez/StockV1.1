@@ -61,9 +61,5 @@ namespace DAL.Repositories
         {
             return _db.Set<T>().SingleOrDefault(x => x.ID == id);
         }
-        public virtual void SaveChanges()
-        {
-            _db.SaveChanges();
-        }
     }
 }

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    interface IArticleService
+    public interface IArticleService
     {
+        IEnumerable<Article> GetByClient(Client client);
+        Article GetByID(Guid ID);
+        Article GetByFS(string FSCode);
     }
 }

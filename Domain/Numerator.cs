@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Numerator
+    public class Numerator : IdentityBase
     {
         public string VoucherType { get; set; }
         public string Letter { get; set; }

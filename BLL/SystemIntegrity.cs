@@ -32,7 +32,7 @@ namespace BLL
             var tiposSoportadosConDigitoVerificador = this.EnumerarTiposCompatibles(tipoEntidadConDigitoVerificador);
             foreach (var tipoEntidad in tiposSoportadosConDigitoVerificador)
             {
-                if (Factory.Current.IntegrityCDCalculatorRepository.ComprobarIntegridad(tipoEntidad))
+                if (DAL.Factory.Factory.Current.IntegrityCDCalculatorRepository.ComprobarIntegridad(tipoEntidad))
                     corruptedEntityNames.Add(tipoEntidad.FullName);
             }
             //Reviento si al menos existe una entidad corrupta

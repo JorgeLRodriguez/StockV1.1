@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain;
 
 namespace DAL.Contracts
 {
-    public interface IVoucherRepository
+    public interface IVoucherRepository : IGenericRepository<Voucher>
     {
+        RejectionType[] GetRejectionTypes();
     }
 }

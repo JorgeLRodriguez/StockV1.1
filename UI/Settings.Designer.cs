@@ -49,5 +49,14 @@ namespace UI {
                 return ((string)(this["LogPath"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\Backup\\asd.bak")]
+        public string RestoreBackup {
+            get {
+                return ((string)(this["RestoreBackup"]));
+            }
+        }
     }
 }

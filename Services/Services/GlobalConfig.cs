@@ -16,5 +16,6 @@ namespace Services.Services
         /// Devuelve o establece el path donde se guardará el log de errores.
         /// </summary>
         public string LogPath { get; set; }
+        public string RestoreBackup { get; set; }
     }
 }

@@ -11,5 +11,8 @@
     <Setting Name="LogPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Users\jorge\Documents\info.log</Value>
     </Setting>
+    <Setting Name="RestoreBackup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup\asd.bak</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

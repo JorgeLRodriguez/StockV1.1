@@ -137,7 +137,7 @@ namespace BLL.Services
             if (!C.Any()) throw new Exception(_userTranslator.Translate("ErrorSinRegistros"));
             return C;
         }
-        public RejectionType[] GetTipoRechazo()
+        public RejectionType[] GetRejectionTypes()
         {
             var RejectionTypes = DAL.Factory.Factory.Current.VoucherRepository.GetRejectionTypes();
 

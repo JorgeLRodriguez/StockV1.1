@@ -41,10 +41,7 @@ namespace UI.Forms.Stock
             this.invdetdataGrid = new System.Windows.Forms.DataGridView();
             this.articlecbdg = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantitytxtdg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.savebtn = new System.Windows.Forms.Button();
             this.clientcbx = new System.Windows.Forms.ComboBox();
-            this.addbtn = new System.Windows.Forms.Button();
-            this.deletebtn = new System.Windows.Forms.Button();
             this.vouchertypelb = new System.Windows.Forms.Label();
             this.typetxt = new System.Windows.Forms.TextBox();
             this.letterlab = new System.Windows.Forms.Label();
@@ -52,9 +49,12 @@ namespace UI.Forms.Stock
             this.subsidiarytxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.leftpanel = new System.Windows.Forms.Panel();
+            this.addbtn = new FontAwesome.Sharp.IconButton();
             this.btnclose = new System.Windows.Forms.PictureBox();
             this.remitotxt = new System.Windows.Forms.TextBox();
             this.panelright = new System.Windows.Forms.Panel();
+            this.savebtn = new FontAwesome.Sharp.IconButton();
+            this.deletebtn = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.invdetdataGrid)).BeginInit();
             this.leftpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
@@ -169,21 +169,6 @@ namespace UI.Forms.Stock
             this.quantitytxtdg.Name = "quantitytxtdg";
             this.quantitytxtdg.Width = 150;
             // 
-            // savebtn
-            // 
-            this.savebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.savebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.savebtn.ForeColor = System.Drawing.Color.White;
-            this.savebtn.Location = new System.Drawing.Point(178, 328);
-            this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(89, 31);
-            this.savebtn.TabIndex = 10;
-            this.savebtn.Text = "Guardar";
-            this.savebtn.UseVisualStyleBackColor = true;
-            this.savebtn.Click += new System.EventHandler(this.Savebtn_Click);
-            // 
             // clientcbx
             // 
             this.clientcbx.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -196,36 +181,6 @@ namespace UI.Forms.Stock
             this.clientcbx.Size = new System.Drawing.Size(208, 29);
             this.clientcbx.TabIndex = 11;
             this.clientcbx.SelectedIndexChanged += new System.EventHandler(this.Clientcbx_SelectedIndexChanged);
-            // 
-            // addbtn
-            // 
-            this.addbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addbtn.ForeColor = System.Drawing.Color.White;
-            this.addbtn.Location = new System.Drawing.Point(177, 270);
-            this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(89, 31);
-            this.addbtn.TabIndex = 12;
-            this.addbtn.Text = "Agregar";
-            this.addbtn.UseVisualStyleBackColor = true;
-            this.addbtn.Click += new System.EventHandler(this.Addbtn_Click);
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deletebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deletebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deletebtn.ForeColor = System.Drawing.Color.White;
-            this.deletebtn.Location = new System.Drawing.Point(178, 385);
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.Size = new System.Drawing.Size(89, 31);
-            this.deletebtn.TabIndex = 13;
-            this.deletebtn.Text = "Eliminar";
-            this.deletebtn.UseVisualStyleBackColor = true;
-            this.deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
             // vouchertypelb
             // 
@@ -299,6 +254,9 @@ namespace UI.Forms.Stock
             this.leftpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.leftpanel.Controls.Add(this.deletebtn);
+            this.leftpanel.Controls.Add(this.savebtn);
+            this.leftpanel.Controls.Add(this.addbtn);
             this.leftpanel.Controls.Add(this.btnclose);
             this.leftpanel.Controls.Add(this.remitotxt);
             this.leftpanel.Controls.Add(this.letterlab);
@@ -312,13 +270,30 @@ namespace UI.Forms.Stock
             this.leftpanel.Controls.Add(this.label1);
             this.leftpanel.Controls.Add(this.clientcbx);
             this.leftpanel.Controls.Add(this.invlab);
-            this.leftpanel.Controls.Add(this.addbtn);
-            this.leftpanel.Controls.Add(this.deletebtn);
-            this.leftpanel.Controls.Add(this.savebtn);
             this.leftpanel.Location = new System.Drawing.Point(12, 12);
             this.leftpanel.Name = "leftpanel";
             this.leftpanel.Size = new System.Drawing.Size(456, 553);
             this.leftpanel.TabIndex = 20;
+            // 
+            // addbtn
+            // 
+            this.addbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addbtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.addbtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addbtn.ForeColor = System.Drawing.Color.White;
+            this.addbtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.addbtn.IconColor = System.Drawing.Color.White;
+            this.addbtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.addbtn.IconSize = 40;
+            this.addbtn.Location = new System.Drawing.Point(161, 264);
+            this.addbtn.Name = "addbtn";
+            this.addbtn.Size = new System.Drawing.Size(135, 45);
+            this.addbtn.TabIndex = 23;
+            this.addbtn.Text = "Agregar";
+            this.addbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.addbtn.UseVisualStyleBackColor = true;
             // 
             // btnclose
             // 
@@ -354,13 +329,52 @@ namespace UI.Forms.Stock
             this.panelright.Size = new System.Drawing.Size(460, 553);
             this.panelright.TabIndex = 21;
             // 
+            // savebtn
+            // 
+            this.savebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.savebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.savebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.savebtn.ForeColor = System.Drawing.Color.White;
+            this.savebtn.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.savebtn.IconColor = System.Drawing.Color.White;
+            this.savebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.savebtn.IconSize = 40;
+            this.savebtn.Location = new System.Drawing.Point(161, 331);
+            this.savebtn.Name = "savebtn";
+            this.savebtn.Size = new System.Drawing.Size(135, 45);
+            this.savebtn.TabIndex = 24;
+            this.savebtn.Text = "Guardar";
+            this.savebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.savebtn.UseVisualStyleBackColor = true;
+            // 
+            // deletebtn
+            // 
+            this.deletebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deletebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.deletebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.deletebtn.ForeColor = System.Drawing.Color.White;
+            this.deletebtn.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.deletebtn.IconColor = System.Drawing.Color.White;
+            this.deletebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.deletebtn.IconSize = 40;
+            this.deletebtn.Location = new System.Drawing.Point(161, 397);
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.Size = new System.Drawing.Size(135, 45);
+            this.deletebtn.TabIndex = 25;
+            this.deletebtn.Text = "Eliminar";
+            this.deletebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.deletebtn.UseVisualStyleBackColor = true;
+            // 
             // frmReception
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(26)))), ((int)(((byte)(14)))));
             this.ClientSize = new System.Drawing.Size(934, 577);
             this.Controls.Add(this.panelright);
             this.Controls.Add(this.leftpanel);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReception";
             this.Text = "Recepcionfrm";
@@ -379,9 +393,6 @@ namespace UI.Forms.Stock
         private System.Windows.Forms.DateTimePicker voucherPicker;
         private System.Windows.Forms.Label invlab;
         private System.Windows.Forms.DataGridView invdetdataGrid;
-        private System.Windows.Forms.Button savebtn;
-        private System.Windows.Forms.Button addbtn;
-        private System.Windows.Forms.Button deletebtn;
         private System.Windows.Forms.Label vouchertypelb;
         private System.Windows.Forms.TextBox typetxt;
         private System.Windows.Forms.Label letterlab;
@@ -395,5 +406,8 @@ namespace UI.Forms.Stock
         private System.Windows.Forms.DataGridViewTextBoxColumn quantitytxtdg;
         private System.Windows.Forms.TextBox remitotxt;
         private System.Windows.Forms.PictureBox btnclose;
+        private FontAwesome.Sharp.IconButton addbtn;
+        private FontAwesome.Sharp.IconButton deletebtn;
+        private FontAwesome.Sharp.IconButton savebtn;
     }
 }

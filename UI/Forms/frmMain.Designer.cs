@@ -614,6 +614,7 @@ namespace UI.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenufrm_FormClosed);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelReportes.ResumeLayout(false);
             this.panelABM.ResumeLayout(false);

@@ -1,7 +1,10 @@
 ﻿using Services.BLL.Contracts;
 using Services.BLL.Services;
+using Services.DAL.Contracts;
+using Services.DAL.Repositories.SqlServer;
 using Services.Services;
 using Services.Services.ModelValidator;
+using Services.Services.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +30,16 @@ namespace Services.Factory
             GetGlobalConfig = GlobalConfig.Instance;
             GetSesionService = new SesionService();
             GetLogService = LogService.GetInstance();
+            GetServicesUser = ServicesUser.GetInstance;
+            GetRestoreBackup = RestoreBackup.Current;
         }
         #endregion
         public IUserTranslator GetUserTranslator { get; }
         public ILanguageSubscriber GetLanguageSubscriber { get; }
         public ISesionService GetSesionService { get; }
         public ILogService GetLogService { get; set; }
+        public IRestoreBackup GetRestoreBackup { get; set; }
         public GlobalConfig GetGlobalConfig { get; }
+        public ServicesUser GetServicesUser { get; }
     }
 }

@@ -19,16 +19,16 @@ namespace UI.Forms
     {
         private IconButton currentBtn;
         private readonly Panel leftBorderBtn;
-        private readonly IUserTranslator _traductorUsuario;
-        private readonly ApplicationServices _serviciosAplicacion;
+        private readonly IUserTranslator _userTranslator;
+        private readonly ApplicationServices _applicationServices;
         public frmMain(ApplicationServices applicationServices)
         {
             InitializeComponent();
             leftBorderBtn = new Panel { Size = new Size(7, 60) };
             panelLeft.Controls.Add(leftBorderBtn);
-            _serviciosAplicacion = applicationServices;
-            _traductorUsuario = applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_traductorUsuario);
+            _applicationServices = applicationServices;
+            _userTranslator = applicationServices.GetUserTranslator;
+            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
         }
         private void showSubMenu(Panel subMenu)
         {
@@ -59,8 +59,8 @@ namespace UI.Forms
         }
         private void btnconfig_Click(object sender, EventArgs e)
         {
-            //Form recfrm = configfrm.getInstance(_serviciosAplicacion);
-            //openChildFormInPanel(recfrm);
+            Form conffrm = frmConfig.GetInstance(_applicationServices);
+            openChildFormInPanel(conffrm);
             ActivateButton(sender, Color.FromArgb(5, 26, 14));
         }
         private void openChildFormInPanel(Form childForm)
@@ -118,33 +118,32 @@ namespace UI.Forms
         }
         private void btnrecepcion_Click(object sender, EventArgs e)
         {
-            Form recfrm = frmReception.GetInstance(_serviciosAplicacion);
+            Form recfrm = frmReception.GetInstance(_applicationServices);
             openChildFormInPanel(recfrm);
-            //new frmReception().ShowDialog();
         }
         private void btnscaneo_Click(object sender, EventArgs e)
         {
-            //Form scanfrm = Scaneofrm.GetInstance(_serviciosAplicacion);
-            //openChildFormInPanel(scanfrm);
+            Form scanfrm = frmScan.GetInstance(_applicationServices);
+            openChildFormInPanel(scanfrm);
         }
         private void btnpicking_Click(object sender, EventArgs e)
         {
-            //Form pickfrm = Pickingfrm.GetInstance(_serviciosAplicacion);
+            //Form pickfrm = Pickingfrm.GetInstance(_applicationServices);
             //openChildFormInPanel(pickfrm);
         }
         private void btntransf_Click(object sender, EventArgs e)
         {
-            //Form tranfrm = Transferenciafrm.GetInstance(_serviciosAplicacion);
+            //Form tranfrm = Transferenciafrm.GetInstance(_applicationServices);
             //openChildFormInPanel(tranfrm);
         }
         private void btnajuste_Click(object sender, EventArgs e)
         {
-            //Form ajfrm = AjusteInvfrm.GetInstance(_serviciosAplicacion);
+            //Form ajfrm = AjusteInvfrm.GetInstance(_applicationServices);
             //openChildFormInPanel(ajfrm);
         }
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            //Form impfrm = Importarfrm.GetInstance(_serviciosAplicacion);
+            //Form impfrm = Importarfrm.GetInstance(_applicationServices);
             //openChildFormInPanel(impfrm);
         }
         private void btnArticulos_Click(object sender, EventArgs e)
@@ -199,33 +198,45 @@ namespace UI.Forms
         }
         private void MainMenufrm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //_serviciosAplicacion.Usuario.FinalizarSesion();
+            _applicationServices.GetSesionService.Logout();
             Application.Exit();
         }
 
+        private void AuthorizationControl()
+        {
+            btnrecepcion.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Reception);
+            btnscaneo.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Scan);
+        }
+
+
         public void LanguageChanged(Language newLanguage)
         {
-            labtitle.Text = _traductorUsuario.Translate("Inicio");
-            btnrecepcion.Text = _traductorUsuario.Translate("Recepcion");
-            btnscaneo.Text = _traductorUsuario.Translate("Scaneo");
-            btnpicking.Text = _traductorUsuario.Translate("Picking");
-            btntransf.Text = _traductorUsuario.Translate("Transferencia");
-            btnajuste.Text = _traductorUsuario.Translate("Ajuste");
-            btnImportar.Text = _traductorUsuario.Translate("Importar");
-            btnABM.Text = _traductorUsuario.Translate("Administrar");
-            btnArticulos.Text = _traductorUsuario.Translate("Articulos");
-            btnPxE.Text = _traductorUsuario.Translate("PxE");
-            btnLayout.Text = _traductorUsuario.Translate("Layout");
-            btnEtiq.Text = _traductorUsuario.Translate("Etiq");
-            btnReportes.Text = _traductorUsuario.Translate("Reportes");
-            btndeposito.Text = _traductorUsuario.Translate("Deposito");
-            btnInventario.Text = _traductorUsuario.Translate("Inventario");
-            btnMovim.Text = _traductorUsuario.Translate("Movimientos");
-            btnHxI.Text = _traductorUsuario.Translate("HxI");
-            btnIxC.Text = _traductorUsuario.Translate("IxC");
-            btnListStock.Text = _traductorUsuario.Translate("ListStock");
-            btnconfig.Text = _traductorUsuario.Translate("Config");
-            this.Text = _traductorUsuario.Translate("Stock");
+            labtitle.Text = _userTranslator.Translate("Inicio");
+            btnrecepcion.Text = _userTranslator.Translate("Recepcion");
+            btnscaneo.Text = _userTranslator.Translate("Scaneo");
+            btnpicking.Text = _userTranslator.Translate("Picking");
+            btntransf.Text = _userTranslator.Translate("Transferencia");
+            btnajuste.Text = _userTranslator.Translate("Ajuste");
+            btnImportar.Text = _userTranslator.Translate("Importar");
+            btnABM.Text = _userTranslator.Translate("Administrar");
+            btnArticulos.Text = _userTranslator.Translate("Articulos");
+            btnPxE.Text = _userTranslator.Translate("PxE");
+            btnLayout.Text = _userTranslator.Translate("Layout");
+            btnEtiq.Text = _userTranslator.Translate("Etiq");
+            btnReportes.Text = _userTranslator.Translate("Reportes");
+            btndeposito.Text = _userTranslator.Translate("Deposito");
+            btnInventario.Text = _userTranslator.Translate("Inventario");
+            btnMovim.Text = _userTranslator.Translate("Movimientos");
+            btnHxI.Text = _userTranslator.Translate("HxI");
+            btnIxC.Text = _userTranslator.Translate("IxC");
+            btnListStock.Text = _userTranslator.Translate("ListStock");
+            btnconfig.Text = _userTranslator.Translate("Config");
+            Text = _userTranslator.Translate("Stock");
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            AuthorizationControl();
         }
     }
 }

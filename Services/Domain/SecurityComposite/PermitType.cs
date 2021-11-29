@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Services.Domain.SecurityComposite
+﻿namespace Services.Domain.SecurityComposite
 {
     public enum PermitType
     {
-        PuedeHacerA,
-        PuedeHacerB,
+        Reception,
+        Scan,
         PuedeHacerC,
         PuedeHacerD,
         PuedeHacerE,

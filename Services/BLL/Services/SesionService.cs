@@ -38,7 +38,8 @@ namespace Services.BLL.Services
         }
         public void Logout()
         {
-            ServicesUser.GetInstance.Logout();
+            LogService.GetInstance().SaveLog(new Log() { ID = Guid.NewGuid(), DateTime = DateTime.Now, Severity = Severity.Informative, Event_ID = Event.UsuarioSalioDelSistema, Message = ServicesUser.GetInstance.UserLogged.Name, User = ServicesUser.GetInstance.UserLogged }, TypeLog.SQL);
+            ServicesUser.GetInstance.Logout();           
         }
     }
 }

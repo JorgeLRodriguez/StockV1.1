@@ -18,13 +18,12 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            //ConfigurarLogPath();
             var ServiciosAplicacion = ApplicationServices.Current;
             ServiciosAplicacion.GetGlobalConfig.LogPath = Settings.Default.LogPath;
+            ServiciosAplicacion.GetGlobalConfig.RestoreBackup = Settings.Default.RestoreBackup;
             var TraductorUsuario = ServiciosAplicacion.GetUserTranslator;
             ConfigureDefaultLanguage(TraductorUsuario);
-            if (!ComprobarIntegridadDelSistema(TraductorUsuario))
-                return;
+            if (!ComprobarIntegridadDelSistema(TraductorUsuario)) return;
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -37,7 +36,6 @@ namespace UI
                 traductorUsuario.SupportedLanguages.Single(
                     i => i.ISOCode.Equals(codigoIdiomaPorDefecto, StringComparison.InvariantCultureIgnoreCase));
             traductorUsuario.PreferredLanguage = idiomaPorDefecto;
-
             Thread.CurrentThread.CurrentCulture = new CultureInfo(codigoIdiomaPorDefecto);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdiomaPorDefecto);
         }

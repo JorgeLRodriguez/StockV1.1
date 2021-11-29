@@ -4,7 +4,7 @@ Stock:Stock
 Administrar:Manage
 Acceder:Log In
 Reportes:Reports
-Config:Setting
+Config:Settings
 Inicio:Home
 Recepcion:Reception
 Scaneo:Scanning
@@ -95,3 +95,7 @@ Domicilio:Adress
 Pasillo:Aisle
 Columna:Column
 Fila:Row
+Idioma:Language
+AdminUsuario:Manage User
+Bitacora:Log
+AdminRol:Manage Roles

@@ -128,8 +128,8 @@ namespace UI.Forms
         }
         private void btnpicking_Click(object sender, EventArgs e)
         {
-            //Form pickfrm = Pickingfrm.GetInstance(_applicationServices);
-            //openChildFormInPanel(pickfrm);
+            Form pickfrm = frmPicking.GetInstance(_applicationServices);
+            openChildFormInPanel(pickfrm);
         }
         private void btntransf_Click(object sender, EventArgs e)
         {

@@ -2,13 +2,7 @@
 using Services.Domain.Language;
 using Services.Factory;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Forms
@@ -38,12 +32,14 @@ namespace UI.Forms
             btnLog.Text = _userTranslator.Translate("Bitacora");
             btnRol.Text = _userTranslator.Translate("AdminRol");
         }
-
         private void btnLanguage_Click(object sender, EventArgs e)
         {
-
+            var codigoIdiomaPorDefecto = "es-AR";
+            var idiomaPorDefecto =
+                _userTranslator.SupportedLanguages.Single(
+                    i => i.ISOCode.Equals(codigoIdiomaPorDefecto, StringComparison.InvariantCultureIgnoreCase));
+            _userTranslator.PreferredLanguage = idiomaPorDefecto;
         }
-
         private void btnDbSettings_Click(object sender, EventArgs e)
         {
             _applicationServices.GetRestoreBackup.Restore();

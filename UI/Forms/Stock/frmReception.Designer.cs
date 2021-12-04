@@ -49,12 +49,12 @@ namespace UI.Forms.Stock
             this.subsidiarytxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.leftpanel = new System.Windows.Forms.Panel();
+            this.deletebtn = new FontAwesome.Sharp.IconButton();
+            this.savebtn = new FontAwesome.Sharp.IconButton();
             this.addbtn = new FontAwesome.Sharp.IconButton();
             this.btnclose = new System.Windows.Forms.PictureBox();
             this.remitotxt = new System.Windows.Forms.TextBox();
             this.panelright = new System.Windows.Forms.Panel();
-            this.savebtn = new FontAwesome.Sharp.IconButton();
-            this.deletebtn = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.invdetdataGrid)).BeginInit();
             this.leftpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
@@ -275,6 +275,48 @@ namespace UI.Forms.Stock
             this.leftpanel.Size = new System.Drawing.Size(456, 553);
             this.leftpanel.TabIndex = 20;
             // 
+            // deletebtn
+            // 
+            this.deletebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deletebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.deletebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.deletebtn.ForeColor = System.Drawing.Color.White;
+            this.deletebtn.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.deletebtn.IconColor = System.Drawing.Color.White;
+            this.deletebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.deletebtn.IconSize = 40;
+            this.deletebtn.Location = new System.Drawing.Point(161, 397);
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.Size = new System.Drawing.Size(135, 45);
+            this.deletebtn.TabIndex = 25;
+            this.deletebtn.Text = "Eliminar";
+            this.deletebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.deletebtn.UseVisualStyleBackColor = true;
+            this.deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
+            // 
+            // savebtn
+            // 
+            this.savebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.savebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.savebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.savebtn.ForeColor = System.Drawing.Color.White;
+            this.savebtn.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.savebtn.IconColor = System.Drawing.Color.White;
+            this.savebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.savebtn.IconSize = 40;
+            this.savebtn.Location = new System.Drawing.Point(161, 331);
+            this.savebtn.Name = "savebtn";
+            this.savebtn.Size = new System.Drawing.Size(135, 45);
+            this.savebtn.TabIndex = 24;
+            this.savebtn.Text = "Guardar";
+            this.savebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.savebtn.UseVisualStyleBackColor = true;
+            this.savebtn.Click += new System.EventHandler(this.Savebtn_Click);
+            // 
             // addbtn
             // 
             this.addbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -294,6 +336,7 @@ namespace UI.Forms.Stock
             this.addbtn.Text = "Agregar";
             this.addbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.Addbtn_Click);
             // 
             // btnclose
             // 
@@ -328,46 +371,6 @@ namespace UI.Forms.Stock
             this.panelright.Name = "panelright";
             this.panelright.Size = new System.Drawing.Size(460, 553);
             this.panelright.TabIndex = 21;
-            // 
-            // savebtn
-            // 
-            this.savebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.savebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
-            this.savebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.savebtn.ForeColor = System.Drawing.Color.White;
-            this.savebtn.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.savebtn.IconColor = System.Drawing.Color.White;
-            this.savebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.savebtn.IconSize = 40;
-            this.savebtn.Location = new System.Drawing.Point(161, 331);
-            this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(135, 45);
-            this.savebtn.TabIndex = 24;
-            this.savebtn.Text = "Guardar";
-            this.savebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.savebtn.UseVisualStyleBackColor = true;
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deletebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deletebtn.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
-            this.deletebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deletebtn.ForeColor = System.Drawing.Color.White;
-            this.deletebtn.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.deletebtn.IconColor = System.Drawing.Color.White;
-            this.deletebtn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.deletebtn.IconSize = 40;
-            this.deletebtn.Location = new System.Drawing.Point(161, 397);
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.Size = new System.Drawing.Size(135, 45);
-            this.deletebtn.TabIndex = 25;
-            this.deletebtn.Text = "Eliminar";
-            this.deletebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.deletebtn.UseVisualStyleBackColor = true;
             // 
             // frmReception
             // 

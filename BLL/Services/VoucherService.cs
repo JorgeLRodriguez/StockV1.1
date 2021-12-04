@@ -17,22 +17,12 @@ namespace BLL.Services
         private readonly IUserTranslator _userTranslator;
         private readonly IValidateModel<Voucher> _validateVoucher;
         private readonly IValidateModel<VoucherDetail> _validateVoucherDetail;
-        //#region Singleton
-        //private readonly static VoucherService _instance = new();
-        //public static VoucherService Current
-        //{
-        //    get
-        //    {
-        //        return _instance;
-        //    }
-        //}
         public VoucherService()
         {
             _userTranslator = UserTranslator.Current;
             _validateVoucher = ValidateModel<Voucher>.Current;
             _validateVoucherDetail = ValidateModel<VoucherDetail>.Current;
         }
-        //#endregion
         public Voucher Create(Voucher voucher)
         {
             Numerator numerator;
@@ -65,8 +55,7 @@ namespace BLL.Services
 
                 DAL.Factory.Factory.Current.SaveChanges();
 
-                if (voucher.VoucherType.Equals(VoucherType.SIR.ToString()))
-                    voucher.Labels = GetLabels(voucher);
+                if (voucher.VoucherType.Equals(VoucherType.SIR)) voucher.Labels = GetLabels(voucher);
 
                 voucher = DAL.Factory.Factory.Current.VoucherRepository.Create(voucher);
                 DAL.Factory.Factory.Current.NumeratorRepository.Update(numerator);
@@ -93,7 +82,7 @@ namespace BLL.Services
             {
                 C = DAL.Factory.Factory.Current.VoucherRepository
                 .Get(
-                filter: x => x.VoucherType.Equals(VoucherType.SPK.ToString()) &&
+                filter: x => x.VoucherType == VoucherType.SPK &&
                 x.Closure.Equals(null) ||
                 x.Closure == "I"
                 )
@@ -119,9 +108,9 @@ namespace BLL.Services
                 C = DAL.Factory.Factory.Current.VoucherRepository
                 .Get(
                 filter: x =>
-                x.VoucherType.Equals(VoucherType.SPK.ToString()) && x.Closure.Equals("C") ||
-                x.VoucherType.Equals(VoucherType.SIR.ToString()) && x.Closure.Equals(null) ||
-                x.VoucherType.Equals(VoucherType.SIR.ToString()) && !x.Closure.Equals("D")
+                x.VoucherType == VoucherType.SPK && x.Closure.Equals("C") ||
+                x.VoucherType == VoucherType.SIR && x.Closure.Equals(null) ||
+                x.VoucherType == VoucherType.SIR && !x.Closure.Equals("D")
                 )
                 .OrderByDescending(
                 x => x.CreatedOn
@@ -153,7 +142,7 @@ namespace BLL.Services
             {
                 C = DAL.Factory.Factory.Current.VoucherRepository
                 .Get(
-                filter: x => x.VoucherType.Equals(VoucherType.SIS.ToString()) &&
+                filter: x => x.VoucherType == (VoucherType.SIS) &&
                 x.Closure == "D"
                 )
                 .OrderByDescending(

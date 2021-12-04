@@ -31,7 +31,7 @@
         </Field>
         <Field Name="Client">
           <DataField>Client</DataField>
-          <rd:TypeName>Domain.Cliente</rd:TypeName>
+          <rd:TypeName>Domain.Client</rd:TypeName>
         </Field>
         <Field Name="Client_ID">
           <DataField>Client_ID</DataField>
@@ -70,6 +70,79 @@
         <rd:DataSetName>Domain</rd:DataSetName>
         <rd:TableName>Article</rd:TableName>
         <rd:ObjectDataSourceType>Domain.Article, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Addressee">
+      <Query>
+        <DataSourceName>Domain</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CellPhoneNumber">
+          <DataField>CellPhoneNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ChangedBy">
+          <DataField>ChangedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ChangedOn">
+          <DataField>ChangedOn</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ZipCode">
+          <DataField>ZipCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreatedBy">
+          <DataField>CreatedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreatedOn">
+          <DataField>CreatedOn</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="DocumentNumber">
+          <DataField>DocumentNumber</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Mail">
+          <DataField>Mail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="Observations">
+          <DataField>Observations</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PhoneNumber">
+          <DataField>PhoneNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocumentType">
+          <DataField>DocumentType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Domain</rd:DataSetName>
+        <rd:TableName>Addressee</rd:TableName>
+        <rd:ObjectDataSourceType>Domain.Addressee, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="VoucherDetail">
@@ -210,7 +283,7 @@
         </Field>
         <Field Name="Client">
           <DataField>Client</DataField>
-          <rd:TypeName>Domain.Cliente</rd:TypeName>
+          <rd:TypeName>Domain.Client</rd:TypeName>
         </Field>
         <Field Name="Client_ID">
           <DataField>Client_ID</DataField>
@@ -334,7 +407,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!codigo.Value</Value>
+                                  <Value>=Parameters!code.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -364,7 +437,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!descripcion.Value</Value>
+                                  <Value>=Parameters!description.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -394,7 +467,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!cantidad.Value</Value>
+                                  <Value>=Parameters!quantity.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -454,21 +527,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="id_Article">
+                        <Textbox Name="Article_ID">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Lookup(Fields!Article_ID.Value, Fields!ID.Value,Fields!FSCode.Value,"Article")</Value>
+                                  <Value>=Lookup(Fields!Article_ID.Value, Fields!ID.Value,Fields!FsCode.Value,"Article")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>id_Article</rd:DefaultName>
+                          <rd:DefaultName>Article_ID</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -514,14 +587,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="cantidad">
+                        <Textbox Name="Quantity">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cantidad.Value</Value>
+                                  <Value>=Fields!Quantity.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -530,7 +603,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>cantidad</rd:DefaultName>
+                          <rd:DefaultName>Quantity</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -618,7 +691,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!cantidadtotal.Value</Value>
+                                  <Value>=Parameters!totalquantity.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -650,7 +723,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=SUM(Fields!cantidad.Value)</Value>
+                                  <Value>=SUM(Fields!Quantity.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -728,7 +801,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>ComprobanteDetalle</DataSetName>
+            <DataSetName>VoucherDetail</DataSetName>
             <Top>0.81703cm</Top>
             <Left>0.63013cm</Left>
             <Height>1.8cm</Height>
@@ -746,7 +819,7 @@
       <Width>6.55592in</Width>
       <Page>
         <PageHeader>
-          <Height>2.93688cm</Height>
+          <Height>4.56558cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -757,7 +830,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!informe.Value</Value>
+                      <Value>=Parameters!report.Value</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                       </Style>
@@ -848,7 +921,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!cliente.Value</Value>
+                      <Value>=Parameters!client.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -878,7 +951,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!remito.Value</Value>
+                      <Value>=Parameters!invoice.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -910,7 +983,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!Letter.Value, "Comprobante")</Value>
+                          <Value>=First(Fields!Letter.Value, "Voucher")</Value>
                           <Style>
                             <FontSize>16pt</FontSize>
                           </Style>
@@ -958,7 +1031,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!copia.Value</Value>
+                      <Value>=Parameters!copy.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -990,7 +1063,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!comprobante.Value</Value>
+                      <Value>=Parameters!voucher.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -1052,7 +1125,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!fecha.Value</Value>
+                      <Value>=Parameters!date.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -1152,7 +1225,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!letra_comprobante.Value, "Comprobante")</Value>
+                      <Value>=First(Fields!Letter.Value, "Voucher")</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -1216,7 +1289,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!suc_comprobante.Value, "Comprobante")</Value>
+                      <Value>=First(Fields!Branch.Value, "Voucher")</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -1305,6 +1378,126 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox28">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!addressee.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox28</rd:DefaultName>
+              <Top>2.80741cm</Top>
+              <Left>0.36555cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>17</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox29">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!LastName.Value + ", " + Fields!Name.Value, "Addressee")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox29</rd:DefaultName>
+              <Top>2.80741cm</Top>
+              <Left>3.04194cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.90771cm</Width>
+              <ZIndex>18</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox30">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!zipcode.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox30</rd:DefaultName>
+              <Top>3.5838cm</Top>
+              <Left>0.36555cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>19</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox31">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!ZipCode.Value, "Addressee")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox31</rd:DefaultName>
+              <Top>3.5838cm</Top>
+              <Left>3.04194cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.14653cm</Width>
+              <ZIndex>20</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -1324,48 +1517,56 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="informe">
+    <ReportParameter Name="report">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="cliente">
+    <ReportParameter Name="client">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="remito">
+    <ReportParameter Name="invoice">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="comprobante">
+    <ReportParameter Name="voucher">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="fecha">
+    <ReportParameter Name="date">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="codigo">
+    <ReportParameter Name="code">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="descripcion">
+    <ReportParameter Name="description">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="cantidad">
+    <ReportParameter Name="quantity">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="copia">
+    <ReportParameter Name="copy">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="cantidadtotal">
+    <ReportParameter Name="totalquantity">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="addressee">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="zipcode">
+      <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -1377,52 +1578,62 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>informe</ParameterName>
+          <ParameterName>report</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>cliente</ParameterName>
+          <ParameterName>client</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>remito</ParameterName>
+          <ParameterName>invoice</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>comprobante</ParameterName>
+          <ParameterName>voucher</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>fecha</ParameterName>
+          <ParameterName>date</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>codigo</ParameterName>
+          <ParameterName>code</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>descripcion</ParameterName>
+          <ParameterName>description</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>cantidad</ParameterName>
+          <ParameterName>quantity</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
-          <ParameterName>copia</ParameterName>
+          <ParameterName>copy</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>2</RowIndex>
-          <ParameterName>cantidadtotal</ParameterName>
+          <ParameterName>totalquantity</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>addressee</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>zipcode</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

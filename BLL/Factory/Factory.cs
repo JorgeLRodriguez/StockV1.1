@@ -24,7 +24,6 @@ namespace BLL.Factory
             ArticleService = new ArticleService();
             ClientService = new ClientService();
             VoucherService = new VoucherService();
-
         }
         #endregion
 

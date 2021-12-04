@@ -13,9 +13,9 @@ namespace Domain
         public Guid Client_ID { get; set; }
         [ForeignKey("Client_ID")]
         public virtual Client Client { get; set; }
-        [Required, SensitiveData, StringLength(3, MinimumLength = 3)]
+        [Required, SensitiveData]
         [Display(Name = "Tipo")]
-        public string VoucherType { get; set; }
+        public VoucherType VoucherType { get; set; }
         [Required, SensitiveData, StringLength(3, MinimumLength = 1)]
         [Display(Name = "Letra")]
         public string Letter { get; set; }
@@ -47,7 +47,7 @@ namespace Domain
         {
             get
             {
-                return VoucherType + " - " + Branch + " - " + Letter + " - " + ("0000000" + Number).Substring(("0000000" + Number).Length - 7);
+                return VoucherType.ToString() + " - " + Branch + " - " + Letter + " - " + ("0000000" + Number).Substring(("0000000" + Number).Length - 7);
             }
         }
         public virtual ICollection<VoucherDetail> VoucherDetails { get; set; }

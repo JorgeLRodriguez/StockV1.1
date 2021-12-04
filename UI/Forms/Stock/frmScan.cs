@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using UI.Forms.Print;
 
 namespace UI.Forms.Stock
 {
@@ -44,7 +45,7 @@ namespace UI.Forms.Stock
             receiptdg.Rows.Clear();
             var voucher = (Voucher)receiptcb.SelectedItem;
             voucher.VoucherDetails.ToList().ForEach(x => LoadMainDg(x));
-            if (voucher.VoucherType.Equals(VoucherType.SPK.ToString()))
+            if (voucher.VoucherType.Equals(VoucherType.SPK))
             {
                 expedbtn.Visible = true;
             }
@@ -83,11 +84,11 @@ namespace UI.Forms.Stock
             try
             {
                 var comp = (Voucher)receiptcb.SelectedItem;
-                Voucher C = new Voucher()
+                Voucher C = new()
                 {
                     ID = Guid.NewGuid(),
                     Client_ID = comp.Client_ID,
-                    VoucherType = VoucherType.SIS.ToString(),
+                    VoucherType = VoucherType.SIS,
                     Letter = comp.Letter,
                     Branch = comp.Branch,
                     InvoiceClientNumber = comp.InvoiceClientNumber,
@@ -115,7 +116,7 @@ namespace UI.Forms.Stock
                 comp.Closure = "D";
                 businessLayer.VoucherService.Update(comp);
                 this.MostrarDialogoInformacion(_userTranslator, "ComprobanteGenerado");
-                //new printcompfrm(C, _serviciosAplicacion).ShowDialog();
+                new frmPrintVoucher(C, _applicationServices).ShowDialog();
                 Init();
             }
             catch (Exception ex)

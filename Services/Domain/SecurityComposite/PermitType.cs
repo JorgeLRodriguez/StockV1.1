@@ -4,7 +4,7 @@
     {
         Reception,
         Scan,
-        PuedeHacerC,
+        Picking,
         PuedeHacerD,
         PuedeHacerE,
         PuedeHacerF,

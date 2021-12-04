@@ -5,7 +5,6 @@ using Services.Domain.Language;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 
 namespace Services.BLL.Services
 {
@@ -58,7 +57,7 @@ namespace Services.BLL.Services
         {
             string translatedWord = key;
 
-            string culturaCodigo = Thread.CurrentThread.CurrentUICulture.Name;
+            string culturaCodigo = this.PreferredLanguage.ISOCode;
 
             using (StreamReader streamReader = new StreamReader(filePath + culturaCodigo))
             {

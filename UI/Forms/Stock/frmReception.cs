@@ -6,6 +6,7 @@ using Services.Factory;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using UI.Forms.Print;
 
 namespace UI.Forms.Stock
 {
@@ -60,7 +61,7 @@ namespace UI.Forms.Stock
                 {
                     ID = Guid.NewGuid(),
                     Client_ID = ((Client)clientcbx.SelectedValue).ID,
-                    VoucherType = VoucherType.SIR.ToString(),
+                    VoucherType = VoucherType.SIR,
                     Letter = lettertxt.Text,
                     Branch = int.Parse(subsidiarytxt.Text),
                     InvoiceClientNumber = (remitotxt.Text).ToString().Trim(),
@@ -83,8 +84,8 @@ namespace UI.Forms.Stock
                 voucher.VoucherDetails = voucherDetails;
                 voucher = businessLayer.VoucherService.Create(voucher);
                 this.MostrarDialogoInformacion(_userTranslator, "ComprobanteGenerado");
-                //new printcompfrm(Voucher, _applicationServices).ShowDialog();
-                //new printetiq(Voucher, _applicationServices).ShowDialog();
+                new frmPrintVoucher(voucher, _applicationServices).ShowDialog();
+                new frmPrintVoucherLabel(voucher, _applicationServices).ShowDialog();
                 Reset();
             }
             catch (Exception ex)

@@ -1,44 +1,39 @@
 ﻿using Services.BLL.Contracts;
-using Services.DAL.Contracts;
-using Services.DAL.Repositories.SqlServer;
 using Services.Domain.Logger;
-using Services.Domain.SecurityComposite;
 using Services.Services.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.BLL.Services
 {
     class LogService : ILogService
     {
         private readonly IUserTranslator userTranslator;
-        #region Singleton
-        private static LogService logger;
+        //#region Singleton
+        //private static LogService logger;
 
-        private static readonly object locker = new();
-        public static LogService GetInstance()
-        {
-            if (logger == null)
-            {
-                lock (locker)
-                {
-                    if (logger == null)
-                    {
-                        logger = new LogService();
-                    }
-                }
-            }
-            return logger;
-        }
-        private LogService()
-        {
-            userTranslator = UserTranslator.Current;
-        }
-        #endregion
+        //private static readonly object locker = new();
+        //public static LogService GetInstance()
+        //{
+        //    if (logger == null)
+        //    {
+        //        lock (locker)
+        //        {
+        //            if (logger == null)
+        //            {
+        //                logger = new LogService();
+        //            }
+        //        }
+        //    }
+        //    return logger;
+        //}
+        //private LogService()
+        //{
+        //    userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
+        //}
+        //#endregion
         public Event[] GetAllAvailableEvents()
         {
             var EventProperties = typeof(Event).GetFields();

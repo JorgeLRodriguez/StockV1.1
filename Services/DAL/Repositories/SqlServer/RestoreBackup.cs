@@ -8,7 +8,7 @@ namespace Services.DAL.Repositories.SqlServer
     {
         #region Singleton
         private readonly static RestoreBackup _instance = new RestoreBackup();
-        public static RestoreBackup Current
+        public static RestoreBackup Instance
         {
             get
             {

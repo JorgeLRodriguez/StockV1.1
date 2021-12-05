@@ -14,20 +14,20 @@ namespace Services.BLL.Services
         private string filePath = String.Empty;
         private readonly ILanguageRepository _languageRepository;
         private readonly IList<ILanguageSubscriber> _subscribers = new List<ILanguageSubscriber>();
-        #region Singleton
-        private readonly static UserTranslator _instance = new();
-        public static UserTranslator Current
+        //#region Singleton
+        //private readonly static UserTranslator _instance = new();
+        //public static UserTranslator Current
+        //{
+        //    get
+        //    {
+        //        return _instance;
+        //    }
+        //}
+        //private UserTranslator() : this (new LanguageRepository()){}
+        //#endregion
+        public UserTranslator()
         {
-            get
-            {
-                return _instance;
-            }
-        }
-        private UserTranslator() : this (new LanguageRepository()){}
-        #endregion
-        private UserTranslator(ILanguageRepository language)
-        {
-            _languageRepository = language;
+            _languageRepository = new LanguageRepository();
             filePath = @"Domain\Language\language.";
         }
         public Language PreferredLanguage
@@ -43,11 +43,10 @@ namespace Services.BLL.Services
         {
             get { return _languageRepository.GetSupportedLanguages(); }
         }
-        public void Subscribe(ILanguageSubscriber nuevoSubscriptor)
+        public void Subscribe(ILanguageSubscriber newLanguageSubscriber)
         {
-            _subscribers.Add(nuevoSubscriptor);
-            //Notifico al nuevo subscriptor la configuración actual
-            nuevoSubscriptor.LanguageChanged(this.PreferredLanguage);
+            _subscribers.Add(newLanguageSubscriber);
+            newLanguageSubscriber.LanguageChanged(this.PreferredLanguage);
         }
         public void Unsubscribe(ILanguageSubscriber subscriber)
         {
@@ -57,9 +56,9 @@ namespace Services.BLL.Services
         {
             string translatedWord = key;
 
-            string culturaCodigo = this.PreferredLanguage.ISOCode;
+            string cultureCode = PreferredLanguage.ISOCode;
 
-            using (StreamReader streamReader = new StreamReader(filePath + culturaCodigo))
+            using (StreamReader streamReader = new(filePath + cultureCode))
             {
                 while (!streamReader.EndOfStream)
                 {
@@ -71,32 +70,22 @@ namespace Services.BLL.Services
                         translatedWord = keyValuePair[1];
                         break;
                     }
+                    if (key.ToLower().Contains(keyValuePair[0].ToLower()) && key.Split(" ").Length > 1)
+                    {
+                        translatedWord = key.Replace(keyValuePair[0], keyValuePair[1]);
+                        break;
+                    }
                 }
             }
             return translatedWord;
         }
         private void NotifyLanguageChanged(Language newLanguage)
         {
-            //Notifico a la colección de subscriptores
             lock (_subscribers)
             {
-                foreach (var subscriptor in _subscribers)
-                    subscriptor.LanguageChanged(newLanguage);
+                foreach (var subscriber in _subscribers)
+                    subscriber.LanguageChanged(newLanguage);
             }
         }
-        //private string TraducirMensaje(string mensaje, ResourceManager resourceManager)
-        //{
-        //    var propertyInfos = typeof(ConstantesTexto).GetFields();
-
-        //    foreach (var item in propertyInfos)
-        //    {
-        //        if (mensaje.ToLower().Contains(item.Name.ToLower()))
-        //        {
-        //            mensaje = mensaje.Replace(item.Name, resourceManager.GetString(
-        //                item.Name, CultureInfo.GetCultureInfo(this.PreferredLanguage.ISOCode)));
-        //        }
-        //    }
-        //    return mensaje;
-        //}
     }
 }

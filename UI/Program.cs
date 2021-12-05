@@ -1,4 +1,5 @@
 using BLL;
+using BLL.Factory;
 using Services.BLL.Contracts;
 using Services.Factory;
 using System;
@@ -18,7 +19,8 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            var ServiciosAplicacion = ApplicationServices.Current;
+            var ServiciosAplicacion = ApplicationServices.GetInstance();
+            Factory BussinessLayer = Factory.Current;
             ServiciosAplicacion.GetGlobalConfig.LogPath = Settings.Default.LogPath;
             ServiciosAplicacion.GetGlobalConfig.RestoreBackup = Settings.Default.RestoreBackup;
             var TraductorUsuario = ServiciosAplicacion.GetUserTranslator;

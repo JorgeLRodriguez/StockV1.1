@@ -6,7 +6,7 @@ namespace Services.Services.Security
     {
         static ServicesUser _sesion;
         User _user = default;
-        public static ServicesUser GetInstance
+        public static ServicesUser Instance
         {
             get
             {

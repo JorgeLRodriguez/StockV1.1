@@ -1,27 +1,21 @@
 ﻿using BLL.Contracts;
 using Domain;
 using Services.BLL.Contracts;
-using Services.BLL.Services;
 using Services.Domain.Logger;
 using Services.Factory;
 using Services.Services.ModelValidator;
-using Services.Services.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL.Services
 {
-    class VoucherService : IVoucherService
+    class VoucherService : SaveApplicationLog, IVoucherService
     {
         private readonly IUserTranslator _userTranslator;
-        private readonly IValidateModel<Voucher> _validateVoucher;
-        private readonly IValidateModel<VoucherDetail> _validateVoucherDetail;
         public VoucherService()
         {
-            _userTranslator = UserTranslator.Current;
-            _validateVoucher = ValidateModel<Voucher>.Current;
-            _validateVoucherDetail = ValidateModel<VoucherDetail>.Current;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
         }
         public Voucher Create(Voucher voucher)
         {
@@ -50,9 +44,6 @@ namespace BLL.Services
                 numerator.Number += 1;
                 voucher.Number = numerator.Number;
 
-                _validateVoucher.Validate(voucher);
-                _validateVoucherDetail.Validate(voucher.VoucherDetails.ToList());
-
                 DAL.Factory.Factory.Current.SaveChanges();
 
                 if (voucher.VoucherType.Equals(VoucherType.SIR)) voucher.Labels = GetLabels(voucher);
@@ -61,19 +52,13 @@ namespace BLL.Services
                 DAL.Factory.Factory.Current.NumeratorRepository.Update(numerator);
                 DAL.Factory.Factory.Current.SaveChanges();
 
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { ID = Guid.NewGuid(), Event_ID = Event.ComprobanteGenerado, Severity = Severity.Informative, DateTime = DateTime.Now, Message = voucher.Description, User = ServicesUser.GetInstance.UserLogged}
-                    , TypeLog.SQL);
-
-                return voucher;
+                SaveLog(Event.ComprobanteGenerado, Severity.Informative, voucher.Description);
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message + " " + ex.InnerException.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
+            return voucher;
         }
         public IEnumerable<Voucher> GetPickingVoucher()
         {
@@ -92,10 +77,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message + " " + ex.InnerException.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             if (!C.Any()) throw new Exception(_userTranslator.Translate("ErrorSinRegistros"));
             return C;
@@ -118,10 +100,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message + " " + ex.InnerException.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             if (!C.Any()) throw new Exception(_userTranslator.Translate("ErrorSinRegistros"));
             return C;
@@ -151,10 +130,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message + " " + ex.InnerException.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             if (!C.Any()) throw new Exception(_userTranslator.Translate("ErrorSinRegistros"));
             return C;
@@ -165,17 +141,11 @@ namespace BLL.Services
             {
                 DAL.Factory.Factory.Current.VoucherRepository.Update(voucher);
                 DAL.Factory.Factory.Current.SaveChanges();
-
-                ApplicationServices.Current.GetLogService.SaveLog
-                   (new Log() { ID = Guid.NewGuid(), Event_ID = Event.ComprobanteActualizado, Severity = Severity.Informative, DateTime = DateTime.Now, Message = voucher.Description, User = ServicesUser.GetInstance.UserLogged }
-                   , TypeLog.SQL);
+                SaveLog(Event.ComprobanteActualizado, Severity.Informative, voucher.Description);
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message + " " + ex.InnerException.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
         }
         private static List<Label> GetLabels(Voucher voucher)

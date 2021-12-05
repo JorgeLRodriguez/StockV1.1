@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
     public interface ICSVService
     {
+        void Create(List<CSV> CSV);
     }
 }

@@ -34,7 +34,6 @@ namespace Domain
         [SensitiveData]
         [Display(Name = "Cierre")]
         public string Closure { get; set; }
-        [RegularExpression("^[0-9]*$"), Range(0, int.MaxValue)]
         [Display(Name = "Destinatario")]
         public Guid? Addressee_ID { get; set; }
         [ForeignKey("Addressee_ID")]

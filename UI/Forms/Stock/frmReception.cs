@@ -19,6 +19,7 @@ namespace UI.Forms.Stock
         private static frmReception _instance = null;
         private frmReception(ApplicationServices applicationServices)
         {
+            Cursor.Current = Cursors.WaitCursor;
             InitializeComponent();
             _applicationServices = applicationServices;
             _userTranslator = applicationServices.GetUserTranslator;

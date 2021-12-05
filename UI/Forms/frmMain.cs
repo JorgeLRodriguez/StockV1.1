@@ -3,13 +3,7 @@ using Services.BLL.Contracts;
 using Services.Domain.Language;
 using Services.Factory;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Forms.Stock;
 
@@ -143,8 +137,8 @@ namespace UI.Forms
         }
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            //Form impfrm = Importarfrm.GetInstance(_applicationServices);
-            //openChildFormInPanel(impfrm);
+            Form impfrm = frmImport.GetInstance(_applicationServices);
+            openChildFormInPanel(impfrm);
         }
         private void btnArticulos_Click(object sender, EventArgs e)
         {
@@ -206,9 +200,9 @@ namespace UI.Forms
         {
             btnrecepcion.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Reception);
             btnscaneo.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Scan);
+            btnpicking.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Picking);
+            btnImportar.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Import);
         }
-
-
         public void LanguageChanged(Language newLanguage)
         {
             labtitle.Text = _userTranslator.Translate("Inicio");

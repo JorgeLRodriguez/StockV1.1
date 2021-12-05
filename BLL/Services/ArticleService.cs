@@ -3,34 +3,22 @@ using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Services.Factory;
-using Services.Domain.Logger;
-using Services.Services.Security;
 using Services.BLL.Services;
 using Services.BLL.Contracts;
+using Services.Factory;
 
 namespace BLL.Services
 {
-    public class ArticleService : IArticleService
+    public class ArticleService : SaveApplicationLog, IArticleService
     {
         private readonly IUserTranslator _userTranslator;
-        //#region Singleton
-        //private readonly static ArticleService _instance = new();
-        //public static ArticleService Current
-        //{
-        //    get
-        //    {
-        //        return _instance;
-        //    }
-        //}
         public ArticleService()
         {
-            _userTranslator = UserTranslator.Current;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
         }
-        //#endregion
         public IEnumerable<Article> GetByClient(Client client)
         {
-            IEnumerable<Article> articles;
+            IEnumerable<Article> articles = null;
             try
             {
                 articles = DAL.Factory.Factory.Current.ArticleRepository.Get(filter: x => x.Client_ID == client.ID);
@@ -38,10 +26,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now}
-                , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             if (!articles.Any()) throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
             return articles;
@@ -56,10 +41,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                    , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             return A ?? throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
         }
@@ -72,10 +54,7 @@ namespace BLL.Services
             }
             catch (Exception ex)
             {
-                ApplicationServices.Current.GetLogService.SaveLog
-                    (new Log() { Event_ID = 7, Message = ex.Message, Severity = Severity.Critical, User = ServicesUser.GetInstance.UserLogged, DateTime = DateTime.Now }
-                    , TypeLog.File);
-                throw;
+                SaveException(ex);
             }
             return A ?? throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
         }

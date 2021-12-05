@@ -7,20 +7,10 @@ namespace BLL.Services
 {
     class AddresseeService : IAddresseeService
     {
-        #region Singleton
-        private readonly static AddresseeService _instance = new();
-        public static AddresseeService Current
-        {
-            get
-            {
-                return _instance;
-            }
-        }
-        private AddresseeService()
+        public AddresseeService()
         {
 
         }
-        #endregion
         public Addressee Create(Addressee addressee)
         {
             throw new NotImplementedException();

@@ -15,7 +15,7 @@ namespace DAL.Repositories
         }
         public static DatabaseContext Instance()
         {
-            return _instance = _instance ?? new DatabaseContext();
+            return _instance ??= new DatabaseContext();
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,5 +30,6 @@ namespace DAL.Repositories
         public IDbSet<Addressee> Addressee { get; set; }
         public IDbSet<Deposit> Deposit { get; set; }
         public IDbSet<VerticalCheckDigit> VerticalCheckDigit { get; set; }
+        public IDbSet<CSV> CSV { get; set; }
     }
 }

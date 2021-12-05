@@ -18,16 +18,15 @@ namespace UI.Forms.Stock
     {
         #region FormSettings
         private readonly IUserTranslator _userTranslator;
-        private readonly IFactory businessLayer;
+        private IFactory _businessLayer;
         private static frmPicking _instance = null;
-        private VoucherReportExtension _voucherReportExtension;
         private Voucher V = new();
         private IEnumerable<Voucher> list;
         public frmPicking(ApplicationServices applicationServices)
         {
+            _businessLayer = Factory.Current;
             InitializeComponent();
             _userTranslator = applicationServices.GetUserTranslator;
-            businessLayer = Factory.Current;
             this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
         }
         public static frmPicking GetInstance(ApplicationServices applicationServices)
@@ -57,7 +56,7 @@ namespace UI.Forms.Stock
             V = list.Where(x => x.Description.Equals(((DataGridView)sender).Rows[e.RowIndex].Cells[1].Value.ToString()))
                     .FirstOrDefault();
             EnabledButtons(V);
-            //LoadReportViewerData(V);
+            VoucherReportExtension.Current.LoadReport(V,reportViewer1);
         }
         private void confirmbtn_Click(object sender, EventArgs e)
         {
@@ -76,11 +75,11 @@ namespace UI.Forms.Stock
         }
         #endregion
         #region PrivateFunctions
-        private void CargarComprobantes()
+        private void LoadVouchers()
         {
             try
             {
-                list = businessLayer.VoucherService.GetPickingVoucher();
+                list = _businessLayer.VoucherService.GetPickingVoucher();
                 foreach (var item in list)
                 {
                     maindg.Rows.Add(
@@ -110,70 +109,19 @@ namespace UI.Forms.Stock
                     return _userTranslator.Translate("NoImpreso");
             }
         }
-        private void LoadReportViewerParameters()
-        {
-            ReportParameter[] reportParameters = new ReportParameter[12];
-            reportParameters[0] = new ReportParameter("informe", _userTranslator.Translate("InformePicking"), true);
-            reportParameters[1] = new ReportParameter("cliente", _userTranslator.Translate("Cliente"), true);
-            reportParameters[2] = new ReportParameter("remito", _userTranslator.Translate("Remito"), true);
-            reportParameters[3] = new ReportParameter("copia", _userTranslator.Translate("Original"), true);
-            reportParameters[4] = new ReportParameter("comprobante", _userTranslator.Translate("Comprobante"), true);
-            reportParameters[5] = new ReportParameter("fecha", _userTranslator.Translate("Fecha"), true);
-            reportParameters[6] = new ReportParameter("codigo", _userTranslator.Translate("Codigo"), true);
-            reportParameters[7] = new ReportParameter("descripcion", _userTranslator.Translate("Descripcion"), true);
-            reportParameters[8] = new ReportParameter("cantidad", _userTranslator.Translate("Cantidad"), true);
-            reportParameters[9] = new ReportParameter("cantidadtotal", _userTranslator.Translate("CantidadTotal"), true);
-            reportParameters[10] = new ReportParameter("destinatario", _userTranslator.Translate("Destinatario"), true);
-            reportParameters[11] = new ReportParameter("cp", _userTranslator.Translate("CodigoPostal"), true);
-            reportViewer1.LocalReport.SetParameters(reportParameters);
-        }
-        private void LoadReportViewerData(Voucher _voucher)
-        {
-            Cursor = Cursors.WaitCursor;
-            BindingSource Article = new BindingSource();
-            BindingSource Voucher = new BindingSource();
-            BindingSource VoucherDetail = new BindingSource();
-            BindingSource Client = new BindingSource();
-            BindingSource RejectionType = new BindingSource();
-            BindingSource Addressee = new BindingSource();
-            Article.DataSource = _voucher.VoucherDetails.Select(x => x.Article);
-            Voucher.DataSource = _voucher;
-            VoucherDetail.DataSource = _voucher.VoucherDetails;
-            Client.DataSource = _voucher.Client;
-            RejectionType.DataSource = _voucher.VoucherDetails.Select(x => x.RejectionType ?? new RejectionType());
-            Addressee.DataSource = _voucher.Addressee;
-            ReportDataSource ArticleDS = new ReportDataSource(nameof(Article), Article);
-            ReportDataSource VoucherDS = new ReportDataSource(nameof(Voucher), Voucher);
-            ReportDataSource VoucherDetailDS = new ReportDataSource(nameof(VoucherDetail), VoucherDetail);
-            ReportDataSource ClientDS = new ReportDataSource(nameof(Client), Client);
-            ReportDataSource RejectionTypeDS = new ReportDataSource(nameof(RejectionType), RejectionType);
-            ReportDataSource AddresseeDS = new ReportDataSource(nameof(Addressee), Addressee);
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(ArticleDS);
-            this.reportViewer1.LocalReport.DataSources.Add(VoucherDS);
-            this.reportViewer1.LocalReport.DataSources.Add(VoucherDetailDS);
-            this.reportViewer1.LocalReport.DataSources.Add(ClientDS);
-            this.reportViewer1.LocalReport.DataSources.Add(RejectionTypeDS);
-            this.reportViewer1.LocalReport.DataSources.Add(AddresseeDS);
-            this.reportViewer1.LocalReport.Refresh();
-            this.reportViewer1.RefreshReport();
-            Cursor = Cursors.Default;
-        }
         private void Init()
         {
             maindg.Rows.Clear();
-            CargarComprobantes();
+            LoadVouchers();
             if (list == null) return;
-            LoadReportViewerParameters();
             V = list.FirstOrDefault();
             EnabledButtons(V);
-            LoadReportViewerData(V);
-            reportViewer1.RefreshReport();
+            VoucherReportExtension.Current.LoadReport(V, reportViewer1);
         }
         private void UpdateComp(string closure, Voucher V)
         {
             V.Closure = closure;
-            businessLayer.VoucherService.Update(V);
+            _businessLayer.VoucherService.Update(V);
             Init();
         }
         public bool SavePDF(ReportViewer viewer)
@@ -220,5 +168,10 @@ namespace UI.Forms.Stock
             Init();
         }
         #endregion
+        private void frmPicking_Load(object sender, EventArgs e)
+        {
+            _businessLayer = Factory.Current;
+            Init();
+        }
     }
 }

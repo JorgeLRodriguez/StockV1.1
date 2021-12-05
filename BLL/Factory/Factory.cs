@@ -1,10 +1,6 @@
 ﻿using BLL.Contracts;
 using BLL.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Factory
 {
@@ -24,6 +20,9 @@ namespace BLL.Factory
             ArticleService = new ArticleService();
             ClientService = new ClientService();
             VoucherService = new VoucherService();
+            CSVService = new CSVService();
+            DepositService = new DepositService();
+            AddresseeService = new AddresseeService();
         }
         #endregion
 

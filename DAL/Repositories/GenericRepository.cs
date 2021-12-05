@@ -1,5 +1,6 @@
 ﻿using DAL.Contracts;
 using Domain;
+using Services.Services.ModelValidator;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -41,6 +42,7 @@ namespace DAL.Repositories
         }
         public virtual void Update(T entity)
         {
+            ValidateModel<T>.Current.Validate(entity);
             entity.ChangedBy = Environment.UserName;
             entity.ChangedOn = DateTime.Now;
             _db.Entry(entity).State = EntityState.Modified;
@@ -52,6 +54,7 @@ namespace DAL.Repositories
         }
         public virtual T Create(T entity)
         {
+            ValidateModel<T>.Current.Validate(entity);
             entity.CreatedBy = Environment.UserName;
             entity.CreatedOn = DateTime.Now;
             _db.Set<T>().Add(entity);

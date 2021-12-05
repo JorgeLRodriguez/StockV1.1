@@ -11,16 +11,28 @@ namespace UI.Print
     internal sealed class VoucherReportExtension
     {
         private readonly IUserTranslator _userTranslator;
-        private readonly Voucher _voucher;
-        private ReportViewer _reportViewer;
-        public VoucherReportExtension(Voucher voucher, ReportViewer reportViewer)
+        //private readonly Voucher _voucher;
+        //private readonly ReportViewer _reportViewer;
+        #region Singleton
+        private readonly static VoucherReportExtension _instance = new();
+        public static VoucherReportExtension Current
         {
-            _reportViewer = reportViewer;
-            _voucher = voucher;
-            _userTranslator = ApplicationServices.Current.GetUserTranslator;
-            Init();
+            get { return _instance; }
         }
-        private void Init()
+        private VoucherReportExtension()
+        {
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
+        }
+        #endregion
+
+        //public VoucherReportExtension(Voucher voucher, ReportViewer reportViewer)
+        //{
+        //    _reportViewer = reportViewer;
+        //    _voucher = voucher;
+        //    _userTranslator = ApplicationServices.Current.GetUserTranslator;
+        //    Init();
+        //}
+        public void LoadReport(Voucher _voucher, ReportViewer _reportViewer)
         {
             ReportParameter[] reportParameters = new ReportParameter[12];
 
@@ -70,7 +82,7 @@ namespace UI.Print
             _reportViewer.LocalReport.Refresh();
             _reportViewer.RefreshReport();
         }
-        public void CopyChanged(string newCopy)
+        public void CopyChanged(string newCopy, ReportViewer _reportViewer)
         {
             ReportParameter reportParameter = new ReportParameter("copy", newCopy, true);
             _reportViewer.LocalReport.SetParameters(reportParameter);
@@ -83,6 +95,7 @@ namespace UI.Print
             {
                 VoucherType.SIR => _userTranslator.Translate("InformeRecepcion"),
                 VoucherType.SIS => _userTranslator.Translate("InformeScaneo"),
+                VoucherType.SPK => _userTranslator.Translate("InformePicking"),
                 _ => String.Empty,
             };
         }

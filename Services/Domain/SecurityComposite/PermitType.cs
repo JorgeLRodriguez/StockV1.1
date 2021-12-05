@@ -5,7 +5,7 @@
         Reception,
         Scan,
         Picking,
-        PuedeHacerD,
+        Import,
         PuedeHacerE,
         PuedeHacerF,
         PuedeHacerG,

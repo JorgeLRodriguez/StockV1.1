@@ -5,7 +5,7 @@ namespace Services.Services
     public class GlobalConfig
     {
         #region "Singleton"
-        private static readonly Lazy<GlobalConfig> DefaultInstance = new Lazy<GlobalConfig>(() => new GlobalConfig());
+        private static readonly Lazy<GlobalConfig> DefaultInstance = new(() => new GlobalConfig());
         public static GlobalConfig Instance
         {
             get { return DefaultInstance.Value; }

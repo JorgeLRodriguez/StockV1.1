@@ -3,35 +3,38 @@ using Services.BLL.Services;
 using Services.DAL.Contracts;
 using Services.DAL.Repositories.SqlServer;
 using Services.Services;
-using Services.Services.ModelValidator;
 using Services.Services.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Factory
 {
     public class ApplicationServices
     {
         #region Singleton
-        private readonly static ApplicationServices _instance = new();
-        public static ApplicationServices Current
+        private static ApplicationServices logger;
+
+        private static readonly object locker = new();
+        public static ApplicationServices GetInstance()
         {
-            get
+            if (logger == null)
             {
-                return _instance;
+                lock (locker)
+                {
+                    if (logger == null)
+                    {
+                        logger = new ApplicationServices();
+                    }
+                }
             }
+            return logger;
         }
         private ApplicationServices()
         {
-            GetUserTranslator = UserTranslator.Current;
             GetGlobalConfig = GlobalConfig.Instance;
+            GetServicesUser = ServicesUser.Instance;
+            GetRestoreBackup = RestoreBackup.Instance;
+            GetUserTranslator = new UserTranslator();
             GetSesionService = new SesionService();
-            GetLogService = LogService.GetInstance();
-            GetServicesUser = ServicesUser.GetInstance;
-            GetRestoreBackup = RestoreBackup.Current;
+            GetLogService = new LogService();
         }
         #endregion
         public IUserTranslator GetUserTranslator { get; }

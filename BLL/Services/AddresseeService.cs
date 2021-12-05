@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BLL.Services
 {
-    class AddresseeService : IAddresseeService
+    internal sealed class AddresseeService : IAddresseeService
     {
         public AddresseeService()
         {

@@ -33,6 +33,7 @@ namespace UI.Forms.Stock
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPicking));
             this.printbtn = new System.Windows.Forms.Button();
             this.confirmbtn = new System.Windows.Forms.Button();
             this.maindg = new System.Windows.Forms.DataGridView();
@@ -41,7 +42,9 @@ namespace UI.Forms.Stock
             this.quantitytxtdg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.scantxtdg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnclose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.maindg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
             this.SuspendLayout();
             // 
             // printbtn
@@ -172,12 +175,25 @@ namespace UI.Forms.Stock
             this.reportViewer1.Size = new System.Drawing.Size(1061, 310);
             this.reportViewer1.TabIndex = 16;
             // 
+            // btnclose
+            // 
+            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
+            this.btnclose.Location = new System.Drawing.Point(12, 12);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(15, 15);
+            this.btnclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnclose.TabIndex = 23;
+            this.btnclose.TabStop = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
             // frmPicking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(26)))), ((int)(((byte)(14)))));
             this.ClientSize = new System.Drawing.Size(1090, 666);
+            this.Controls.Add(this.btnclose);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.maindg);
             this.Controls.Add(this.confirmbtn);
@@ -188,6 +204,7 @@ namespace UI.Forms.Stock
             this.Text = "Picking";
             this.Load += new System.EventHandler(this.frmPicking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.maindg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,5 +219,6 @@ namespace UI.Forms.Stock
         private System.Windows.Forms.DataGridViewTextBoxColumn quantitytxtdg;
         private System.Windows.Forms.DataGridViewTextBoxColumn scantxtdg;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.PictureBox btnclose;
     }
 }

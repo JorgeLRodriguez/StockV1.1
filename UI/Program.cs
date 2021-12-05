@@ -29,17 +29,17 @@ namespace UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogIn(applicationServices));
+            Application.Run(new frmLogIn());
         }
-        public static void ConfigureDefaultLanguage(IUserTranslator traductorUsuario)
+        public static void ConfigureDefaultLanguage(IUserTranslator userTranslator)
         {
-            var codigoIdiomaPorDefecto = Settings.Default.Language;
-            var idiomaPorDefecto =
-                traductorUsuario.SupportedLanguages.Single(
-                    i => i.ISOCode.Equals(codigoIdiomaPorDefecto, StringComparison.InvariantCultureIgnoreCase));
-            traductorUsuario.PreferredLanguage = idiomaPorDefecto;
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(codigoIdiomaPorDefecto);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdiomaPorDefecto);
+            var DefaultISOCode = Settings.Default.Language;
+            var DefaultLanguage =
+                userTranslator.SupportedLanguages.Single(
+                    i => i.ISOCode.Equals(DefaultISOCode, StringComparison.InvariantCultureIgnoreCase));
+            userTranslator.PreferredLanguage = DefaultLanguage;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(DefaultISOCode);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(DefaultISOCode);
         }
         public static bool CheckSystemIntegrity(IUserTranslator userTranslator)
         {

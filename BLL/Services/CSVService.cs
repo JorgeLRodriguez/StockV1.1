@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BLL.Services
 {
-    public class CSVService : SaveApplicationLog, ICSVService
+    internal sealed class CSVService : SaveApplicationLog, ICSVService
     {
         public void Create(List<CSV> CSV)
         {

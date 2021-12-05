@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace BLL.Services
 {
-    class VoucherService : SaveApplicationLog, IVoucherService
+    internal sealed class VoucherService : SaveApplicationLog, IVoucherService
     {
         private readonly IUserTranslator _userTranslator;
         public VoucherService()

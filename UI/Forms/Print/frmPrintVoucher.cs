@@ -12,14 +12,12 @@ namespace UI.Forms.Print
     {
         private Voucher _voucher;
         private readonly IUserTranslator _userTranslator;
-        public frmPrintVoucher(Voucher voucher, ApplicationServices applicationServices)
+        public frmPrintVoucher(Voucher voucher)
         {
-            Cursor = Cursors.WaitCursor;
             InitializeComponent();
-            _userTranslator = applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
             _voucher = voucher;
-            Cursor = Cursors.Default;
         }
         private void printcompfrm_Load(object sender, EventArgs e)
         {

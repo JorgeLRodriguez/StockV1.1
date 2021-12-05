@@ -16,26 +16,22 @@ namespace UI.Forms.Stock
     {
         #region FormSettings
         private readonly IUserTranslator _userTranslator;
-        private readonly IFactory businessLayer;
-        private readonly ApplicationServices _applicationServices;
+        private IFactory _businessLayer;
         private List<RejectionType> _rejectionType;
         private static frmScan _instance = null;
-        private frmScan(ApplicationServices applicationServices)
+        private frmScan()
         {
+            _businessLayer = Factory.GetInstance();
             InitializeComponent();
-            _applicationServices = applicationServices;
-            _userTranslator = applicationServices.GetUserTranslator;
-            businessLayer = Factory.GetInstance();
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
-        public static frmScan GetInstance(ApplicationServices applicationServices)
+        public static frmScan GetInstance()
         {
             if (_instance == null || _instance.IsDisposed)
-                _instance = new frmScan(applicationServices);
+                _instance = new frmScan();
             return _instance;
         }
-        public frmScan() { }
-
         #endregion
         #region FormActions
         private void receiptcb_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,11 +108,11 @@ namespace UI.Forms.Stock
                     }
                 }
                 C.VoucherDetails = VD;
-                C = businessLayer.VoucherService.Create(C);
+                C = _businessLayer.VoucherService.Create(C);
                 comp.Closure = "D";
-                businessLayer.VoucherService.Update(comp);
+                _businessLayer.VoucherService.Update(comp);
                 this.ShowInformationDialog(_userTranslator, "ComprobanteGenerado");
-                new frmPrintVoucher(C, _applicationServices).ShowDialog();
+                new frmPrintVoucher(C).ShowDialog();
                 Init();
             }
             catch (Exception ex)
@@ -136,7 +132,7 @@ namespace UI.Forms.Stock
         #region PrivateFunctions
         private void LoadRejectionTypes()
         {
-            _rejectionType = businessLayer.VoucherService.GetRejectionTypes().ToList();
+            _rejectionType = _businessLayer.VoucherService.GetRejectionTypes().ToList();
             reasoncb.DisplayMember = "Description";
             reasoncb.ValueMember = "ID";
             reasoncb.DataSource = _rejectionType;
@@ -148,7 +144,7 @@ namespace UI.Forms.Stock
             {
                 receiptcb.DisplayMember = "Description";
                 receiptcb.ValueMember = "ID";
-                receiptcb.DataSource = businessLayer.VoucherService.GetScanVoucher().ToList();
+                receiptcb.DataSource = _businessLayer.VoucherService.GetScanVoucher().ToList();
             }
             catch (Exception ex)
             {

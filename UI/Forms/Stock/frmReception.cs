@@ -13,31 +13,27 @@ namespace UI.Forms.Stock
     public partial class frmReception : Form, ILanguageSubscriber
     {
         #region FormSettings
+        private readonly IFactory _businessLayer;
         private readonly IUserTranslator _userTranslator;
-        private readonly IFactory businessLayer;
-        private readonly ApplicationServices _applicationServices;
         private static frmReception _instance = null;
-        private frmReception(ApplicationServices applicationServices)
+        private frmReception()
         {
-            Cursor.Current = Cursors.WaitCursor;
+            _businessLayer = Factory.GetInstance();
             InitializeComponent();
-            _applicationServices = applicationServices;
-            _userTranslator = applicationServices.GetUserTranslator;
-            businessLayer = Factory.GetInstance();
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
-        public static frmReception GetInstance(ApplicationServices applicationServices)
+        public static frmReception GetInstance()
         {
             if (_instance == null || _instance.IsDisposed)
-                _instance = new frmReception(applicationServices);
+                _instance = new frmReception();
             return _instance;
         }
-        public frmReception() { }
-
         #endregion
         #region FormActions
         private void Recepcionfrm_Load(object sender, EventArgs e)
         {
+
             ListClients();
         }
         private void Clientcbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,10 +79,10 @@ namespace UI.Forms.Stock
                     }
                 }
                 voucher.VoucherDetails = voucherDetails;
-                voucher = businessLayer.VoucherService.Create(voucher);
+                voucher = _businessLayer.VoucherService.Create(voucher);
                 this.ShowInformationDialog(_userTranslator, "ComprobanteGenerado");
-                new frmPrintVoucher(voucher, _applicationServices).ShowDialog();
-                new frmPrintVoucherLabel(voucher, _applicationServices).ShowDialog();
+                new frmPrintVoucher(voucher).ShowDialog();
+                new frmPrintVoucherLabel(voucher).ShowDialog();
                 Reset();
             }
             catch (Exception ex)
@@ -107,7 +103,7 @@ namespace UI.Forms.Stock
                 DataGridViewComboBoxColumn articlecbdg = invdetdataGrid.Columns[0] as DataGridViewComboBoxColumn;
                 articlecbdg.DisplayMember = nameof(Article.Description);
                 articlecbdg.ValueMember = nameof(Article.ID);
-                articlecbdg.DataSource = businessLayer.ArticleService.GetByClient((Client)clientcbx.SelectedValue);
+                articlecbdg.DataSource = _businessLayer.ArticleService.GetByClient((Client)clientcbx.SelectedValue);
             }
             catch (Exception ex)
             {
@@ -117,7 +113,7 @@ namespace UI.Forms.Stock
         private void ListClients()
         {
             clientcbx.DisplayMember = nameof(Client.Description);
-            clientcbx.DataSource = businessLayer.ClientService.Get();
+            clientcbx.DataSource = _businessLayer.ClientService.Get();
         }
         private void Reset()
         {

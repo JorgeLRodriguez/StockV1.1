@@ -475,6 +475,7 @@ namespace UI.Forms.Stock
             this.Controls.Add(this.reasonlab);
             this.Controls.Add(this.receiptcb);
             this.Controls.Add(this.receiptlab);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmScan";
             this.Text = "Scaneofrm";

@@ -10,12 +10,10 @@ namespace UI.Forms
     public partial class frmLogIn : Form , ILanguageSubscriber
     {
         private readonly IUserTranslator _userTranslator;
-        private readonly ApplicationServices _applicationServices;
-        public frmLogIn(ApplicationServices applicationServices)
+        public frmLogIn()
         {
             InitializeComponent();
-            _applicationServices = applicationServices;
-            _userTranslator = _applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
         private void Clean()
@@ -30,8 +28,8 @@ namespace UI.Forms
             Cursor = Cursors.WaitCursor;
             try
             {
-                _applicationServices.GetSesionService.Login(new User() { Name = txtuser.Text , Password = txtpsw.Text });
-                new frmMain(_applicationServices).Show();
+                ApplicationServices.GetInstance().GetSesionService.Login(new User() { Name = txtuser.Text , Password = txtpsw.Text });
+                new frmMain().Show();
                 Hide();
             }
             catch (Exception ex)

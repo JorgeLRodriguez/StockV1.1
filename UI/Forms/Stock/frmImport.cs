@@ -14,23 +14,21 @@ namespace UI.Forms.Stock
     public partial class frmImport : Form, ILanguageSubscriber
     {
         #region FormSettings
-        private readonly IUserTranslator _UserTranslator;
+        private IUserTranslator _UserTranslator;
         private readonly IFactory _bussinessLayer;
-        private readonly ApplicationServices _applicationServices;
         private static frmImport _instance = null;
         private string FileName = null;
-        public frmImport(ApplicationServices applicationServices)
+        public frmImport()
         {
-            InitializeComponent();
-            _applicationServices = applicationServices;
-            _UserTranslator = _applicationServices.GetUserTranslator;
             _bussinessLayer = Factory.GetInstance();
+            InitializeComponent();
+            _UserTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_UserTranslator);
         }
-        public static frmImport GetInstance(ApplicationServices applicationServices)
+        public static frmImport GetInstance()
         {
             if (_instance == null || _instance.IsDisposed)
-                _instance = new frmImport(applicationServices);
+                _instance = new frmImport();
             return _instance;
         }
         #endregion

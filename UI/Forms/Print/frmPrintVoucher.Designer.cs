@@ -75,6 +75,7 @@ namespace UI.Forms.Print
             this.Controls.Add(this.copialab);
             this.Controls.Add(this.copiacb);
             this.Controls.Add(this.reportViewer1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmPrintVoucher";

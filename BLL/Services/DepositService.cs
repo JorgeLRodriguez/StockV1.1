@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    class DepositService : IDepositService
+    internal sealed class DepositService : IDepositService
     {
     }
 }

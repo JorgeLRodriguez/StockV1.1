@@ -10,19 +10,17 @@ namespace UI.Forms
     public partial class frmConfig : Form, ILanguageSubscriber
     {
         private readonly IUserTranslator _userTranslator;
-        private readonly ApplicationServices _applicationServices;
         private static frmConfig _instance = null;
-        public frmConfig(ApplicationServices applicationServices)
+        public frmConfig()
         {
             InitializeComponent();
-            _applicationServices = applicationServices;
-            _userTranslator = applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
-        public static frmConfig GetInstance(ApplicationServices applicationServices)
+        public static frmConfig GetInstance()
         {
             if (_instance == null || _instance.IsDisposed)
-                _instance = new frmConfig(applicationServices);
+                _instance = new frmConfig();
             return _instance;
         }
         public void LanguageChanged(Language newLanguage)
@@ -42,7 +40,12 @@ namespace UI.Forms
         }
         private void btnDbSettings_Click(object sender, EventArgs e)
         {
-            _applicationServices.GetRestoreBackup.Restore();
+            ApplicationServices.GetInstance().GetRestoreBackup.Restore();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

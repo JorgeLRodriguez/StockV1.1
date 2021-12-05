@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BLL.Services
 {
-    class ClientService : SaveApplicationLog, IClientService
+    internal sealed class ClientService : SaveApplicationLog, IClientService
     {
         private readonly IUserTranslator _userTranslator;
         public ClientService()

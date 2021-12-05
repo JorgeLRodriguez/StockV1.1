@@ -14,14 +14,12 @@ namespace UI.Forms
         private IconButton currentBtn;
         private readonly Panel leftBorderBtn;
         private readonly IUserTranslator _userTranslator;
-        private readonly ApplicationServices _applicationServices;
-        public frmMain(ApplicationServices applicationServices)
+        public frmMain()
         {
             InitializeComponent();
             leftBorderBtn = new Panel { Size = new Size(7, 60) };
             panelLeft.Controls.Add(leftBorderBtn);
-            _applicationServices = applicationServices;
-            _userTranslator = applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
         private void showSubMenu(Panel subMenu)
@@ -53,7 +51,7 @@ namespace UI.Forms
         }
         private void btnconfig_Click(object sender, EventArgs e)
         {
-            Form conffrm = frmConfig.GetInstance(_applicationServices);
+            Form conffrm = frmConfig.GetInstance();
             openChildFormInPanel(conffrm);
             ActivateButton(sender, Color.FromArgb(5, 26, 14));
         }
@@ -112,18 +110,24 @@ namespace UI.Forms
         }
         private void btnrecepcion_Click(object sender, EventArgs e)
         {
-            Form recfrm = frmReception.GetInstance(_applicationServices);
+            Cursor = Cursors.WaitCursor;
+            Form recfrm = frmReception.GetInstance();
             openChildFormInPanel(recfrm);
+            Cursor = Cursors.Default;
         }
         private void btnscaneo_Click(object sender, EventArgs e)
         {
-            Form scanfrm = frmScan.GetInstance(_applicationServices);
+            Cursor = Cursors.WaitCursor;
+            Form scanfrm = frmScan.GetInstance();
             openChildFormInPanel(scanfrm);
+            Cursor = Cursors.Default;
         }
         private void btnpicking_Click(object sender, EventArgs e)
         {
-            Form pickfrm = frmPicking.GetInstance(_applicationServices);
+            Cursor = Cursors.WaitCursor;
+            Form pickfrm = frmPicking.GetInstance();
             openChildFormInPanel(pickfrm);
+            Cursor = Cursors.Default;
         }
         private void btntransf_Click(object sender, EventArgs e)
         {
@@ -137,8 +141,10 @@ namespace UI.Forms
         }
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            Form impfrm = frmImport.GetInstance(_applicationServices);
+            Cursor = Cursors.WaitCursor;
+            Form impfrm = frmImport.GetInstance();
             openChildFormInPanel(impfrm);
+            Cursor = Cursors.Default;
         }
         private void btnArticulos_Click(object sender, EventArgs e)
         {
@@ -192,16 +198,16 @@ namespace UI.Forms
         }
         private void MainMenufrm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _applicationServices.GetSesionService.Logout();
+            ApplicationServices.GetInstance().GetSesionService.Logout();
             Application.Exit();
         }
 
         private void AuthorizationControl()
         {
-            btnrecepcion.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Reception);
-            btnscaneo.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Scan);
-            btnpicking.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Picking);
-            btnImportar.Visible = _applicationServices.GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Import);
+            btnrecepcion.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Reception);
+            btnscaneo.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Scan);
+            btnpicking.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Picking);
+            btnImportar.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Import);
         }
         public void LanguageChanged(Language newLanguage)
         {

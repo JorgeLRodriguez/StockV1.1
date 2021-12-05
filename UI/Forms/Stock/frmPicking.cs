@@ -18,21 +18,21 @@ namespace UI.Forms.Stock
     {
         #region FormSettings
         private readonly IUserTranslator _userTranslator;
-        private IFactory _businessLayer;
+        private readonly IFactory _businessLayer;
         private static frmPicking _instance = null;
         private Voucher V = new();
         private IEnumerable<Voucher> list;
-        public frmPicking(ApplicationServices applicationServices)
+        public frmPicking()
         {
             _businessLayer = Factory.GetInstance();
             InitializeComponent();
-            _userTranslator = applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             this.LinkToTranslationServices(_userTranslator);
         }
-        public static frmPicking GetInstance(ApplicationServices applicationServices)
+        public static frmPicking GetInstance()
         {
             if (_instance == null || _instance.IsDisposed)
-                _instance = new frmPicking(applicationServices);
+                _instance = new frmPicking();
             return _instance;
         }
         #endregion
@@ -170,8 +170,11 @@ namespace UI.Forms.Stock
         #endregion
         private void frmPicking_Load(object sender, EventArgs e)
         {
-            _businessLayer = Factory.GetInstance();
             Init();
+        }
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -3,13 +3,12 @@ using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Services.BLL.Services;
 using Services.BLL.Contracts;
 using Services.Factory;
 
 namespace BLL.Services
 {
-    public class ArticleService : SaveApplicationLog, IArticleService
+    internal sealed class ArticleService : SaveApplicationLog, IArticleService
     {
         private readonly IUserTranslator _userTranslator;
         public ArticleService()

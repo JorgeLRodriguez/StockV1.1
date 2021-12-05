@@ -35,19 +35,22 @@ namespace UI.Forms.Print
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Print.voucherLabel.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(13, 13);
+            this.reportViewer1.Location = new System.Drawing.Point(15, 15);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(761, 301);
+            this.reportViewer1.Size = new System.Drawing.Size(888, 347);
             this.reportViewer1.TabIndex = 0;
             // 
-            // printetiq
+            // frmPrintVoucherLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 326);
+            this.ClientSize = new System.Drawing.Size(917, 376);
             this.Controls.Add(this.reportViewer1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmPrintVoucherLabel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Imprimir etiquetas.";

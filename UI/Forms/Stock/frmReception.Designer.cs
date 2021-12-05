@@ -139,7 +139,7 @@ namespace UI.Forms.Stock
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.invdetdataGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.invdetdataGrid.GridColor = System.Drawing.Color.White;
-            this.invdetdataGrid.Location = new System.Drawing.Point(29, 52);
+            this.invdetdataGrid.Location = new System.Drawing.Point(23, 52);
             this.invdetdataGrid.MultiSelect = false;
             this.invdetdataGrid.Name = "invdetdataGrid";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -369,7 +369,7 @@ namespace UI.Forms.Stock
             this.panelright.Controls.Add(this.invdetdataGrid);
             this.panelright.Location = new System.Drawing.Point(474, 12);
             this.panelright.Name = "panelright";
-            this.panelright.Size = new System.Drawing.Size(460, 553);
+            this.panelright.Size = new System.Drawing.Size(448, 553);
             this.panelright.TabIndex = 21;
             // 
             // frmReception
@@ -378,6 +378,7 @@ namespace UI.Forms.Stock
             this.ClientSize = new System.Drawing.Size(934, 577);
             this.Controls.Add(this.panelright);
             this.Controls.Add(this.leftpanel);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReception";
             this.Text = "Recepcionfrm";

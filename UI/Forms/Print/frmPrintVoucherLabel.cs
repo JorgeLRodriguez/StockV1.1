@@ -10,14 +10,12 @@ namespace UI.Forms.Print
     public partial class frmPrintVoucherLabel : Form, ILanguageSubscriber
     {
         IUserTranslator _userTranslator;
-        public frmPrintVoucherLabel(Voucher voucher, ApplicationServices applicationServices)
+        public frmPrintVoucherLabel(Voucher voucher)
         {
-            Cursor = Cursors.WaitCursor;
             InitializeComponent();
-            _userTranslator = applicationServices.GetUserTranslator;
+            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
             new VoucherLabelReportExtension(voucher, reportViewer1);
             this.LinkToTranslationServices(_userTranslator);
-            Cursor = Cursors.Default;
         }
         public void LanguageChanged(Language newLanguage)
         {

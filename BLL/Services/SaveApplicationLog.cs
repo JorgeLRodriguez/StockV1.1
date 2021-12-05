@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace BLL.Services
 {
-    public class SaveApplicationLog
+    internal class SaveApplicationLog
     {
         public void SaveException(Exception ex)
         {

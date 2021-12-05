@@ -1,5 +1,6 @@
 ﻿using Services.BLL.Contracts;
 using Services.Domain.Logger;
+using Services.Factory;
 using Services.Services.Logger;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Services.BLL.Services
 {
     class LogService : ILogService
     {
-        private readonly IUserTranslator userTranslator;
+        private readonly IUserTranslator _userTranslator;
         //#region Singleton
         //private static LogService logger;
 
@@ -34,6 +35,10 @@ namespace Services.BLL.Services
         //    userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
         //}
         //#endregion
+        public LogService(IUserTranslator userTranslator)
+        {
+            _userTranslator = userTranslator;
+        }
         public Event[] GetAllAvailableEvents()
         {
             var EventProperties = typeof(Event).GetFields();
@@ -41,7 +46,7 @@ namespace Services.BLL.Services
                 .Select(propertie => new Event
                 {
                     ID = (int)propertie.GetRawConstantValue(),
-                    Description = userTranslator.Translate(propertie.Name)
+                    Description = _userTranslator.Translate(propertie.Name)
                 })
                 .ToArray();
         }
@@ -81,7 +86,7 @@ namespace Services.BLL.Services
         }
         private string TranslateEvent(string e)
         {
-            return userTranslator.Translate("Evento" + e);
+            return _userTranslator.Translate("Evento" + e);
         }
     }
 }

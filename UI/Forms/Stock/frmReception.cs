@@ -23,8 +23,8 @@ namespace UI.Forms.Stock
             InitializeComponent();
             _applicationServices = applicationServices;
             _userTranslator = applicationServices.GetUserTranslator;
-            businessLayer = Factory.Current;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            businessLayer = Factory.GetInstance();
+            this.LinkToTranslationServices(_userTranslator);
         }
         public static frmReception GetInstance(ApplicationServices applicationServices)
         {
@@ -84,14 +84,14 @@ namespace UI.Forms.Stock
                 }
                 voucher.VoucherDetails = voucherDetails;
                 voucher = businessLayer.VoucherService.Create(voucher);
-                this.MostrarDialogoInformacion(_userTranslator, "ComprobanteGenerado");
+                this.ShowInformationDialog(_userTranslator, "ComprobanteGenerado");
                 new frmPrintVoucher(voucher, _applicationServices).ShowDialog();
                 new frmPrintVoucherLabel(voucher, _applicationServices).ShowDialog();
                 Reset();
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private void btnclose_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace UI.Forms.Stock
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private void ListClients()

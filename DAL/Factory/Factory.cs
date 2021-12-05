@@ -7,7 +7,7 @@ namespace DAL.Factory
     public sealed class Factory
     {
         #region Singleton
-        private readonly static Factory _instance = new Factory();
+        private readonly static Factory _instance = new();
         private readonly DatabaseContext _db;
         public static Factory Current
         {

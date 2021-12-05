@@ -24,8 +24,8 @@ namespace UI.Forms.Stock
             InitializeComponent();
             _applicationServices = applicationServices;
             _UserTranslator = _applicationServices.GetUserTranslator;
-            _bussinessLayer = Factory.Current;
-            this.EnlazarmeConServiciosDeTraduccion(_UserTranslator);
+            _bussinessLayer = Factory.GetInstance();
+            this.LinkToTranslationServices(_UserTranslator);
         }
         public static frmImport GetInstance(ApplicationServices applicationServices)
         {
@@ -72,12 +72,12 @@ namespace UI.Forms.Stock
             try
             {
                 _bussinessLayer.CSVService.Create(GetInvoices(csvdg));
-                this.MostrarDialogoInformacion(_UserTranslator, "ComprobanteGenerado");
+                this.ShowInformationDialog(_UserTranslator, "ComprobanteGenerado");
                 csvdg.DataSource = "";
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_UserTranslator, ex.Message);
+                this.ShowErrorDialog(_UserTranslator, ex.Message);
             }
         }
         #endregion

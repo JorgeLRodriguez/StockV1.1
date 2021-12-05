@@ -1,5 +1,4 @@
-﻿using DAL.Factory;
-using Domain.Integrity;
+﻿using Domain.Integrity;
 using Services.Domain.SecurityComposite;
 using System;
 using System.Collections.Generic;
@@ -9,43 +8,41 @@ namespace BLL
 {
     public class SystemIntegrity
     {
-        private readonly bool _estaCorrupto;
-        public class SistemaCorruptoException : Exception
+        private readonly bool _isCorrupted;
+        public class CorruptSystemException : Exception
         {
-            public string ConstanteError { get; set; }
-            public string[] EntidadesAfectadas { get; set; }
-            public SistemaCorruptoException(IEnumerable<string> entidadesAfectadas)
+            public string ConstantError { get; set; }
+            public string[] AffectedEntities { get; set; }
+            public CorruptSystemException(IEnumerable<string> affectedEntities)
             {
-                this.ConstanteError = "ErrorSistemaCorrupto";
-                this.EntidadesAfectadas = entidadesAfectadas.ToArray();
+                ConstantError = "ErrorSistemaCorrupto";
+                AffectedEntities = affectedEntities.ToArray();
             }
         }
-        //TODO: Este constructor esta solo a modo de ejemplo
-        public SystemIntegrity(bool estaCorrupto)
+        public SystemIntegrity(bool isCorrupted)
         {
-            _estaCorrupto = estaCorrupto;
+            _isCorrupted = isCorrupted;
         }
-        public void ComprobarIntegridad()
+        public void CheckIntegrity()
         {
             var corruptedEntityNames = new List<string>();
-            var tipoEntidadConDigitoVerificador = typeof(IHorizontalCheckDigit);
-            var tiposSoportadosConDigitoVerificador = this.EnumerarTiposCompatibles(tipoEntidadConDigitoVerificador);
-            foreach (var tipoEntidad in tiposSoportadosConDigitoVerificador)
+            var typeEntityWithCheckDigit = typeof(IHorizontalCheckDigit);
+            var typesSupportedWithCheckDigit = this.ListCompatibleTypes(typeEntityWithCheckDigit);
+            foreach (var entityType in typesSupportedWithCheckDigit)
             {
-                if (DAL.Factory.Factory.Current.IntegrityCDCalculatorRepository.ComprobarIntegridad(tipoEntidad))
-                    corruptedEntityNames.Add(tipoEntidad.FullName);
+                if (DAL.Factory.Factory.Current.IntegrityCDCalculatorRepository.ComprobarIntegridad(entityType))
+                    corruptedEntityNames.Add(entityType.FullName);
             }
-            //Reviento si al menos existe una entidad corrupta
-            if (_estaCorrupto || corruptedEntityNames.Any())
-                throw new SistemaCorruptoException(corruptedEntityNames);
+            if (_isCorrupted || corruptedEntityNames.Any())
+                throw new CorruptSystemException(corruptedEntityNames);
         }
-        private IEnumerable<Type> EnumerarTiposCompatibles(Type tipoEsperado)
+        private IEnumerable<Type> ListCompatibleTypes(Type expectedType)
         {
             return typeof(User).Assembly
                 .GetTypes()
                 .Where(entityType => entityType.IsClass
                                      && !entityType.IsAbstract
-                                     && tipoEsperado.IsAssignableFrom(entityType));
+                                     && expectedType.IsAssignableFrom(entityType));
         }
     }
 }

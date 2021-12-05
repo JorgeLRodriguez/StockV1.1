@@ -19,17 +19,17 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            var ServiciosAplicacion = ApplicationServices.GetInstance();
-            Factory BussinessLayer = Factory.Current;
-            ServiciosAplicacion.GetGlobalConfig.LogPath = Settings.Default.LogPath;
-            ServiciosAplicacion.GetGlobalConfig.RestoreBackup = Settings.Default.RestoreBackup;
-            var TraductorUsuario = ServiciosAplicacion.GetUserTranslator;
-            ConfigureDefaultLanguage(TraductorUsuario);
-            if (!ComprobarIntegridadDelSistema(TraductorUsuario)) return;
+            var applicationServices = ApplicationServices.GetInstance();
+            Factory.GetInstance();
+            applicationServices.GetGlobalConfig.LogPath = Settings.Default.LogPath;
+            applicationServices.GetGlobalConfig.RestoreBackup = Settings.Default.RestoreBackup;
+            var UserTranslator = applicationServices.GetUserTranslator;
+            ConfigureDefaultLanguage(UserTranslator);
+            if (!CheckSystemIntegrity(UserTranslator)) return;
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogIn(ServiciosAplicacion));
+            Application.Run(new frmLogIn(applicationServices));
         }
         public static void ConfigureDefaultLanguage(IUserTranslator traductorUsuario)
         {
@@ -41,16 +41,16 @@ namespace UI
             Thread.CurrentThread.CurrentCulture = new CultureInfo(codigoIdiomaPorDefecto);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdiomaPorDefecto);
         }
-        public static bool ComprobarIntegridadDelSistema(IUserTranslator traductorUsuario)
+        public static bool CheckSystemIntegrity(IUserTranslator userTranslator)
         {
             try
             {
-                var integridadSistema = new SystemIntegrity(Settings.Default.Corrupted);
-                integridadSistema.ComprobarIntegridad();
+                var systemIntegrity = new SystemIntegrity(Settings.Default.Corrupted);
+                systemIntegrity.CheckIntegrity();
             }
-            catch (SystemIntegrity.SistemaCorruptoException ex)
+            catch (SystemIntegrity.CorruptSystemException ex)
             {
-                MessageBox.Show(traductorUsuario.Translate(ex.ConstanteError), traductorUsuario.Translate("Stock"),
+                MessageBox.Show(userTranslator.Translate(ex.ConstantError), userTranslator.Translate("Stock"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

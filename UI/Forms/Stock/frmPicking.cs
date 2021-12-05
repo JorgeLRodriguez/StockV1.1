@@ -24,10 +24,10 @@ namespace UI.Forms.Stock
         private IEnumerable<Voucher> list;
         public frmPicking(ApplicationServices applicationServices)
         {
-            _businessLayer = Factory.Current;
+            _businessLayer = Factory.GetInstance();
             InitializeComponent();
             _userTranslator = applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
         }
         public static frmPicking GetInstance(ApplicationServices applicationServices)
         {
@@ -47,7 +47,7 @@ namespace UI.Forms.Stock
                 }
                 catch (Exception ex)
                 {
-                    this.MostrarDialogoError(_userTranslator, ex.Message);
+                    this.ShowErrorDialog(_userTranslator, ex.Message);
                 }
             }
         }
@@ -65,11 +65,11 @@ namespace UI.Forms.Stock
                 try
                 {
                     UpdateComp("C", V);
-                    this.MostrarDialogoInformacion(_userTranslator, "ProcCorrecto");
+                    this.ShowInformationDialog(_userTranslator, "ProcCorrecto");
                 }
                 catch (Exception ex)
                 {
-                    this.MostrarDialogoError(_userTranslator, ex.Message);
+                    this.ShowErrorDialog(_userTranslator, ex.Message);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace UI.Forms.Stock
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private string GetStatus(string cierre)
@@ -170,7 +170,7 @@ namespace UI.Forms.Stock
         #endregion
         private void frmPicking_Load(object sender, EventArgs e)
         {
-            _businessLayer = Factory.Current;
+            _businessLayer = Factory.GetInstance();
             Init();
         }
     }

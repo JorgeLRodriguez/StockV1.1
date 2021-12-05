@@ -16,13 +16,11 @@ namespace UI.Forms.Print
         {
             Cursor = Cursors.WaitCursor;
             InitializeComponent();
-
             _userTranslator = applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
             _voucher = voucher;
             Cursor = Cursors.Default;
         }
-
         private void printcompfrm_Load(object sender, EventArgs e)
         {
             VoucherReportExtension.Current.LoadReport(_voucher, reportViewer1);

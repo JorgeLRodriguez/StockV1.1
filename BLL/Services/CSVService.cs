@@ -17,7 +17,7 @@ namespace BLL.Services
             {
                 line += 1;
                 count++;
-                Guid Article_ID = Factory.Factory.Current.ArticleService.GetByFS(invoice.FsCode).ID;
+                Guid Article_ID = Factory.Factory.GetInstance().ArticleService.GetByFS(invoice.FsCode).ID;
                 if (voucher != null && voucher.InvoiceClientNumber.Equals(invoice.InvoiceNumber))
                 {
                     voucher.VoucherDetails.Add(GetVoucherDetail(invoice, Article_ID, line));
@@ -35,7 +35,7 @@ namespace BLL.Services
                 voucher.VoucherDetails = voucherDetails;
                 if (count.Equals(CSV.Count)) vouchers.Add(voucher);
             }
-            vouchers.ForEach(x => Factory.Factory.Current.VoucherService.Create(x));
+            vouchers.ForEach(x => Factory.Factory.GetInstance().VoucherService.Create(x));
             try
             {
                 CSV.ForEach(x => DAL.Factory.Factory.Current.CSVRepository.Create(x));
@@ -61,7 +61,7 @@ namespace BLL.Services
             return new Voucher()
             {
                 ID = Guid.NewGuid(),
-                Client_ID = Factory.Factory.Current.ClientService.GetByCuit(CSV.Cuit).ID,
+                Client_ID = Factory.Factory.GetInstance().ClientService.GetByCuit(CSV.Cuit).ID,
                 Addressee = new Addressee()
                 {
                     ID = Guid.NewGuid(),

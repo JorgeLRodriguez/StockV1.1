@@ -22,7 +22,7 @@ namespace UI.Forms
             panelLeft.Controls.Add(leftBorderBtn);
             _applicationServices = applicationServices;
             _userTranslator = applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
         }
         private void showSubMenu(Panel subMenu)
         {

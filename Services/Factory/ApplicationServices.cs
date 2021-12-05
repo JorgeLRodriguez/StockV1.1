@@ -10,22 +10,22 @@ namespace Services.Factory
     public class ApplicationServices
     {
         #region Singleton
-        private static ApplicationServices logger;
+        private static ApplicationServices _instance;
 
         private static readonly object locker = new();
         public static ApplicationServices GetInstance()
         {
-            if (logger == null)
+            if (_instance == null)
             {
                 lock (locker)
                 {
-                    if (logger == null)
+                    if (_instance == null)
                     {
-                        logger = new ApplicationServices();
+                        _instance = new ApplicationServices();
                     }
                 }
             }
-            return logger;
+            return _instance;
         }
         private ApplicationServices()
         {
@@ -34,7 +34,7 @@ namespace Services.Factory
             GetRestoreBackup = RestoreBackup.Instance;
             GetUserTranslator = new UserTranslator();
             GetSesionService = new SesionService();
-            GetLogService = new LogService();
+            GetLogService = new LogService(GetUserTranslator);
         }
         #endregion
         public IUserTranslator GetUserTranslator { get; }

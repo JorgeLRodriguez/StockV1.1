@@ -25,8 +25,8 @@ namespace UI.Forms.Stock
             InitializeComponent();
             _applicationServices = applicationServices;
             _userTranslator = applicationServices.GetUserTranslator;
-            businessLayer = Factory.Current;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            businessLayer = Factory.GetInstance();
+            this.LinkToTranslationServices(_userTranslator);
         }
         public static frmScan GetInstance(ApplicationServices applicationServices)
         {
@@ -80,7 +80,7 @@ namespace UI.Forms.Stock
         }
         private void dcbtn_Click(object sender, EventArgs e)
         {
-            if (!CountScans()) { this.MostrarDialogoAdvertencia(_userTranslator, "AtItemSinScan"); return; }
+            if (!CountScans()) { this.ShowWarningDialog(_userTranslator, "AtItemSinScan"); return; }
             try
             {
                 var comp = (Voucher)receiptcb.SelectedItem;
@@ -115,13 +115,13 @@ namespace UI.Forms.Stock
                 C = businessLayer.VoucherService.Create(C);
                 comp.Closure = "D";
                 businessLayer.VoucherService.Update(comp);
-                this.MostrarDialogoInformacion(_userTranslator, "ComprobanteGenerado");
+                this.ShowInformationDialog(_userTranslator, "ComprobanteGenerado");
                 new frmPrintVoucher(C, _applicationServices).ShowDialog();
                 Init();
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private void btnclose_Click(object sender, EventArgs e)
@@ -152,7 +152,7 @@ namespace UI.Forms.Stock
             }
             catch (Exception ex)
             {
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private bool CompararScanConCodigo(string _barcode)

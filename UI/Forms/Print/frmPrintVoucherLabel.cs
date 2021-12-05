@@ -16,7 +16,7 @@ namespace UI.Forms.Print
             InitializeComponent();
             _userTranslator = applicationServices.GetUserTranslator;
             new VoucherLabelReportExtension(voucher, reportViewer1);
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
             Cursor = Cursors.Default;
         }
         public void LanguageChanged(Language newLanguage)

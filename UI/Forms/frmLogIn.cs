@@ -16,7 +16,7 @@ namespace UI.Forms
             InitializeComponent();
             _applicationServices = applicationServices;
             _userTranslator = _applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
         }
         private void Clean()
         {
@@ -37,7 +37,7 @@ namespace UI.Forms
             catch (Exception ex)
             {
                 Clean();
-                this.MostrarDialogoError(_userTranslator, ex.Message);
+                this.ShowErrorDialog(_userTranslator, ex.Message);
             }
         }
         private void btnclose_Click(object sender, EventArgs e)

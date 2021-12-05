@@ -7,13 +7,22 @@ namespace BLL.Factory
     public class Factory : IFactory
     {
         #region Singleton
-        private readonly static Factory _instance = new();
-        public static Factory Current
+        private static Factory _instance;
+
+        private static readonly object locker = new();
+        public static Factory GetInstance()
         {
-            get
+            if (_instance == null)
             {
-                return _instance;
+                lock (locker)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Factory();
+                    }
+                }
             }
+            return _instance;
         }
         private Factory()
         {
@@ -25,14 +34,12 @@ namespace BLL.Factory
             AddresseeService = new AddresseeService();
         }
         #endregion
-
         public IAddresseeService AddresseeService { get; }
         public IArticleService ArticleService { get ; } 
         public IClientService ClientService { get; }
         public ICSVService CSVService { get; }
         public IDepositService DepositService { get; }
         public IVoucherService VoucherService { get; }
-
         public void Dispose()
         {
             throw new NotImplementedException();

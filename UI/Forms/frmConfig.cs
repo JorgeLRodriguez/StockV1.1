@@ -17,7 +17,7 @@ namespace UI.Forms
             InitializeComponent();
             _applicationServices = applicationServices;
             _userTranslator = applicationServices.GetUserTranslator;
-            this.EnlazarmeConServiciosDeTraduccion(_userTranslator);
+            this.LinkToTranslationServices(_userTranslator);
         }
         public static frmConfig GetInstance(ApplicationServices applicationServices)
         {

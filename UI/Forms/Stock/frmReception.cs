@@ -113,7 +113,7 @@ namespace UI.Forms.Stock
         private void ListClients()
         {
             clientcbx.DisplayMember = nameof(Client.Description);
-            clientcbx.DataSource = _businessLayer.ClientService.Get();
+            clientcbx.DataSource = _businessLayer.ClientService.GetAll();
         }
         private void Reset()
         {

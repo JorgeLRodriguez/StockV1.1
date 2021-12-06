@@ -26,6 +26,8 @@ namespace DAL.Factory
             IntegrityCDCalculatorRepository = new IntegrityCDCalculatorRepository(_db);
             VoucherRepository = new VoucherRepository(_db);
             CSVRepository = new GenericRepository<CSV>(_db);
+            DepositRepository = new GenericRepository<Deposit>(_db);
+            PalletRepository = new GenericRepository<Pallet>(_db);
         }
         #endregion
         public ICDCalculatorRepository CDCalculatorRepository { get; }
@@ -35,6 +37,8 @@ namespace DAL.Factory
         public IGenericRepository<CSV> CSVRepository { get; }
         public IIntegrityCDCalculatorRepository IntegrityCDCalculatorRepository { get; }
         public IVoucherRepository VoucherRepository { get; }
+        public IGenericRepository<Deposit> DepositRepository { get; }
+        public IGenericRepository<Pallet> PalletRepository { get; }
         public void SaveChanges()
         {
             _db.SaveChanges();

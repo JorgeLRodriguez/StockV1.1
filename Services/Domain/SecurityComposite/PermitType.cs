@@ -6,7 +6,7 @@
         Scan,
         Picking,
         Import,
-        PuedeHacerE,
+        Transfer,
         PuedeHacerF,
         PuedeHacerG,
     }

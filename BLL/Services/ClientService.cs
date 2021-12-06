@@ -15,12 +15,12 @@ namespace BLL.Services
         {
             _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
         }
-        public IEnumerable<Client> Get()
+        public List<Client> GetAll()
         {
-            IEnumerable<Client> clients = null;
+            List<Client> clients = null;
             try
             {
-                clients = DAL.Factory.Factory.Current.ClientRepository.Get();
+                clients = DAL.Factory.Factory.Current.ClientRepository.Get().ToList();
             }
             catch (Exception ex)
             {

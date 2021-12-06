@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace BLL.Contracts
 {
-    public interface IClientService
+    public interface IClientService : IGetAllService<Client>
     {
-        IEnumerable<Client> Get();
         Client GetByCuit(string cuit);
     }
 }

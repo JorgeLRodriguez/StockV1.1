@@ -15,12 +15,12 @@ namespace BLL.Services
         {
             _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
         }
-        public IEnumerable<Article> GetByClient(Client client)
+        public List<Article> GetByClient(Client client)
         {
-            IEnumerable<Article> articles = null;
+            List<Article> articles = null;
             try
             {
-                articles = DAL.Factory.Factory.Current.ArticleRepository.Get(filter: x => x.Client_ID == client.ID);
+                articles = DAL.Factory.Factory.Current.ArticleRepository.Get(filter: x => x.Client_ID == client.ID).ToList();
 
             }
             catch (Exception ex)

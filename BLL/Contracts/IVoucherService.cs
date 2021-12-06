@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace BLL.Contracts
 {
-    public interface IVoucherService
+    public interface IVoucherService : ICreateService<Voucher>, IUpdateService<Voucher>
     {
-        Voucher Create(Voucher voucher);
         RejectionType[] GetRejectionTypes();
         IEnumerable<Voucher> GetScanVoucher();
         IEnumerable<Voucher> GetPickingVoucher();
         IEnumerable<Voucher> GetTransferVoucher();
-        void Update(Voucher voucher);
     }
 }

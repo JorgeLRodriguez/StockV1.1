@@ -11,5 +11,6 @@ namespace BLL.Factory
         ICSVService CSVService { get; }
         IDepositService DepositService { get; }
         IVoucherService VoucherService { get; }
+        IPalletService PalletService { get; }
     }
 }

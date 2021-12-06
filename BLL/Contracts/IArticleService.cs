@@ -1,13 +1,11 @@
 ﻿using Domain;
-using System;
 using System.Collections.Generic;
 
 namespace BLL.Contracts
 {
-    public interface IArticleService
+    public interface IArticleService : IGetbyIDService<Article>
     {
-        IEnumerable<Article> GetByClient(Client client);
-        Article GetByID(Guid ID);
+        List<Article> GetByClient(Client client);
         Article GetByFS(string FSCode);
     }
 }

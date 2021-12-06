@@ -131,8 +131,10 @@ namespace UI.Forms
         }
         private void btntransf_Click(object sender, EventArgs e)
         {
-            //Form tranfrm = Transferenciafrm.GetInstance(_applicationServices);
-            //openChildFormInPanel(tranfrm);
+            Cursor = Cursors.WaitCursor;
+            Form tranfrm = frmTransfer.GetInstance();
+            openChildFormInPanel(tranfrm);
+            Cursor = Cursors.Default;
         }
         private void btnajuste_Click(object sender, EventArgs e)
         {
@@ -208,6 +210,7 @@ namespace UI.Forms
             btnscaneo.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Scan);
             btnpicking.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Picking);
             btnImportar.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Import);
+            btntransf.Visible = ApplicationServices.GetInstance().GetServicesUser.IsInRole(Services.Domain.SecurityComposite.PermitType.Transfer);
         }
         public void LanguageChanged(Language newLanguage)
         {

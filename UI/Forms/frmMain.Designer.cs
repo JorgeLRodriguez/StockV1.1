@@ -40,6 +40,7 @@ namespace UI.Forms
             this.btndeposito = new System.Windows.Forms.Button();
             this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.panelABM = new System.Windows.Forms.Panel();
+            this.btnAisle = new System.Windows.Forms.Button();
             this.btnEtiq = new System.Windows.Forms.Button();
             this.btnLayout = new System.Windows.Forms.Button();
             this.btnPxE = new System.Windows.Forms.Button();
@@ -84,7 +85,7 @@ namespace UI.Forms
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 657);
+            this.panelLeft.Size = new System.Drawing.Size(250, 661);
             this.panelLeft.TabIndex = 0;
             // 
             // panelReportes
@@ -97,7 +98,7 @@ namespace UI.Forms
             this.panelReportes.Controls.Add(this.btnInventario);
             this.panelReportes.Controls.Add(this.btndeposito);
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReportes.Location = new System.Drawing.Point(0, 645);
+            this.panelReportes.Location = new System.Drawing.Point(0, 682);
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(250, 214);
             this.panelReportes.TabIndex = 6;
@@ -224,7 +225,7 @@ namespace UI.Forms
             this.btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReportes.IconSize = 40;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 585);
+            this.btnReportes.Location = new System.Drawing.Point(0, 622);
             this.btnReportes.MaximumSize = new System.Drawing.Size(250, 60);
             this.btnReportes.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnReportes.Name = "btnReportes";
@@ -240,6 +241,7 @@ namespace UI.Forms
             // panelABM
             // 
             this.panelABM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(54)))), ((int)(((byte)(29)))));
+            this.panelABM.Controls.Add(this.btnAisle);
             this.panelABM.Controls.Add(this.btnEtiq);
             this.panelABM.Controls.Add(this.btnLayout);
             this.panelABM.Controls.Add(this.btnPxE);
@@ -247,9 +249,27 @@ namespace UI.Forms
             this.panelABM.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelABM.Location = new System.Drawing.Point(0, 440);
             this.panelABM.Name = "panelABM";
-            this.panelABM.Size = new System.Drawing.Size(250, 145);
+            this.panelABM.Size = new System.Drawing.Size(250, 182);
             this.panelABM.TabIndex = 4;
             this.panelABM.Visible = false;
+            // 
+            // btnAisle
+            // 
+            this.btnAisle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAisle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAisle.FlatAppearance.BorderSize = 0;
+            this.btnAisle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAisle.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAisle.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAisle.Location = new System.Drawing.Point(0, 140);
+            this.btnAisle.Name = "btnAisle";
+            this.btnAisle.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnAisle.Size = new System.Drawing.Size(250, 35);
+            this.btnAisle.TabIndex = 4;
+            this.btnAisle.Text = "Pasillo";
+            this.btnAisle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAisle.UseVisualStyleBackColor = true;
+            this.btnAisle.Click += new System.EventHandler(this.btnAisle_Click);
             // 
             // btnEtiq
             // 
@@ -526,7 +546,7 @@ namespace UI.Forms
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(250, 84);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(930, 573);
+            this.panelMain.Size = new System.Drawing.Size(934, 577);
             this.panelMain.TabIndex = 6;
             // 
             // panelShadow
@@ -535,7 +555,7 @@ namespace UI.Forms
             this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelShadow.Location = new System.Drawing.Point(250, 75);
             this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(930, 9);
+            this.panelShadow.Size = new System.Drawing.Size(934, 9);
             this.panelShadow.TabIndex = 5;
             // 
             // titlepanel
@@ -547,7 +567,7 @@ namespace UI.Forms
             this.titlepanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titlepanel.Location = new System.Drawing.Point(250, 0);
             this.titlepanel.Name = "titlepanel";
-            this.titlepanel.Size = new System.Drawing.Size(930, 75);
+            this.titlepanel.Size = new System.Drawing.Size(934, 75);
             this.titlepanel.TabIndex = 4;
             // 
             // btnconfig
@@ -563,7 +583,7 @@ namespace UI.Forms
             this.btnconfig.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnconfig.IconSize = 40;
             this.btnconfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnconfig.Location = new System.Drawing.Point(730, 0);
+            this.btnconfig.Location = new System.Drawing.Point(734, 0);
             this.btnconfig.MaximumSize = new System.Drawing.Size(200, 75);
             this.btnconfig.MinimumSize = new System.Drawing.Size(200, 75);
             this.btnconfig.Name = "btnconfig";
@@ -663,5 +683,6 @@ namespace UI.Forms
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private FontAwesome.Sharp.IconButton btnconfig;
         private System.Windows.Forms.Button btnImportar;
+        private System.Windows.Forms.Button btnAisle;
     }
 }

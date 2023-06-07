@@ -29,88 +29,157 @@ namespace UI.Forms.CRUD
         /// </summary>
         private void InitializeComponent()
         {
-            this.impbtn = new FontAwesome.Sharp.IconButton();
-            this.csvdg = new System.Windows.Forms.DataGridView();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.savebtn = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.csvdg)).BeginInit();
+            this.btnSave = new FontAwesome.Sharp.IconButton();
+            this.btnDelete = new FontAwesome.Sharp.IconButton();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.labSearch = new System.Windows.Forms.Label();
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.dgData = new System.Windows.Forms.DataGridView();
+            this.bottomPanel = new System.Windows.Forms.Panel();
+            this.btnNew = new FontAwesome.Sharp.IconButton();
+            this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
+            this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // impbtn
+            // btnSave
             // 
-            this.impbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.impbtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.impbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.impbtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.impbtn.ForeColor = System.Drawing.Color.White;
-            this.impbtn.IconChar = FontAwesome.Sharp.IconChar.FileImport;
-            this.impbtn.IconColor = System.Drawing.Color.White;
-            this.impbtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.impbtn.IconSize = 27;
-            this.impbtn.Location = new System.Drawing.Point(60, 12);
-            this.impbtn.Name = "impbtn";
-            this.impbtn.Size = new System.Drawing.Size(117, 33);
-            this.impbtn.TabIndex = 0;
-            this.impbtn.Text = "Importar";
-            this.impbtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.impbtn.UseVisualStyleBackColor = true;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnSave.IconColor = System.Drawing.Color.White;
+            this.btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSave.IconSize = 27;
+            this.btnSave.Location = new System.Drawing.Point(807, 241);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(117, 33);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // csvdg
+            // btnDelete
             // 
-            this.csvdg.AllowUserToAddRows = false;
-            this.csvdg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.csvdg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.csvdg.Location = new System.Drawing.Point(24, 64);
-            this.csvdg.Name = "csvdg";
-            this.csvdg.Size = new System.Drawing.Size(885, 486);
-            this.csvdg.TabIndex = 1;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnDelete.IconColor = System.Drawing.Color.White;
+            this.btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDelete.IconSize = 27;
+            this.btnDelete.Location = new System.Drawing.Point(678, 241);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(117, 33);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog
+            // txtSearch
             // 
-            this.openFileDialog.FileName = "openFileDialog";
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.Location = new System.Drawing.Point(369, 10);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(555, 20);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.Visible = false;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // savebtn
+            // labSearch
             // 
-            this.savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savebtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.savebtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.savebtn.ForeColor = System.Drawing.Color.White;
-            this.savebtn.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.savebtn.IconColor = System.Drawing.Color.White;
-            this.savebtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.savebtn.IconSize = 27;
-            this.savebtn.Location = new System.Drawing.Point(206, 12);
-            this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(117, 33);
-            this.savebtn.TabIndex = 2;
-            this.savebtn.Text = "Guardar";
-            this.savebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.savebtn.UseVisualStyleBackColor = true;
+            this.labSearch.AutoSize = true;
+            this.labSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labSearch.ForeColor = System.Drawing.Color.White;
+            this.labSearch.Location = new System.Drawing.Point(302, 9);
+            this.labSearch.Name = "labSearch";
+            this.labSearch.Size = new System.Drawing.Size(61, 21);
+            this.labSearch.TabIndex = 5;
+            this.labSearch.Text = "Buscar";
+            this.labSearch.Visible = false;
             // 
-            // frmImport
+            // topPanel
+            // 
+            this.topPanel.Controls.Add(this.dgData);
+            this.topPanel.Controls.Add(this.labSearch);
+            this.topPanel.Controls.Add(this.txtSearch);
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(934, 285);
+            this.topPanel.TabIndex = 6;
+            // 
+            // dgData
+            // 
+            this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgData.Location = new System.Drawing.Point(12, 46);
+            this.dgData.Name = "dgData";
+            this.dgData.RowTemplate.Height = 25;
+            this.dgData.Size = new System.Drawing.Size(910, 224);
+            this.dgData.TabIndex = 6;
+            this.dgData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgData_CellClick);
+            // 
+            // bottomPanel
+            // 
+            this.bottomPanel.Controls.Add(this.btnNew);
+            this.bottomPanel.Controls.Add(this.btnDelete);
+            this.bottomPanel.Controls.Add(this.btnSave);
+            this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomPanel.Location = new System.Drawing.Point(0, 291);
+            this.bottomPanel.Name = "bottomPanel";
+            this.bottomPanel.Size = new System.Drawing.Size(934, 286);
+            this.bottomPanel.TabIndex = 7;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnNew.ForeColor = System.Drawing.Color.White;
+            this.btnNew.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.btnNew.IconColor = System.Drawing.Color.White;
+            this.btnNew.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNew.IconSize = 27;
+            this.btnNew.Location = new System.Drawing.Point(548, 241);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(117, 33);
+            this.btnNew.TabIndex = 4;
+            this.btnNew.Text = "Nuevo";
+            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNew.UseVisualStyleBackColor = true;
+            // 
+            // frmCRUD
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
             this.ClientSize = new System.Drawing.Size(934, 577);
-            this.Controls.Add(this.savebtn);
-            this.Controls.Add(this.csvdg);
-            this.Controls.Add(this.impbtn);
+            this.Controls.Add(this.bottomPanel);
+            this.Controls.Add(this.topPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmImport";
+            this.Name = "frmCRUD";
             this.Text = "Importar";
-            ((System.ComponentModel.ISupportInitialize)(this.csvdg)).EndInit();
+            this.topPanel.ResumeLayout(false);
+            this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
+            this.bottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private FontAwesome.Sharp.IconButton impbtn;
-        private System.Windows.Forms.DataGridView csvdg;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private FontAwesome.Sharp.IconButton savebtn;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Panel topPanel;
+        protected System.Windows.Forms.Panel bottomPanel;
+        protected FontAwesome.Sharp.IconButton btnSave;
+        protected FontAwesome.Sharp.IconButton btnDelete;
+        protected System.Windows.Forms.DataGridView dgData;
+        protected FontAwesome.Sharp.IconButton btnNew;
+        protected System.Windows.Forms.Label labSearch;
     }
 }

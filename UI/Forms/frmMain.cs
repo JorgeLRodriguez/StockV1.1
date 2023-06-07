@@ -5,6 +5,7 @@ using Services.Factory;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UI.Forms.CRUD;
 using UI.Forms.Stock;
 
 namespace UI.Forms
@@ -150,8 +151,9 @@ namespace UI.Forms
         }
         private void btnArticulos_Click(object sender, EventArgs e)
         {
-            //Form artfrm = Articfrm.getInstance();
-            //openChildFormInPanel(artfrm);
+            //Form artfrm = frmArticle.getInstance();.
+            Form artfrm = new frmArticle();
+            openChildFormInPanel(artfrm);
         }
         private void btnPxE_Click(object sender, EventArgs e)
         {
@@ -234,12 +236,19 @@ namespace UI.Forms
             btnIxC.Text = _userTranslator.Translate("IxC");
             btnListStock.Text = _userTranslator.Translate("ListStock");
             btnconfig.Text = _userTranslator.Translate("Config");
+            btnAisle.Text = _userTranslator.Translate("Pasillo");
             Text = _userTranslator.Translate("Stock");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             AuthorizationControl();
+        }
+
+        private void btnAisle_Click(object sender, EventArgs e)
+        {
+            Form aislefrm = new frmAisle();
+            openChildFormInPanel(aislefrm);
         }
     }
 }

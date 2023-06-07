@@ -28,6 +28,7 @@ namespace DAL.Factory
             CSVRepository = new GenericRepository<CSV>(_db);
             DepositRepository = new GenericRepository<Deposit>(_db);
             PalletRepository = new GenericRepository<Pallet>(_db);
+            AisleRepository = new GenericRepository<Aisle>(_db);
         }
         #endregion
         public ICDCalculatorRepository CDCalculatorRepository { get; }
@@ -39,6 +40,7 @@ namespace DAL.Factory
         public IVoucherRepository VoucherRepository { get; }
         public IGenericRepository<Deposit> DepositRepository { get; }
         public IGenericRepository<Pallet> PalletRepository { get; }
+        public IGenericRepository<Aisle> AisleRepository { get; }
         public void SaveChanges()
         {
             _db.SaveChanges();

@@ -33,6 +33,7 @@ namespace BLL.Factory
             DepositService = new DepositService();
             AddresseeService = new AddresseeService();
             PalletService = new PalletService();
+            AisleService = new AisleService();
         }
         #endregion
         public IAddresseeService AddresseeService { get; }
@@ -42,6 +43,7 @@ namespace BLL.Factory
         public IDepositService DepositService { get; }
         public IVoucherService VoucherService { get; }
         public IPalletService PalletService { get; }
+        public IAisleService AisleService { get; }
         public void Dispose()
         {
             throw new NotImplementedException();

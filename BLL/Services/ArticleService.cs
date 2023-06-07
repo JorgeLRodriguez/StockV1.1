@@ -3,17 +3,53 @@ using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Services.BLL.Contracts;
-using Services.Factory;
 
 namespace BLL.Services
 {
     internal sealed class ArticleService : SaveApplicationLog, IArticleService
     {
-        private readonly IUserTranslator _userTranslator;
         public ArticleService()
         {
-            _userTranslator = ApplicationServices.GetInstance().GetUserTranslator;
+        }
+        public Article Create(Article entity)
+        {
+            try
+            {
+                entity = DAL.Factory.Factory.Current.ArticleRepository.Create(entity);
+                DAL.Factory.Factory.Current.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                SaveException(ex);
+            }
+            return entity;
+        }
+        public void Delete(Guid ID)
+        {
+            try
+            {
+                DAL.Factory.Factory.Current.ArticleRepository.Delete(ID);
+                DAL.Factory.Factory.Current.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                SaveException(ex);
+            }
+        }
+        public List<Article> GetAll()
+        {
+            List<Article> articles = null;
+            try
+            {
+                articles = DAL.Factory.Factory.Current.ArticleRepository.Get().ToList();
+
+            }
+            catch (Exception ex)
+            {
+                SaveException(ex);
+            }
+            if (!articles.Any()) throw new Exception("Articulo: ErrorSinRegistros");
+            return articles;
         }
         public List<Article> GetByClient(Client client)
         {
@@ -27,7 +63,7 @@ namespace BLL.Services
             {
                 SaveException(ex);
             }
-            if (!articles.Any()) throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
+            if (!articles.Any()) throw new Exception("Articulo: ErrorSinRegistros");
             return articles;
         }
         public Article GetByFS(string FSCode)
@@ -42,7 +78,7 @@ namespace BLL.Services
             {
                 SaveException(ex);
             }
-            return A ?? throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
+            return A ?? throw new Exception("Articulo: ErrorSinRegistros");
         }
         public Article GetByID(Guid ID)
         {
@@ -55,7 +91,19 @@ namespace BLL.Services
             {
                 SaveException(ex);
             }
-            return A ?? throw new Exception(_userTranslator.Translate("Articulo") + ": " + _userTranslator.Translate("ErrorSinRegistros"));
+            return A ?? throw new Exception("Articulo: ErrorSinRegistros");
+        }
+        public void Update(Article entity)
+        {
+            try
+            {
+                DAL.Factory.Factory.Current.ArticleRepository.Update(entity);
+                DAL.Factory.Factory.Current.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                SaveException(ex);
+            }
         }
     }
 }

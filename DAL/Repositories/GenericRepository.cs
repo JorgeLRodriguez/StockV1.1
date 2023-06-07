@@ -57,6 +57,7 @@ namespace DAL.Repositories
             ValidateModel<T>.Current.Validate(entity);
             entity.CreatedBy = Environment.UserName;
             entity.CreatedOn = DateTime.Now;
+            entity.ID = Guid.NewGuid();
             _db.Set<T>().Add(entity);
             return entity;
         }

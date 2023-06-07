@@ -73,7 +73,8 @@ namespace Services.BLL.Services
                     if (key.ToLower().Contains(keyValuePair[0].ToLower()) && key.Split(" ").Length > 1)
                     {
                         translatedWord = key.Replace(keyValuePair[0], keyValuePair[1]);
-                        break;
+                        key = translatedWord;
+                        //break;
                     }
                 }
             }

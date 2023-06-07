@@ -3,7 +3,6 @@ using Domain;
 using Services.BLL.Contracts;
 using Services.Domain.Logger;
 using Services.Factory;
-using Services.Services.ModelValidator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +32,7 @@ namespace BLL.Services
                 (
                     new Numerator()
                     {
-                        ID = Guid.NewGuid(),
+                        //ID = Guid.NewGuid(),
                         VoucherType = voucher.VoucherType,
                         Letter = voucher.Letter,
                         Branch = voucher.Branch,

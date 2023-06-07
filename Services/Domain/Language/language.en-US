@@ -100,3 +100,8 @@ AdminUsuario:Manage User
 Bitacora:Log
 AdminRol:Manage Roles
 ErrorGenerico:Error while performing the operation. Please try again later. If the error persists notify to Systems.
+ObjetoSinEspecificar:There's no record has been selected to modify.
+GuardarCambios: Do you want to save changes?
+BorrarRegistro: Do you want delete?
+CodigoPropio: Own Barcode
+Buscar:Search

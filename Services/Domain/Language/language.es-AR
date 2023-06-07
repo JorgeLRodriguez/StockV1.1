@@ -100,3 +100,8 @@ AdminUsuario:Administrar Usuario
 Bitacora:Bitacora
 AdminRol:Administrar Roles
 ErrorGenerico:Error al realizar la operacion. Intente nuevamente mas tarde. Si el error persiste notifique a Sistemas.
+ObjetoSinEspecificar:No se ha seleccionado ningun registro para modificar.
+GuardarCambios:Quiere guardar los cambios?
+BorrarRegistro:Quiere eliminar?
+CodigoPropio:Codigo propio
+Buscar:Buscar

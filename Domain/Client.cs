@@ -15,8 +15,6 @@ namespace Domain
         public string Description { get; set; }
         [Required]
         public bool Enabled { get; set; }
-        [Required]
-        public virtual Deposit Deposit { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
         public virtual ICollection<Voucher> Vouchers { get; set; }
     }

@@ -217,17 +217,22 @@ namespace UI.Forms
         public void LanguageChanged(Language newLanguage)
         {
             labtitle.Text = _userTranslator.Translate("Inicio");
+            Text = _userTranslator.Translate("Stock");
+            btnconfig.Text = _userTranslator.Translate("Config");
+
             btnrecepcion.Text = _userTranslator.Translate("Recepcion");
             btnscaneo.Text = _userTranslator.Translate("Scaneo");
             btnpicking.Text = _userTranslator.Translate("Picking");
             btntransf.Text = _userTranslator.Translate("Transferencia");
-            btnajuste.Text = _userTranslator.Translate("Ajuste");
             btnImportar.Text = _userTranslator.Translate("Importar");
+
             btnABM.Text = _userTranslator.Translate("Administrar");
             btnArticulos.Text = _userTranslator.Translate("Articulos");
-            btnPxE.Text = _userTranslator.Translate("PxE");
             btnLayout.Text = _userTranslator.Translate("Layout");
-            btnEtiq.Text = _userTranslator.Translate("Etiq");
+            btnAisle.Text = _userTranslator.Translate("Pasillo");
+            btnClients.Text = _userTranslator.Translate("Cliente");
+            btnDeposit.Text = _userTranslator.Translate("Deposito");
+
             btnReportes.Text = _userTranslator.Translate("Reportes");
             btndeposito.Text = _userTranslator.Translate("Deposito");
             btnInventario.Text = _userTranslator.Translate("Inventario");
@@ -235,9 +240,6 @@ namespace UI.Forms
             btnHxI.Text = _userTranslator.Translate("HxI");
             btnIxC.Text = _userTranslator.Translate("IxC");
             btnListStock.Text = _userTranslator.Translate("ListStock");
-            btnconfig.Text = _userTranslator.Translate("Config");
-            btnAisle.Text = _userTranslator.Translate("Pasillo");
-            Text = _userTranslator.Translate("Stock");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -249,6 +251,17 @@ namespace UI.Forms
         {
             Form aislefrm = new frmAisle();
             openChildFormInPanel(aislefrm);
+        }
+
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            Form clientfrm = new frmClient();
+            openChildFormInPanel(clientfrm);
+        }
+
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

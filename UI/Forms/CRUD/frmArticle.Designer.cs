@@ -133,7 +133,7 @@ namespace UI.Forms.CRUD
             this.labOwnBarcode.ForeColor = System.Drawing.Color.White;
             this.labOwnBarcode.Location = new System.Drawing.Point(12, 160);
             this.labOwnBarcode.Name = "labOwnBarcode";
-            this.labOwnBarcode.Size = new System.Drawing.Size(119, 21);
+            this.labOwnBarcode.Size = new System.Drawing.Size(126, 21);
             this.labOwnBarcode.TabIndex = 8;
             this.labOwnBarcode.Text = "Own Barcode";
             this.labOwnBarcode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,7 +143,7 @@ namespace UI.Forms.CRUD
             this.txtFsCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtFsCode.Location = new System.Drawing.Point(99, 90);
             this.txtFsCode.Name = "txtFsCode";
-            this.txtFsCode.Size = new System.Drawing.Size(165, 23);
+            this.txtFsCode.Size = new System.Drawing.Size(181, 23);
             this.txtFsCode.TabIndex = 9;
             // 
             // txtBarcode
@@ -168,7 +168,7 @@ namespace UI.Forms.CRUD
             this.cbxOwnBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxOwnBarcode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbxOwnBarcode.FormattingEnabled = true;
-            this.cbxOwnBarcode.Location = new System.Drawing.Point(137, 160);
+            this.cbxOwnBarcode.Location = new System.Drawing.Point(153, 160);
             this.cbxOwnBarcode.Name = "cbxOwnBarcode";
             this.cbxOwnBarcode.Size = new System.Drawing.Size(127, 25);
             this.cbxOwnBarcode.TabIndex = 12;
@@ -181,7 +181,7 @@ namespace UI.Forms.CRUD
             this.cbxClient.FormattingEnabled = true;
             this.cbxClient.Location = new System.Drawing.Point(99, 25);
             this.cbxClient.Name = "cbxClient";
-            this.cbxClient.Size = new System.Drawing.Size(165, 25);
+            this.cbxClient.Size = new System.Drawing.Size(181, 25);
             this.cbxClient.TabIndex = 13;
             // 
             // frmArticle

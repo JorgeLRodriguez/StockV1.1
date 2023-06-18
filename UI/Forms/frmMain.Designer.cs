@@ -40,19 +40,20 @@ namespace UI.Forms
             this.btndeposito = new System.Windows.Forms.Button();
             this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.panelABM = new System.Windows.Forms.Panel();
-            this.btnAisle = new System.Windows.Forms.Button();
-            this.btnEtiq = new System.Windows.Forms.Button();
-            this.btnLayout = new System.Windows.Forms.Button();
-            this.btnPxE = new System.Windows.Forms.Button();
+            this.btnProvincia = new System.Windows.Forms.Button();
+            this.btnLocalidad = new System.Windows.Forms.Button();
             this.btnArticulos = new System.Windows.Forms.Button();
+            this.btnLayout = new System.Windows.Forms.Button();
+            this.btnAisle = new System.Windows.Forms.Button();
+            this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnClients = new System.Windows.Forms.Button();
             this.btnABM = new FontAwesome.Sharp.IconButton();
             this.panelStock = new System.Windows.Forms.Panel();
-            this.btnImportar = new System.Windows.Forms.Button();
-            this.btnajuste = new System.Windows.Forms.Button();
             this.btntransf = new System.Windows.Forms.Button();
             this.btnpicking = new System.Windows.Forms.Button();
             this.btnscaneo = new System.Windows.Forms.Button();
             this.btnrecepcion = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
             this.btnStock = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.homepic = new System.Windows.Forms.PictureBox();
@@ -98,7 +99,7 @@ namespace UI.Forms
             this.panelReportes.Controls.Add(this.btnInventario);
             this.panelReportes.Controls.Add(this.btndeposito);
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReportes.Location = new System.Drawing.Point(0, 682);
+            this.panelReportes.Location = new System.Drawing.Point(0, 769);
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(250, 214);
             this.panelReportes.TabIndex = 6;
@@ -225,7 +226,7 @@ namespace UI.Forms
             this.btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReportes.IconSize = 40;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 622);
+            this.btnReportes.Location = new System.Drawing.Point(0, 709);
             this.btnReportes.MaximumSize = new System.Drawing.Size(250, 60);
             this.btnReportes.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnReportes.Name = "btnReportes";
@@ -241,89 +242,53 @@ namespace UI.Forms
             // panelABM
             // 
             this.panelABM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(54)))), ((int)(((byte)(29)))));
-            this.panelABM.Controls.Add(this.btnAisle);
-            this.panelABM.Controls.Add(this.btnEtiq);
-            this.panelABM.Controls.Add(this.btnLayout);
-            this.panelABM.Controls.Add(this.btnPxE);
+            this.panelABM.Controls.Add(this.btnProvincia);
+            this.panelABM.Controls.Add(this.btnLocalidad);
             this.panelABM.Controls.Add(this.btnArticulos);
+            this.panelABM.Controls.Add(this.btnLayout);
+            this.panelABM.Controls.Add(this.btnAisle);
+            this.panelABM.Controls.Add(this.btnDeposit);
+            this.panelABM.Controls.Add(this.btnClients);
             this.panelABM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelABM.Location = new System.Drawing.Point(0, 440);
+            this.panelABM.Location = new System.Drawing.Point(0, 452);
             this.panelABM.Name = "panelABM";
-            this.panelABM.Size = new System.Drawing.Size(250, 182);
+            this.panelABM.Size = new System.Drawing.Size(250, 257);
             this.panelABM.TabIndex = 4;
             this.panelABM.Visible = false;
             // 
-            // btnAisle
+            // btnProvincia
             // 
-            this.btnAisle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAisle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAisle.FlatAppearance.BorderSize = 0;
-            this.btnAisle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAisle.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAisle.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAisle.Location = new System.Drawing.Point(0, 140);
-            this.btnAisle.Name = "btnAisle";
-            this.btnAisle.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnAisle.Size = new System.Drawing.Size(250, 35);
-            this.btnAisle.TabIndex = 4;
-            this.btnAisle.Text = "Pasillo";
-            this.btnAisle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAisle.UseVisualStyleBackColor = true;
-            this.btnAisle.Click += new System.EventHandler(this.btnAisle_Click);
+            this.btnProvincia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProvincia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProvincia.FlatAppearance.BorderSize = 0;
+            this.btnProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProvincia.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnProvincia.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnProvincia.Location = new System.Drawing.Point(0, 210);
+            this.btnProvincia.Name = "btnProvincia";
+            this.btnProvincia.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnProvincia.Size = new System.Drawing.Size(250, 35);
+            this.btnProvincia.TabIndex = 14;
+            this.btnProvincia.Text = "Province";
+            this.btnProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProvincia.UseVisualStyleBackColor = true;
             // 
-            // btnEtiq
+            // btnLocalidad
             // 
-            this.btnEtiq.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEtiq.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEtiq.FlatAppearance.BorderSize = 0;
-            this.btnEtiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEtiq.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEtiq.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEtiq.Location = new System.Drawing.Point(0, 105);
-            this.btnEtiq.Name = "btnEtiq";
-            this.btnEtiq.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnEtiq.Size = new System.Drawing.Size(250, 35);
-            this.btnEtiq.TabIndex = 3;
-            this.btnEtiq.Text = "Etiq";
-            this.btnEtiq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEtiq.UseVisualStyleBackColor = true;
-            this.btnEtiq.Click += new System.EventHandler(this.btnEtiq_Click);
-            // 
-            // btnLayout
-            // 
-            this.btnLayout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLayout.FlatAppearance.BorderSize = 0;
-            this.btnLayout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLayout.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLayout.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLayout.Location = new System.Drawing.Point(0, 70);
-            this.btnLayout.Name = "btnLayout";
-            this.btnLayout.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnLayout.Size = new System.Drawing.Size(250, 35);
-            this.btnLayout.TabIndex = 2;
-            this.btnLayout.Text = "Layout";
-            this.btnLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLayout.UseVisualStyleBackColor = true;
-            this.btnLayout.Click += new System.EventHandler(this.btnLayout_Click);
-            // 
-            // btnPxE
-            // 
-            this.btnPxE.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPxE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPxE.FlatAppearance.BorderSize = 0;
-            this.btnPxE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPxE.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPxE.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnPxE.Location = new System.Drawing.Point(0, 35);
-            this.btnPxE.Name = "btnPxE";
-            this.btnPxE.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnPxE.Size = new System.Drawing.Size(250, 35);
-            this.btnPxE.TabIndex = 1;
-            this.btnPxE.Text = "PxE";
-            this.btnPxE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPxE.UseVisualStyleBackColor = true;
-            this.btnPxE.Click += new System.EventHandler(this.btnPxE_Click);
+            this.btnLocalidad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLocalidad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLocalidad.FlatAppearance.BorderSize = 0;
+            this.btnLocalidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocalidad.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLocalidad.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLocalidad.Location = new System.Drawing.Point(0, 175);
+            this.btnLocalidad.Name = "btnLocalidad";
+            this.btnLocalidad.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnLocalidad.Size = new System.Drawing.Size(250, 35);
+            this.btnLocalidad.TabIndex = 13;
+            this.btnLocalidad.Text = "Localidad";
+            this.btnLocalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLocalidad.UseVisualStyleBackColor = true;
             // 
             // btnArticulos
             // 
@@ -333,15 +298,86 @@ namespace UI.Forms
             this.btnArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArticulos.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnArticulos.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnArticulos.Location = new System.Drawing.Point(0, 0);
+            this.btnArticulos.Location = new System.Drawing.Point(0, 140);
             this.btnArticulos.Name = "btnArticulos";
             this.btnArticulos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnArticulos.Size = new System.Drawing.Size(250, 35);
-            this.btnArticulos.TabIndex = 0;
+            this.btnArticulos.TabIndex = 12;
             this.btnArticulos.Text = "Articulos";
             this.btnArticulos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnArticulos.UseVisualStyleBackColor = true;
             this.btnArticulos.Click += new System.EventHandler(this.btnArticulos_Click);
+            // 
+            // btnLayout
+            // 
+            this.btnLayout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLayout.FlatAppearance.BorderSize = 0;
+            this.btnLayout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLayout.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLayout.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLayout.Location = new System.Drawing.Point(0, 105);
+            this.btnLayout.Name = "btnLayout";
+            this.btnLayout.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnLayout.Size = new System.Drawing.Size(250, 35);
+            this.btnLayout.TabIndex = 11;
+            this.btnLayout.Text = "Layout";
+            this.btnLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLayout.UseVisualStyleBackColor = true;
+            // 
+            // btnAisle
+            // 
+            this.btnAisle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAisle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAisle.FlatAppearance.BorderSize = 0;
+            this.btnAisle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAisle.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAisle.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAisle.Location = new System.Drawing.Point(0, 70);
+            this.btnAisle.Name = "btnAisle";
+            this.btnAisle.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnAisle.Size = new System.Drawing.Size(250, 35);
+            this.btnAisle.TabIndex = 9;
+            this.btnAisle.Text = "Pasillo";
+            this.btnAisle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAisle.UseVisualStyleBackColor = true;
+            this.btnAisle.Click += new System.EventHandler(this.btnAisle_Click);
+            // 
+            // btnDeposit
+            // 
+            this.btnDeposit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeposit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDeposit.FlatAppearance.BorderSize = 0;
+            this.btnDeposit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeposit.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeposit.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDeposit.Location = new System.Drawing.Point(0, 35);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnDeposit.Size = new System.Drawing.Size(250, 35);
+            this.btnDeposit.TabIndex = 6;
+            this.btnDeposit.Text = "Deposito";
+            this.btnDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
+            // 
+            // btnClients
+            // 
+            this.btnClients.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClients.FlatAppearance.BorderSize = 0;
+            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClients.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClients.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnClients.Location = new System.Drawing.Point(0, 0);
+            this.btnClients.Name = "btnClients";
+            this.btnClients.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnClients.Size = new System.Drawing.Size(250, 35);
+            this.btnClients.TabIndex = 5;
+            this.btnClients.Text = "Cliente";
+            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClients.UseVisualStyleBackColor = true;
+            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
             // 
             // btnABM
             // 
@@ -356,7 +392,7 @@ namespace UI.Forms
             this.btnABM.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnABM.IconSize = 40;
             this.btnABM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnABM.Location = new System.Drawing.Point(0, 380);
+            this.btnABM.Location = new System.Drawing.Point(0, 392);
             this.btnABM.MaximumSize = new System.Drawing.Size(250, 60);
             this.btnABM.MinimumSize = new System.Drawing.Size(250, 60);
             this.btnABM.Name = "btnABM";
@@ -372,55 +408,17 @@ namespace UI.Forms
             // panelStock
             // 
             this.panelStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(54)))), ((int)(((byte)(29)))));
-            this.panelStock.Controls.Add(this.btnImportar);
-            this.panelStock.Controls.Add(this.btnajuste);
             this.panelStock.Controls.Add(this.btntransf);
             this.panelStock.Controls.Add(this.btnpicking);
             this.panelStock.Controls.Add(this.btnscaneo);
             this.panelStock.Controls.Add(this.btnrecepcion);
+            this.panelStock.Controls.Add(this.btnImportar);
             this.panelStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStock.Location = new System.Drawing.Point(0, 202);
             this.panelStock.Name = "panelStock";
-            this.panelStock.Size = new System.Drawing.Size(250, 178);
+            this.panelStock.Size = new System.Drawing.Size(250, 190);
             this.panelStock.TabIndex = 2;
             this.panelStock.Visible = false;
-            // 
-            // btnImportar
-            // 
-            this.btnImportar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImportar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImportar.FlatAppearance.BorderSize = 0;
-            this.btnImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnImportar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnImportar.Location = new System.Drawing.Point(0, 175);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImportar.Size = new System.Drawing.Size(250, 35);
-            this.btnImportar.TabIndex = 5;
-            this.btnImportar.Text = "Importar";
-            this.btnImportar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportar.UseVisualStyleBackColor = true;
-            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
-            // 
-            // btnajuste
-            // 
-            this.btnajuste.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnajuste.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnajuste.FlatAppearance.BorderSize = 0;
-            this.btnajuste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnajuste.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnajuste.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnajuste.Location = new System.Drawing.Point(0, 140);
-            this.btnajuste.Name = "btnajuste";
-            this.btnajuste.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnajuste.Size = new System.Drawing.Size(250, 35);
-            this.btnajuste.TabIndex = 4;
-            this.btnajuste.Text = "Ajuste";
-            this.btnajuste.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnajuste.UseVisualStyleBackColor = true;
-            this.btnajuste.Visible = false;
-            this.btnajuste.Click += new System.EventHandler(this.btnajuste_Click);
             // 
             // btntransf
             // 
@@ -430,11 +428,11 @@ namespace UI.Forms
             this.btntransf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntransf.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btntransf.ForeColor = System.Drawing.SystemColors.Control;
-            this.btntransf.Location = new System.Drawing.Point(0, 105);
+            this.btntransf.Location = new System.Drawing.Point(0, 140);
             this.btntransf.Name = "btntransf";
             this.btntransf.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btntransf.Size = new System.Drawing.Size(250, 35);
-            this.btntransf.TabIndex = 3;
+            this.btntransf.TabIndex = 9;
             this.btntransf.Text = "Transferencia";
             this.btntransf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btntransf.UseVisualStyleBackColor = true;
@@ -448,11 +446,11 @@ namespace UI.Forms
             this.btnpicking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnpicking.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnpicking.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpicking.Location = new System.Drawing.Point(0, 70);
+            this.btnpicking.Location = new System.Drawing.Point(0, 105);
             this.btnpicking.Name = "btnpicking";
             this.btnpicking.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnpicking.Size = new System.Drawing.Size(250, 35);
-            this.btnpicking.TabIndex = 2;
+            this.btnpicking.TabIndex = 8;
             this.btnpicking.Text = "Picking";
             this.btnpicking.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnpicking.UseVisualStyleBackColor = true;
@@ -466,11 +464,11 @@ namespace UI.Forms
             this.btnscaneo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnscaneo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnscaneo.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnscaneo.Location = new System.Drawing.Point(0, 35);
+            this.btnscaneo.Location = new System.Drawing.Point(0, 70);
             this.btnscaneo.Name = "btnscaneo";
             this.btnscaneo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnscaneo.Size = new System.Drawing.Size(250, 35);
-            this.btnscaneo.TabIndex = 1;
+            this.btnscaneo.TabIndex = 7;
             this.btnscaneo.Text = "Scaneo";
             this.btnscaneo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnscaneo.UseVisualStyleBackColor = true;
@@ -484,15 +482,33 @@ namespace UI.Forms
             this.btnrecepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnrecepcion.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnrecepcion.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnrecepcion.Location = new System.Drawing.Point(0, 0);
+            this.btnrecepcion.Location = new System.Drawing.Point(0, 35);
             this.btnrecepcion.Name = "btnrecepcion";
             this.btnrecepcion.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnrecepcion.Size = new System.Drawing.Size(250, 35);
-            this.btnrecepcion.TabIndex = 0;
+            this.btnrecepcion.TabIndex = 6;
             this.btnrecepcion.Text = "Recepcion";
             this.btnrecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnrecepcion.UseVisualStyleBackColor = true;
             this.btnrecepcion.Click += new System.EventHandler(this.btnrecepcion_Click);
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImportar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImportar.FlatAppearance.BorderSize = 0;
+            this.btnImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnImportar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImportar.Location = new System.Drawing.Point(0, 0);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImportar.Size = new System.Drawing.Size(250, 35);
+            this.btnImportar.TabIndex = 5;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnStock
             // 
@@ -665,16 +681,7 @@ namespace UI.Forms
         private System.Windows.Forms.Button btndeposito;
         private FontAwesome.Sharp.IconButton btnReportes;
         private System.Windows.Forms.Panel panelABM;
-        private System.Windows.Forms.Button btnEtiq;
-        private System.Windows.Forms.Button btnLayout;
-        private System.Windows.Forms.Button btnPxE;
-        private System.Windows.Forms.Button btnArticulos;
         private FontAwesome.Sharp.IconButton btnABM;
-        private System.Windows.Forms.Button btnajuste;
-        private System.Windows.Forms.Button btntransf;
-        private System.Windows.Forms.Button btnpicking;
-        private System.Windows.Forms.Button btnscaneo;
-        private System.Windows.Forms.Button btnrecepcion;
         private System.Windows.Forms.PictureBox homepic;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelShadow;
@@ -683,6 +690,16 @@ namespace UI.Forms
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private FontAwesome.Sharp.IconButton btnconfig;
         private System.Windows.Forms.Button btnImportar;
+        private System.Windows.Forms.Button btnClients;
+        private System.Windows.Forms.Button btnProvincia;
+        private System.Windows.Forms.Button btnLocalidad;
+        private System.Windows.Forms.Button btnArticulos;
+        private System.Windows.Forms.Button btnLayout;
         private System.Windows.Forms.Button btnAisle;
+        private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btntransf;
+        private System.Windows.Forms.Button btnpicking;
+        private System.Windows.Forms.Button btnscaneo;
+        private System.Windows.Forms.Button btnrecepcion;
     }
 }

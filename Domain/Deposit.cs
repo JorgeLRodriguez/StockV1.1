@@ -9,7 +9,7 @@ namespace Domain
     {
         [SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
         [Display(Name = "Cliente")]
-        public int Client_ID { get; set; }
+        public Guid Client_ID { get; set; }
         //[ForeignKey("Client_ID")]
         public virtual Client Client { get; set; }
         [Required, SensitiveData, StringLength(50, MinimumLength = 3)]

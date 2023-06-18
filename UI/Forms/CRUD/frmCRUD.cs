@@ -41,5 +41,10 @@ namespace UI.Forms.CRUD
         {
 
         }
+
+        private void btnclose_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
     }
 }

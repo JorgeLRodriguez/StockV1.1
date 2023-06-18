@@ -12,15 +12,12 @@ namespace UI.Forms.CRUD
 {
     public partial class frmClient : frmCRUD, ILanguageSubscriber
     {
-        private readonly IArticleService _articleService;
         private readonly IClientService _clientService;
-        private List<Article> _articles;
         private List<Client> _clients;
-        private Article _article;
+        private Client _client;
         public frmClient()
         {
             _clientService = Factory.GetInstance().ClientService;
-            _articleService = Factory.GetInstance().ArticleService;
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
         }
@@ -28,74 +25,67 @@ namespace UI.Forms.CRUD
         {
             LoadDataGridViewHeaders(LoadDataGridHeaders(), true);
             LoadDataGridViewHeaders(LoadDataGridHeadersNoVisible(), false);
-            ListArticles().ForEach(x => LoadDataGridViewData(LoadDataGridView(x)));
-            ListClients();
-        }
-        private List<Article> ListArticles()
-        {
-            _articles = _articleService.GetAll();
-            return _articles;
+            ListClients().ForEach(x => LoadDataGridViewData(LoadDataGridView(x)));
         }
         private List<Client> ListClients()
         {
             _clients = _clientService.GetAll();
             return _clients;
         }
-        private object[] LoadDataGridView(Article entity)
+        private object[] LoadDataGridView(Client entity)
         {
-            object[] values = new object[12];
+            object[] values = new object[10];
 
-            values[0] = entity.Client.Description;
-            values[1] = entity.FsCode;
-            values[2] = entity.Description;
-            values[3] = entity.Barcode;
-            values[4] = entity.OwnBarcode;
+            values[0] = entity.Cuit;
+            values[1] = entity.Description;
+            values[2] = entity.Enabled;
 
-            values[5] = entity.Client_ID;
-            values[6] = entity.Client;
-            values[7] = entity.ID;
-            values[8] = entity.CreatedBy;
-            values[9] = entity.CreatedOn;
-            values[10] = entity.ChangedBy;
-            values[11] = entity.ChangedOn;
+            values[3] = entity.Articles;
+            values[4] = entity.Vouchers;
+            values[5] = entity.ID;
+            values[6] = entity.CreatedOn;
+            values[7] = entity.CreatedBy;
+            values[8] = entity.ChangedOn;
+            values[9] = entity.ChangedBy;
 
             return values;
         }
         private object[] LoadDataGridHeaders()
         {
-            Type type = typeof(Article);
+            Type type = typeof(Client);
             var properties = type.GetProperties();
-            object[] values = new object[5];
+            object[] values = new object[3];
 
-            values[0] = properties[1];
-            values[1] = properties[2];
-            values[2] = properties[3];
-            values[3] = properties[4];
-            values[4] = properties[5];
+            values[0] = properties[0];
+            values[1] = properties[1];
+            values[2] = properties[2];
 
             return values;
         }
         private object[] LoadDataGridHeadersNoVisible()
         {
-            Type type = typeof(Article);
+            Type type = typeof(Client);
             var properties = type.GetProperties();
             object[] values = new object[7];
 
-            values[0] = properties[0];
-            values[1] = properties[6];
-            values[2] = properties[7];
-            values[3] = properties[8];
-            values[4] = properties[9];
-            values[5] = properties[10];
-            values[6] = properties[11];
+            values[0] = properties[3];
+            values[1] = properties[4];
+            values[2] = properties[5];
+            values[3] = properties[6];
+            values[4] = properties[7];
+            values[5] = properties[8];
+            values[6] = properties[9];
 
             return values;
         }
         protected override void dgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Convert.ToInt16(((DataGridView)sender).Rows[e.RowIndex]) > 0)
-            _article = _articles.Where(x => x.ID == Guid.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[7].Value.ToString())).FirstOrDefault();
-            LoadArticleToModify(_article);
+            try
+            {
+                _client = _clients.Where(x => x.ID == Guid.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[5].Value.ToString())).FirstOrDefault();
+                LoadClientToModify(_client);
+            }
+            catch { }
         }
         public void LanguageChanged(Language newLanguage)
         {
@@ -103,22 +93,21 @@ namespace UI.Forms.CRUD
             btnSave.Text = _userTranslator.Translate("Guardar");
             btnNew.Text = _userTranslator.Translate("Agregar");
             labSearch.Text = _userTranslator.Translate("Buscar");
-            labClient.Text = _userTranslator.Translate("Cliente");
-            labFsCode.Text = _userTranslator.Translate("Codigo") + "FS";
-            labDescription.Text = _userTranslator.Translate("Descripcion");
-            labOwnBarcode.Text = _userTranslator.Translate("CodigoPropio");
+            labActivo.Text = _userTranslator.Translate("Cliente");
+            labNombre.Text = _userTranslator.Translate("Descripcion");
+
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (_article == null)
+            if (_client == null)
             {
                 this.ShowWarningDialog(_userTranslator, "ObjetoSinEspecificar");
                 return;
             }
-            if (MessageBox.Show(_userTranslator.Translate("GuardarCambios"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            if (MessageBox.Show(_userTranslator.Translate("BorrarRegistro"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
             try
             {
-                _articleService.Delete(_article.ID);
+                _clientService.Delete(_client.ID);
                 this.ShowInformationDialog(_userTranslator, "ProcCorrecto");
             }
             catch
@@ -127,39 +116,32 @@ namespace UI.Forms.CRUD
             }
             Reset();
         }
-        private void LoadArticleToModify(Article article)
+        private void LoadClientToModify(Client client)
         {
-            cbxClient.DataSource = _clients;
-            cbxClient.ValueMember = "ID";
-            cbxClient.DisplayMember = "Description";
-            cbxClient.SelectedItem = article.Client;
-            txtFsCode.Text = article.FsCode;
-            txtDescription.Text = article.Description;
-            txtBarcode.Text = article.Barcode;
-            cbxOwnBarcode.DataSource = null;
-            cbxOwnBarcode.Items.Clear();
-            cbxOwnBarcode.Text = "";
-            cbxOwnBarcode.Items.Add(false);
-            cbxOwnBarcode.Items.Add(true);
-            cbxOwnBarcode.SelectedItem = article.OwnBarcode;
+            txtName.Text = client.Description;
+            txtCUIT.Text = client.Cuit;
+            cbxEnabled.DataSource = null;
+            cbxEnabled.Items.Clear();
+            cbxEnabled.Text = "";
+            cbxEnabled.Items.Add(false);
+            cbxEnabled.Items.Add(true);
+            cbxEnabled.SelectedItem = client.Enabled;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_article == null)
+            if (_client == null)
             {
                 this.ShowWarningDialog(_userTranslator, "ObjetoSinEspecificar");
                 return;
             }
             if (MessageBox.Show(_userTranslator.Translate("GuardarCambios"),"", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
-            _article.Client = cbxClient.SelectedItem as Client;
-            _article.FsCode = txtFsCode.Text;
-            _article.Description = txtDescription.Text;
-            _article.Barcode = txtBarcode.Text;
-            _article.OwnBarcode = Convert.ToBoolean(cbxOwnBarcode.SelectedItem);
+            _client.Description = txtName.Text;
+            _client.Cuit = txtCUIT.Text;
+            _client.Enabled = Convert.ToBoolean(cbxEnabled.SelectedItem);
             try
             {
-                if (_article.ID == Guid.Empty) _articleService.Create(_article);
-                else _articleService.Update(_article);
+                if (_client.ID == Guid.Empty) _clientService.Create(_client);
+                else _clientService.Update(_client);
                 this.ShowInformationDialog(_userTranslator, "ProcCorrecto");
             }
             catch(Exception ex)
@@ -170,29 +152,21 @@ namespace UI.Forms.CRUD
         }
         private void Reset()
         {
-            cbxClient.DataSource = null;
-            cbxClient.Items.Clear();
-            cbxClient.ResetText();
-            cbxClient.Refresh();
-            cbxOwnBarcode.DataSource = null;
-            cbxOwnBarcode.Items.Clear();
-            cbxOwnBarcode.ResetText();
-            cbxOwnBarcode.Refresh();
-            txtFsCode.Clear();
-            txtDescription.Clear();
-            txtBarcode.Clear();
+            txtName.Clear();
+            txtCUIT.Clear();
             dgData.Rows.Clear();
-            ListArticles().ForEach(x => LoadDataGridViewData(LoadDataGridView(x)));
-            _article = null;
+            ListClients().ForEach(x => LoadDataGridViewData(LoadDataGridView(x)));
+            _client = null;
+            cbxEnabled.DataSource = null;
+            cbxEnabled.Items.Clear();
+            cbxEnabled.ResetText();
+            cbxEnabled.Refresh();
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            cbxClient.DataSource = _clients;
-            cbxClient.ValueMember = "ID";
-            cbxClient.DisplayMember = "Description";
-            cbxOwnBarcode.Items.Add(false);
-            cbxOwnBarcode.Items.Add(true);
-            _article = new();
+            cbxEnabled.Items.Add(false);
+            cbxEnabled.Items.Add(true);
+            _client = new();
         }
     }
 }

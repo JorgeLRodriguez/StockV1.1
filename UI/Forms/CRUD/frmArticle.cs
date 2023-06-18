@@ -93,9 +93,12 @@ namespace UI.Forms.CRUD
         }
         protected override void dgData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Convert.ToInt16(((DataGridView)sender).Rows[e.RowIndex]) > 0)
-            _article = _articles.Where(x => x.ID == Guid.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[7].Value.ToString())).FirstOrDefault();
-            LoadArticleToModify(_article);
+            try
+            {
+                _article = _articles.Where(x => x.ID == Guid.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[7].Value.ToString())).FirstOrDefault();
+                LoadArticleToModify(_article);
+            }
+            catch{}
         }
         public void LanguageChanged(Language newLanguage)
         {
@@ -115,7 +118,7 @@ namespace UI.Forms.CRUD
                 this.ShowWarningDialog(_userTranslator, "ObjetoSinEspecificar");
                 return;
             }
-            if (MessageBox.Show(_userTranslator.Translate("GuardarCambios"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            if (MessageBox.Show(_userTranslator.Translate("BorrarRegistro"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
             try
             {
                 _articleService.Delete(_article.ID);

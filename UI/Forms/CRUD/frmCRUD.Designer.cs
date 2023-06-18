@@ -29,6 +29,7 @@ namespace UI.Forms.CRUD
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCRUD));
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -37,9 +38,11 @@ namespace UI.Forms.CRUD
             this.dgData = new System.Windows.Forms.DataGridView();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.btnNew = new FontAwesome.Sharp.IconButton();
+            this.btnclose = new System.Windows.Forms.PictureBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.bottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -105,6 +108,7 @@ namespace UI.Forms.CRUD
             // 
             // topPanel
             // 
+            this.topPanel.Controls.Add(this.btnclose);
             this.topPanel.Controls.Add(this.dgData);
             this.topPanel.Controls.Add(this.labSearch);
             this.topPanel.Controls.Add(this.txtSearch);
@@ -116,6 +120,7 @@ namespace UI.Forms.CRUD
             // 
             // dgData
             // 
+            this.dgData.AllowUserToAddRows = false;
             this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgData.Location = new System.Drawing.Point(12, 46);
             this.dgData.Name = "dgData";
@@ -154,6 +159,18 @@ namespace UI.Forms.CRUD
             this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNew.UseVisualStyleBackColor = true;
             // 
+            // btnclose
+            // 
+            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
+            this.btnclose.Location = new System.Drawing.Point(12, 10);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(15, 15);
+            this.btnclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnclose.TabIndex = 24;
+            this.btnclose.TabStop = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
             // frmCRUD
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
@@ -168,6 +185,7 @@ namespace UI.Forms.CRUD
             this.topPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
             this.bottomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -181,5 +199,6 @@ namespace UI.Forms.CRUD
         protected System.Windows.Forms.DataGridView dgData;
         protected FontAwesome.Sharp.IconButton btnNew;
         protected System.Windows.Forms.Label labSearch;
+        private System.Windows.Forms.PictureBox btnclose;
     }
 }

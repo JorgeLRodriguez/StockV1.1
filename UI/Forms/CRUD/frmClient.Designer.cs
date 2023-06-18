@@ -29,44 +29,32 @@ namespace UI.Forms.CRUD
         /// </summary>
         private void InitializeComponent()
         {
-            this.labClient = new System.Windows.Forms.Label();
-            this.labDescription = new System.Windows.Forms.Label();
-            this.labFsCode = new System.Windows.Forms.Label();
-            this.labBarcode = new System.Windows.Forms.Label();
-            this.labOwnBarcode = new System.Windows.Forms.Label();
-            this.txtFsCode = new System.Windows.Forms.TextBox();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.cbxOwnBarcode = new System.Windows.Forms.ComboBox();
-            this.cbxClient = new System.Windows.Forms.ComboBox();
+            this.labNombre = new System.Windows.Forms.Label();
+            this.labCUIT = new System.Windows.Forms.Label();
+            this.txtCUIT = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.labActivo = new System.Windows.Forms.Label();
+            this.cbxEnabled = new System.Windows.Forms.ComboBox();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // bottomPanel
             // 
-            this.bottomPanel.Controls.Add(this.cbxClient);
-            this.bottomPanel.Controls.Add(this.cbxOwnBarcode);
-            this.bottomPanel.Controls.Add(this.txtDescription);
-            this.bottomPanel.Controls.Add(this.txtBarcode);
-            this.bottomPanel.Controls.Add(this.txtFsCode);
-            this.bottomPanel.Controls.Add(this.labOwnBarcode);
-            this.bottomPanel.Controls.Add(this.labBarcode);
-            this.bottomPanel.Controls.Add(this.labFsCode);
-            this.bottomPanel.Controls.Add(this.labDescription);
-            this.bottomPanel.Controls.Add(this.labClient);
+            this.bottomPanel.Controls.Add(this.cbxEnabled);
+            this.bottomPanel.Controls.Add(this.txtName);
+            this.bottomPanel.Controls.Add(this.txtCUIT);
+            this.bottomPanel.Controls.Add(this.labCUIT);
+            this.bottomPanel.Controls.Add(this.labNombre);
+            this.bottomPanel.Controls.Add(this.labActivo);
+            this.bottomPanel.Controls.SetChildIndex(this.labActivo, 0);
+            this.bottomPanel.Controls.SetChildIndex(this.labNombre, 0);
+            this.bottomPanel.Controls.SetChildIndex(this.labCUIT, 0);
+            this.bottomPanel.Controls.SetChildIndex(this.txtCUIT, 0);
+            this.bottomPanel.Controls.SetChildIndex(this.txtName, 0);
             this.bottomPanel.Controls.SetChildIndex(this.btnNew, 0);
             this.bottomPanel.Controls.SetChildIndex(this.btnSave, 0);
             this.bottomPanel.Controls.SetChildIndex(this.btnDelete, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.labClient, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.labDescription, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.labFsCode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.labBarcode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.labOwnBarcode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.txtFsCode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.txtBarcode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.txtDescription, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.cbxOwnBarcode, 0);
-            this.bottomPanel.Controls.SetChildIndex(this.cbxClient, 0);
+            this.bottomPanel.Controls.SetChildIndex(this.cbxEnabled, 0);
             // 
             // btnSave
             // 
@@ -83,106 +71,65 @@ namespace UI.Forms.CRUD
             this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // labClient
+            // labNombre
             // 
-            this.labClient.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labClient.ForeColor = System.Drawing.Color.White;
-            this.labClient.Location = new System.Drawing.Point(12, 25);
-            this.labClient.Name = "labClient";
-            this.labClient.Size = new System.Drawing.Size(82, 23);
-            this.labClient.TabIndex = 4;
-            this.labClient.Text = "Client";
-            this.labClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labNombre.ForeColor = System.Drawing.Color.White;
+            this.labNombre.Location = new System.Drawing.Point(95, 67);
+            this.labNombre.Name = "labNombre";
+            this.labNombre.Size = new System.Drawing.Size(100, 21);
+            this.labNombre.TabIndex = 5;
+            this.labNombre.Text = "Name";
+            this.labNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labDescription
+            // labCUIT
             // 
-            this.labDescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labDescription.ForeColor = System.Drawing.Color.White;
-            this.labDescription.Location = new System.Drawing.Point(369, 25);
-            this.labDescription.Name = "labDescription";
-            this.labDescription.Size = new System.Drawing.Size(100, 21);
-            this.labDescription.TabIndex = 5;
-            this.labDescription.Text = "Description";
-            this.labDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labCUIT.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labCUIT.ForeColor = System.Drawing.Color.White;
+            this.labCUIT.Location = new System.Drawing.Point(95, 132);
+            this.labCUIT.Name = "labCUIT";
+            this.labCUIT.Size = new System.Drawing.Size(100, 21);
+            this.labCUIT.TabIndex = 7;
+            this.labCUIT.Text = "CUIT";
+            this.labCUIT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labFsCode
+            // txtCUIT
             // 
-            this.labFsCode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labFsCode.ForeColor = System.Drawing.Color.White;
-            this.labFsCode.Location = new System.Drawing.Point(12, 90);
-            this.labFsCode.Name = "labFsCode";
-            this.labFsCode.Size = new System.Drawing.Size(82, 21);
-            this.labFsCode.TabIndex = 6;
-            this.labFsCode.Text = "Fs Code";
-            this.labFsCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtCUIT.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCUIT.Location = new System.Drawing.Point(198, 132);
+            this.txtCUIT.Name = "txtCUIT";
+            this.txtCUIT.Size = new System.Drawing.Size(165, 23);
+            this.txtCUIT.TabIndex = 10;
             // 
-            // labBarcode
+            // txtName
             // 
-            this.labBarcode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labBarcode.ForeColor = System.Drawing.Color.White;
-            this.labBarcode.Location = new System.Drawing.Point(369, 90);
-            this.labBarcode.Name = "labBarcode";
-            this.labBarcode.Size = new System.Drawing.Size(100, 21);
-            this.labBarcode.TabIndex = 7;
-            this.labBarcode.Text = "Barcode";
-            this.labBarcode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.Location = new System.Drawing.Point(198, 67);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(165, 23);
+            this.txtName.TabIndex = 11;
             // 
-            // labOwnBarcode
+            // labActivo
             // 
-            this.labOwnBarcode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labOwnBarcode.ForeColor = System.Drawing.Color.White;
-            this.labOwnBarcode.Location = new System.Drawing.Point(12, 160);
-            this.labOwnBarcode.Name = "labOwnBarcode";
-            this.labOwnBarcode.Size = new System.Drawing.Size(119, 21);
-            this.labOwnBarcode.TabIndex = 8;
-            this.labOwnBarcode.Text = "Own Barcode";
-            this.labOwnBarcode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labActivo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labActivo.ForeColor = System.Drawing.Color.White;
+            this.labActivo.Location = new System.Drawing.Point(473, 67);
+            this.labActivo.Name = "labActivo";
+            this.labActivo.Size = new System.Drawing.Size(82, 23);
+            this.labActivo.TabIndex = 4;
+            this.labActivo.Text = "Activo";
+            this.labActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtFsCode
+            // cbxEnabled
             // 
-            this.txtFsCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFsCode.Location = new System.Drawing.Point(99, 90);
-            this.txtFsCode.Name = "txtFsCode";
-            this.txtFsCode.Size = new System.Drawing.Size(165, 23);
-            this.txtFsCode.TabIndex = 9;
-            // 
-            // txtBarcode
-            // 
-            this.txtBarcode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBarcode.Location = new System.Drawing.Point(472, 90);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(165, 23);
-            this.txtBarcode.TabIndex = 10;
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescription.Location = new System.Drawing.Point(472, 25);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(165, 23);
-            this.txtDescription.TabIndex = 11;
-            // 
-            // cbxOwnBarcode
-            // 
-            this.cbxOwnBarcode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbxOwnBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxOwnBarcode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbxOwnBarcode.FormattingEnabled = true;
-            this.cbxOwnBarcode.Location = new System.Drawing.Point(137, 160);
-            this.cbxOwnBarcode.Name = "cbxOwnBarcode";
-            this.cbxOwnBarcode.Size = new System.Drawing.Size(127, 25);
-            this.cbxOwnBarcode.TabIndex = 12;
-            // 
-            // cbxClient
-            // 
-            this.cbxClient.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbxClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxClient.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbxClient.FormattingEnabled = true;
-            this.cbxClient.Location = new System.Drawing.Point(99, 25);
-            this.cbxClient.Name = "cbxClient";
-            this.cbxClient.Size = new System.Drawing.Size(165, 25);
-            this.cbxClient.TabIndex = 13;
+            this.cbxEnabled.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbxEnabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxEnabled.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbxEnabled.FormattingEnabled = true;
+            this.cbxEnabled.Location = new System.Drawing.Point(561, 65);
+            this.cbxEnabled.Name = "cbxEnabled";
+            this.cbxEnabled.Size = new System.Drawing.Size(127, 25);
+            this.cbxEnabled.TabIndex = 13;
             // 
             // frmClient
             // 
@@ -199,16 +146,11 @@ namespace UI.Forms.CRUD
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labClient;
-        private System.Windows.Forms.ComboBox cbxClient;
-        private System.Windows.Forms.ComboBox cbxOwnBarcode;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.TextBox txtBarcode;
-        private System.Windows.Forms.TextBox txtFsCode;
-        private System.Windows.Forms.Label labOwnBarcode;
-        private System.Windows.Forms.Label labBarcode;
-        private System.Windows.Forms.Label labFsCode;
-        private System.Windows.Forms.Label labDescription;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtCUIT;
+        private System.Windows.Forms.Label labCUIT;
+        private System.Windows.Forms.Label labNombre;
+        private System.Windows.Forms.Label labActivo;
+        private System.Windows.Forms.ComboBox cbxEnabled;
     }
 }

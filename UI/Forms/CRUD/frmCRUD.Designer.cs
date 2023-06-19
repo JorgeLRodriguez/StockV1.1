@@ -35,14 +35,14 @@ namespace UI.Forms.CRUD
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.labSearch = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.btnclose = new System.Windows.Forms.PictureBox();
             this.dgData = new System.Windows.Forms.DataGridView();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.btnNew = new FontAwesome.Sharp.IconButton();
-            this.btnclose = new System.Windows.Forms.PictureBox();
             this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.bottomPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -118,12 +118,26 @@ namespace UI.Forms.CRUD
             this.topPanel.Size = new System.Drawing.Size(934, 285);
             this.topPanel.TabIndex = 6;
             // 
+            // btnclose
+            // 
+            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
+            this.btnclose.Location = new System.Drawing.Point(12, 10);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(15, 15);
+            this.btnclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnclose.TabIndex = 24;
+            this.btnclose.TabStop = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
             // dgData
             // 
             this.dgData.AllowUserToAddRows = false;
+            this.dgData.AllowUserToDeleteRows = false;
             this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgData.Location = new System.Drawing.Point(12, 46);
             this.dgData.Name = "dgData";
+            this.dgData.ReadOnly = true;
             this.dgData.RowTemplate.Height = 25;
             this.dgData.Size = new System.Drawing.Size(910, 224);
             this.dgData.TabIndex = 6;
@@ -159,18 +173,6 @@ namespace UI.Forms.CRUD
             this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNew.UseVisualStyleBackColor = true;
             // 
-            // btnclose
-            // 
-            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
-            this.btnclose.Location = new System.Drawing.Point(12, 10);
-            this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(15, 15);
-            this.btnclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnclose.TabIndex = 24;
-            this.btnclose.TabStop = false;
-            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
-            // 
             // frmCRUD
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
@@ -180,12 +182,11 @@ namespace UI.Forms.CRUD
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCRUD";
-            this.Text = "Importar";
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
             this.bottomPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnclose)).EndInit();
             this.ResumeLayout(false);
 
         }

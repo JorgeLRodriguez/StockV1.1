@@ -47,14 +47,17 @@ namespace UI.Forms.CRUD
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnNew
             // 
             this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtProvinceName
             // 

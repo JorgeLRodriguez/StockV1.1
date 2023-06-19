@@ -1,11 +1,12 @@
-﻿
-using BLL.Contracts;
+﻿using BLL.Contracts;
 using BLL.Factory;
 using Domain;
 using Services.BLL.Contracts;
 using Services.Domain.Language;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace UI.Forms.CRUD
 {
@@ -85,6 +86,70 @@ namespace UI.Forms.CRUD
             values[5] = properties[6];
 
             return values;
+        }
+        protected override void dgData_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _province = _provinces.Where(x => x.ID == Guid.Parse(((DataGridView)sender).Rows[e.RowIndex].Cells[2].Value.ToString())).FirstOrDefault();
+                LoadProvinceToModify(_province);
+            }
+            catch { }
+        }
+        private void LoadProvinceToModify(Province province)
+        {
+            txtProvinceName.Text = province.ProvinceName;
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (_province == null)
+            {
+                this.ShowWarningDialog(_userTranslator, "ObjetoSinEspecificar");
+                return;
+            }
+            if (MessageBox.Show(_userTranslator.Translate("GuardarCambios"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            _province.ProvinceName = txtProvinceName.Text;
+            try
+            {
+                if (_province.ID == Guid.Empty) _provinceService.Create(_province);
+                else _provinceService.Update(_province);
+                this.ShowInformationDialog(_userTranslator, "ProcCorrecto");
+            }
+            catch (Exception ex)
+            {
+                this.ShowErrorDialog(_userTranslator, "ErrorGenerico");
+            }
+            Reset();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_province == null)
+            {
+                this.ShowWarningDialog(_userTranslator, "ObjetoSinEspecificar");
+                return;
+            }
+            if (MessageBox.Show(_userTranslator.Translate("BorrarRegistro"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            try
+            {
+                _provinceService.Delete(_province.ID);
+                this.ShowInformationDialog(_userTranslator, "ProcCorrecto");
+            }
+            catch
+            {
+                this.ShowErrorDialog(_userTranslator, "ErrorGenerico");
+            }
+            Reset();
+        }
+        private void Reset()
+        {
+            txtProvinceName.Clear();
+            dgData.Rows.Clear();
+            ListProvinces().ForEach(x => LoadDataGridViewData(LoadDataGridView(x)));
+            _province = null;
+        }
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            _province = new();
         }
     }
 }

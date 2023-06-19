@@ -103,6 +103,16 @@ ErrorGenerico:Error while performing the operation. Please try again later. If t
 ObjetoSinEspecificar:There's no record has been selected to modify.
 GuardarCambios: Do you want to save changes?
 BorrarRegistro: Do you want to delete this item?
-CodigoPropio: Own Barcode
+CodigoPropio:Own Barcode
 Buscar:Search
 Localidad:Locality
+Activo:Active
+Provincia:Province
+ID:ID
+FechaCreacion:Created On
+CreadoPor:Created By
+FechaActualizacion:Changed On
+ActualizadoPor:Changed By
+Localidades:Localities
+Comprobantes:Vouchers
+CodigoFS:FS Code

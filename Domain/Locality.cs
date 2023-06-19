@@ -6,15 +6,15 @@ namespace Domain
 {
     public class Locality : IdentityBase
     {
-        [Display(Name = "C.P."), Required] //poner algo aca
+        [Display(Name = "CodigoPostal"), Required]
         public string ZipCode { get; set; }
 
-        [Display(Name = "Localidad"), Required] //poner algo aca
+        [Display(Name = "Localidad"), Required]
         public string LocalityName { get; set; }
         //[Display(Name = "Comprobante")]
         public Guid Province_ID { get; set; }
 
-        [ForeignKey("Province_ID"), Required]
+        [ForeignKey("Province_ID"), Required, Display(Name = "Provincia")]
         public virtual Province Province { get; set; }
     }
 }

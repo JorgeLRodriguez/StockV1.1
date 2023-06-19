@@ -162,8 +162,8 @@ namespace UI.Forms
         }
         private void btnLayout_Click(object sender, EventArgs e)
         {
-            //Form layfrm = Layoutfrm.getInstance();
-            //openChildFormInPanel(layfrm);
+            Form layoutfrm = new frmLayout();
+            openChildFormInPanel(layoutfrm);
         }
         private void btnEtiq_Click(object sender, EventArgs e)
         {
@@ -263,7 +263,20 @@ namespace UI.Forms
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
+            Form depositfrm = new frmDeposit();
+            openChildFormInPanel(depositfrm);
+        }
 
+        private void btnProvincia_Click(object sender, EventArgs e)
+        {
+            Form provincefrm = new frmProvince();
+            openChildFormInPanel(provincefrm);
+        }
+
+        private void btnLocality_Click(object sender, EventArgs e)
+        {
+            Form localityfrm = new frmLocality();
+            openChildFormInPanel(localityfrm);
         }
     }
 }

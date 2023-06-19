@@ -19,10 +19,10 @@ namespace UI.Forms.CRUD
         private Article _article;
         public frmArticle()
         {
-            _clientService = Factory.GetInstance().ClientService;
-            _articleService = Factory.GetInstance().ArticleService;
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
+            _clientService = Factory.GetInstance().ClientService;
+            _articleService = Factory.GetInstance().ArticleService;
         }
         private void frmArticle_Load(object sender, EventArgs e)
         {
@@ -107,7 +107,7 @@ namespace UI.Forms.CRUD
             btnNew.Text = _userTranslator.Translate("Agregar");
             labSearch.Text = _userTranslator.Translate("Buscar");
             labClient.Text = _userTranslator.Translate("Cliente");
-            labFsCode.Text = _userTranslator.Translate("Codigo") + "FS";
+            labFsCode.Text = _userTranslator.Translate("CodigoFS");
             labDescription.Text = _userTranslator.Translate("Descripcion");
             labOwnBarcode.Text = _userTranslator.Translate("CodigoPropio");
         }

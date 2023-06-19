@@ -7,6 +7,7 @@ namespace Domain
     {
         [Display(Name = "Provincia"), Required]
         public string ProvinceName { get; set; }
+        [Display (Name = "Localidades")]
         public virtual ICollection<Locality> Localities { get; set; }
     }
 }

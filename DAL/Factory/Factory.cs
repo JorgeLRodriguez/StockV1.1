@@ -29,6 +29,7 @@ namespace DAL.Factory
             DepositRepository = new GenericRepository<Deposit>(_db);
             PalletRepository = new GenericRepository<Pallet>(_db);
             AisleRepository = new GenericRepository<Aisle>(_db);
+            ProvinceRepository = new GenericRepository<Province>(_db);
         }
         #endregion
         public ICDCalculatorRepository CDCalculatorRepository { get; }
@@ -41,6 +42,8 @@ namespace DAL.Factory
         public IGenericRepository<Deposit> DepositRepository { get; }
         public IGenericRepository<Pallet> PalletRepository { get; }
         public IGenericRepository<Aisle> AisleRepository { get; }
+        public IGenericRepository<Province> ProvinceRepository { get; }
+        public IGenericRepository<Locality> LocalityRepository { get; }
         public void SaveChanges()
         {
             _db.SaveChanges();

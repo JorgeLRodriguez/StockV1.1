@@ -1,5 +1,6 @@
 ﻿using Services.BLL.Contracts;
 using Services.Factory;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -21,11 +22,22 @@ namespace UI.Forms.CRUD
 
             foreach (PropertyInfo propertyInfo in headers)
             {
+                string headerText = null;
+
+                try
+                {
+                    headerText = _userTranslator.Translate(((System.ComponentModel.DataAnnotations.DisplayAttribute)(propertyInfo.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.DisplayAttribute), true)).Single()).Name);
+                }
+                catch
+                {
+                    headerText = _userTranslator.Translate(propertyInfo.Name);
+                }
+
                 dataGridViewColumn = new DataGridViewTextBoxColumn
                 {
                     Visible = visible,
                     DataPropertyName = propertyInfo.Name,
-                    HeaderText = _userTranslator.Translate(propertyInfo.Name)
+                    HeaderText = headerText
                 };
                 dgData.Columns.Add(dataGridViewColumn);
             }

@@ -106,3 +106,13 @@ BorrarRegistro:Quiere eliminar?
 CodigoPropio:Codigo propio
 Buscar:Buscar
 Localidad:Localidad
+Activo:Activo
+Provincia:Provincia
+ID:ID
+FechaCreacion:Fecha de creacion
+CreadoPor:Creado por
+FechaActualizacion:Fecha de actualizacion
+ActualizadoPor:Actualizado por
+Localidades:Localidades
+Comprobantes:Comprobantes
+CodigoFS:Código FS

@@ -93,7 +93,7 @@ namespace UI.Forms.CRUD
             btnSave.Text = _userTranslator.Translate("Guardar");
             btnNew.Text = _userTranslator.Translate("Agregar");
             labSearch.Text = _userTranslator.Translate("Buscar");
-            labActivo.Text = _userTranslator.Translate("Cliente");
+            labActivo.Text = _userTranslator.Translate("Activo");
             labNombre.Text = _userTranslator.Translate("Descripcion");
 
         }

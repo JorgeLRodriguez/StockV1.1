@@ -86,7 +86,7 @@ namespace UI.Forms
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 661);
+            this.panelLeft.Size = new System.Drawing.Size(250, 949);
             this.panelLeft.TabIndex = 0;
             // 
             // panelReportes
@@ -272,6 +272,7 @@ namespace UI.Forms
             this.btnProvincia.Text = "Province";
             this.btnProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProvincia.UseVisualStyleBackColor = true;
+            this.btnProvincia.Click += new System.EventHandler(this.btnProvincia_Click);
             // 
             // btnLocality
             // 
@@ -289,6 +290,7 @@ namespace UI.Forms
             this.btnLocality.Text = "Localidad";
             this.btnLocality.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLocality.UseVisualStyleBackColor = true;
+            this.btnLocality.Click += new System.EventHandler(this.btnLocality_Click);
             // 
             // btnArticulos
             // 
@@ -324,6 +326,7 @@ namespace UI.Forms
             this.btnLayout.Text = "Layout";
             this.btnLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLayout.UseVisualStyleBackColor = true;
+            this.btnLayout.Click += new System.EventHandler(this.btnLayout_Click);
             // 
             // btnAisle
             // 
@@ -562,7 +565,7 @@ namespace UI.Forms
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(250, 84);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(934, 577);
+            this.panelMain.Size = new System.Drawing.Size(934, 865);
             this.panelMain.TabIndex = 6;
             // 
             // panelShadow
@@ -639,7 +642,7 @@ namespace UI.Forms
             // 
             // frmMain
             // 
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1184, 949);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.titlepanel);
@@ -647,7 +650,7 @@ namespace UI.Forms
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1200, 700);
+            this.MaximumSize = new System.Drawing.Size(1200, 2700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

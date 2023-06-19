@@ -14,9 +14,16 @@ namespace UI.Forms.CRUD
 {
     public partial class frmDeposit : frmCRUD, ILanguageSubscriber
     {
+        private static frmDeposit _instance = null;
         public frmDeposit()
         {
             InitializeComponent();
+        }
+        public static frmDeposit GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmDeposit();
+            return _instance;
         }
 
         public void LanguageChanged(Language newLanguage)

@@ -12,6 +12,7 @@ namespace UI.Forms.CRUD
     public partial class frmProvince : frmCRUD, ILanguageSubscriber 
     {
         private readonly IProvinceService _provinceService;
+        private static frmProvince _instance = null;
         private List<Province> _provinces;
         Province _province = null;
         public frmProvince()
@@ -19,6 +20,12 @@ namespace UI.Forms.CRUD
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
             _provinceService = Factory.GetInstance().ProvinceService;
+        }
+        public static frmProvince GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmProvince();
+            return _instance;
         }
 
         public void LanguageChanged(Language newLanguage)

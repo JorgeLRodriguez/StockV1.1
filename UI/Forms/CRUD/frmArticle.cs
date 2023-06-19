@@ -14,6 +14,7 @@ namespace UI.Forms.CRUD
     {
         private readonly IArticleService _articleService;
         private readonly IClientService _clientService;
+        private static frmArticle _instance = null;
         private List<Article> _articles;
         private List<Client> _clients;
         private Article _article;
@@ -23,6 +24,12 @@ namespace UI.Forms.CRUD
             this.LinkToTranslationServices(_userTranslator);
             _clientService = Factory.GetInstance().ClientService;
             _articleService = Factory.GetInstance().ArticleService;
+        }
+        public static frmArticle GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmArticle();
+            return _instance;
         }
         private void frmArticle_Load(object sender, EventArgs e)
         {

@@ -9,6 +9,7 @@ namespace UI.Forms.CRUD
     public partial class frmCRUD : Form
     {
         internal readonly IUserTranslator _userTranslator;
+        private static frmCRUD _instance = null;
         public frmCRUD()
         {
             InitializeComponent();
@@ -53,7 +54,6 @@ namespace UI.Forms.CRUD
         {
 
         }
-
         private void btnclose_Click(object sender, System.EventArgs e)
         {
             Close();

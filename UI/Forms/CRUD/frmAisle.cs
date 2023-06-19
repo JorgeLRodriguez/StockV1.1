@@ -13,6 +13,7 @@ namespace UI.Forms.CRUD
     public partial class frmAisle : frmCRUD, ILanguageSubscriber
     {
         private readonly IAisleService _aisleService;
+        private static frmAisle _instance = null;
         private List<Aisle> _aisles;
         private Aisle _aisle;
         public frmAisle()
@@ -20,6 +21,12 @@ namespace UI.Forms.CRUD
             _aisleService = Factory.GetInstance().AisleService;
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
+        }
+        public static frmAisle GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmAisle();
+            return _instance;
         }
         private void frmAisle_Load(object sender, EventArgs e)
         {

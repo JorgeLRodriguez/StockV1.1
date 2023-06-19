@@ -14,6 +14,7 @@ namespace UI.Forms.CRUD
     {
         private readonly IArticleService _articleService;
         private readonly IClientService _clientService;
+        private static frmPallet _instance = null;
         private List<Article> _articles;
         private List<Client> _clients;
         private Article _article;
@@ -23,6 +24,12 @@ namespace UI.Forms.CRUD
             _articleService = Factory.GetInstance().ArticleService;
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
+        }
+        public static frmPallet GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmPallet();
+            return _instance;
         }
         private void frmPallet_Load(object sender, EventArgs e)
         {

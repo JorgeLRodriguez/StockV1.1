@@ -151,9 +151,10 @@ namespace UI.Forms
         }
         private void btnArticulos_Click(object sender, EventArgs e)
         {
-            //Form artfrm = frmArticle.getInstance();.
-            Form artfrm = new frmArticle();
+            Cursor = Cursors.WaitCursor;
+            Form artfrm = frmArticle.GetInstance();
             openChildFormInPanel(artfrm);
+            Cursor = Cursors.Default;
         }
         private void btnPxE_Click(object sender, EventArgs e)
         {
@@ -251,32 +252,40 @@ namespace UI.Forms
 
         private void btnAisle_Click(object sender, EventArgs e)
         {
-            Form aislefrm = new frmAisle();
+            Cursor = Cursors.WaitCursor;
+            Form aislefrm = frmAisle.GetInstance();
             openChildFormInPanel(aislefrm);
+            Cursor = Cursors.Default;
         }
-
         private void btnClients_Click(object sender, EventArgs e)
         {
-            Form clientfrm = new frmClient();
+            Cursor = Cursors.WaitCursor;
+            Form clientfrm = frmClient.GetInstance();
             openChildFormInPanel(clientfrm);
+            Cursor = Cursors.Default;
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            Form depositfrm = new frmDeposit();
+            Cursor = Cursors.WaitCursor;
+            Form depositfrm = frmDeposit.GetInstance();
             openChildFormInPanel(depositfrm);
+            Cursor = Cursors.Default;
         }
 
         private void btnProvincia_Click(object sender, EventArgs e)
         {
-            Form provincefrm = new frmProvince();
+            Cursor = Cursors.WaitCursor;
+            Form provincefrm = frmProvince.GetInstance();
             openChildFormInPanel(provincefrm);
+            Cursor = Cursors.Default;
         }
-
         private void btnLocality_Click(object sender, EventArgs e)
         {
-            Form localityfrm = new frmLocality();
+            Cursor = Cursors.WaitCursor;
+            Form localityfrm = frmLocality.GetInstance();
             openChildFormInPanel(localityfrm);
+            Cursor = Cursors.Default;
         }
     }
 }

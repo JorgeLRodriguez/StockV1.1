@@ -13,6 +13,7 @@ namespace UI.Forms.CRUD
     public partial class frmClient : frmCRUD, ILanguageSubscriber
     {
         private readonly IClientService _clientService;
+        private static frmClient _instance = null;
         private List<Client> _clients;
         private Client _client;
         public frmClient()
@@ -20,6 +21,12 @@ namespace UI.Forms.CRUD
             _clientService = Factory.GetInstance().ClientService;
             InitializeComponent();
             this.LinkToTranslationServices(_userTranslator);
+        }
+        public static frmClient GetInstance()
+        {
+            if (_instance == null || _instance.IsDisposed)
+                _instance = new frmClient();
+            return _instance;
         }
         private void frmClient_Load(object sender, EventArgs e)
         {

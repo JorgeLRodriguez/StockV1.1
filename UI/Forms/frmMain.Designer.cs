@@ -41,7 +41,7 @@ namespace UI.Forms
             this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.panelABM = new System.Windows.Forms.Panel();
             this.btnProvincia = new System.Windows.Forms.Button();
-            this.btnLocalidad = new System.Windows.Forms.Button();
+            this.btnLocality = new System.Windows.Forms.Button();
             this.btnArticulos = new System.Windows.Forms.Button();
             this.btnLayout = new System.Windows.Forms.Button();
             this.btnAisle = new System.Windows.Forms.Button();
@@ -243,7 +243,7 @@ namespace UI.Forms
             // 
             this.panelABM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(54)))), ((int)(((byte)(29)))));
             this.panelABM.Controls.Add(this.btnProvincia);
-            this.panelABM.Controls.Add(this.btnLocalidad);
+            this.panelABM.Controls.Add(this.btnLocality);
             this.panelABM.Controls.Add(this.btnArticulos);
             this.panelABM.Controls.Add(this.btnLayout);
             this.panelABM.Controls.Add(this.btnAisle);
@@ -273,22 +273,22 @@ namespace UI.Forms
             this.btnProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProvincia.UseVisualStyleBackColor = true;
             // 
-            // btnLocalidad
+            // btnLocality
             // 
-            this.btnLocalidad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLocalidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLocalidad.FlatAppearance.BorderSize = 0;
-            this.btnLocalidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocalidad.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLocalidad.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLocalidad.Location = new System.Drawing.Point(0, 175);
-            this.btnLocalidad.Name = "btnLocalidad";
-            this.btnLocalidad.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnLocalidad.Size = new System.Drawing.Size(250, 35);
-            this.btnLocalidad.TabIndex = 13;
-            this.btnLocalidad.Text = "Localidad";
-            this.btnLocalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLocalidad.UseVisualStyleBackColor = true;
+            this.btnLocality.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLocality.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLocality.FlatAppearance.BorderSize = 0;
+            this.btnLocality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocality.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLocality.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLocality.Location = new System.Drawing.Point(0, 175);
+            this.btnLocality.Name = "btnLocality";
+            this.btnLocality.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnLocality.Size = new System.Drawing.Size(250, 35);
+            this.btnLocality.TabIndex = 13;
+            this.btnLocality.Text = "Localidad";
+            this.btnLocality.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLocality.UseVisualStyleBackColor = true;
             // 
             // btnArticulos
             // 
@@ -692,7 +692,7 @@ namespace UI.Forms
         private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnClients;
         private System.Windows.Forms.Button btnProvincia;
-        private System.Windows.Forms.Button btnLocalidad;
+        private System.Windows.Forms.Button btnLocality;
         private System.Windows.Forms.Button btnArticulos;
         private System.Windows.Forms.Button btnLayout;
         private System.Windows.Forms.Button btnAisle;

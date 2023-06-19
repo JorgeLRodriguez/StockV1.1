@@ -232,6 +232,8 @@ namespace UI.Forms
             btnAisle.Text = _userTranslator.Translate("Pasillo");
             btnClients.Text = _userTranslator.Translate("Cliente");
             btnDeposit.Text = _userTranslator.Translate("Deposito");
+            btnLocality.Text = _userTranslator.Translate("Localidad");
+
 
             btnReportes.Text = _userTranslator.Translate("Reportes");
             btndeposito.Text = _userTranslator.Translate("Deposito");

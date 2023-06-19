@@ -31,5 +31,7 @@ namespace DAL.Repositories
         public IDbSet<Deposit> Deposit { get; set; }
         public IDbSet<VerticalCheckDigit> VerticalCheckDigit { get; set; }
         public IDbSet<CSV> CSV { get; set; }
+        public IDbSet<Locality> Locality { get; set; }
+        public IDbSet<Province> Province { get; set; }
     }
 }

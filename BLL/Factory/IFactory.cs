@@ -13,5 +13,6 @@ namespace BLL.Factory
         IVoucherService VoucherService { get; }
         IPalletService PalletService { get; }
         IProvinceService ProvinceService { get; }
+        ILocalityService LocalityService { get; }
     }
 }

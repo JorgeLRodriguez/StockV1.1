@@ -86,7 +86,7 @@ namespace UI.Forms
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 949);
+            this.panelLeft.Size = new System.Drawing.Size(250, 661);
             this.panelLeft.TabIndex = 0;
             // 
             // panelReportes
@@ -565,7 +565,7 @@ namespace UI.Forms
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(250, 84);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(934, 865);
+            this.panelMain.Size = new System.Drawing.Size(934, 577);
             this.panelMain.TabIndex = 6;
             // 
             // panelShadow
@@ -642,7 +642,7 @@ namespace UI.Forms
             // 
             // frmMain
             // 
-            this.ClientSize = new System.Drawing.Size(1184, 949);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.titlepanel);
@@ -650,7 +650,7 @@ namespace UI.Forms
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1200, 2700);
+            this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -30,6 +30,7 @@ namespace DAL.Factory
             PalletRepository = new GenericRepository<Pallet>(_db);
             AisleRepository = new GenericRepository<Aisle>(_db);
             ProvinceRepository = new GenericRepository<Province>(_db);
+            LocalityRepository = new GenericRepository<Locality>(_db);
         }
         #endregion
         public ICDCalculatorRepository CDCalculatorRepository { get; }

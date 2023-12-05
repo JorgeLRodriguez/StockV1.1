@@ -29,10 +29,30 @@ namespace UI.Forms.CRUD
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmLocality";
+            this.bottomPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnSave
+            // 
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            // 
+            // btnNew
+            // 
+            this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            // 
+            // frmLocality
+            // 
+            this.ClientSize = new System.Drawing.Size(934, 577);
+            this.Name = "frmLocality";
+            this.Text = "Locality";
+            this.Load += new System.EventHandler(this.frmLocality_Load);
+            this.bottomPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

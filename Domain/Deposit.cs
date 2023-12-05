@@ -2,18 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
     public class Deposit : IdentityBase, IHorizontalCheckDigit
     {
-        [SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
-        [Display(Name = "Cliente")]
         public Guid Client_ID { get; set; }
-        //[ForeignKey("Client_ID")]
+        [ForeignKey("Client_ID"), Required, Display(Name = "Cliente")]
         public virtual Client Client { get; set; }
         [Required, SensitiveData, StringLength(50, MinimumLength = 3)]
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Nombre")]
         public string DepositName { get; set; }
         [Required, SensitiveData, StringLength(100, MinimumLength = 3)]
         [Display(Name = "Domicilio")]

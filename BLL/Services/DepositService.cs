@@ -14,6 +14,7 @@ namespace BLL.Services
             try
             {
                 entity = DAL.Factory.Factory.Current.DepositRepository.Create(entity);
+                DAL.Factory.Factory.Current.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -26,6 +27,7 @@ namespace BLL.Services
             try
             {
                 DAL.Factory.Factory.Current.DepositRepository.Delete(ID);
+                DAL.Factory.Factory.Current.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -51,6 +53,7 @@ namespace BLL.Services
             try
             {
                 DAL.Factory.Factory.Current.DepositRepository.Update(entity);
+                DAL.Factory.Factory.Current.SaveChanges();
             }
             catch (Exception ex)
             {

@@ -46,6 +46,7 @@ namespace UI.Forms.Stock
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.destdg = new System.Windows.Forms.DataGridView();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.origendg)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -112,7 +113,7 @@ namespace UI.Forms.Stock
             this.origendg.MultiSelect = false;
             this.origendg.Name = "origendg";
             this.origendg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.origendg.Size = new System.Drawing.Size(456, 426);
+            this.origendg.Size = new System.Drawing.Size(427, 426);
             this.origendg.TabIndex = 2;
             this.origendg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.origendg_MouseDown);
             // 
@@ -201,7 +202,7 @@ namespace UI.Forms.Stock
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(464, 577);
+            this.panel1.Size = new System.Drawing.Size(435, 577);
             this.panel1.TabIndex = 13;
             // 
             // panel2
@@ -211,10 +212,10 @@ namespace UI.Forms.Stock
             this.panel2.Controls.Add(this.destlab);
             this.panel2.Controls.Add(this.palletcb);
             this.panel2.Controls.Add(this.palletlab);
-            this.panel2.Location = new System.Drawing.Point(469, 0);
+            this.panel2.Location = new System.Drawing.Point(504, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(462, 577);
+            this.panel2.Size = new System.Drawing.Size(427, 577);
             this.panel2.TabIndex = 14;
             // 
             // destdg
@@ -227,10 +228,32 @@ namespace UI.Forms.Stock
             this.destdg.Location = new System.Drawing.Point(12, 137);
             this.destdg.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.destdg.Name = "destdg";
-            this.destdg.Size = new System.Drawing.Size(440, 426);
+            this.destdg.Size = new System.Drawing.Size(405, 426);
             this.destdg.TabIndex = 10;
             this.destdg.DragDrop += new System.Windows.Forms.DragEventHandler(this.destdg_DragDrop);
             this.destdg.DragEnter += new System.Windows.Forms.DragEventHandler(this.destdg_DragEnter);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.AutoSize = true;
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
+            this.iconButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 46;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton1.Location = new System.Drawing.Point(443, 254);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(54, 54);
+            this.iconButton1.TabIndex = 15;
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // frmTransfer
             // 
@@ -238,6 +261,7 @@ namespace UI.Forms.Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(43)))), ((int)(((byte)(22)))));
             this.ClientSize = new System.Drawing.Size(934, 577);
+            this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -250,6 +274,7 @@ namespace UI.Forms.Stock
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.destdg)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -268,5 +293,6 @@ namespace UI.Forms.Stock
         private System.Windows.Forms.DataGridViewTextBoxColumn articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

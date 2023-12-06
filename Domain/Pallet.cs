@@ -9,14 +9,12 @@ namespace Domain
     public class Pallet : IdentityBase, IHorizontalCheckDigit
     {
         [Required, SensitiveData]
-        [Display(Name = "Deposito")]
         public Guid Deposit_ID { get; set; }
-        [ForeignKey("Deposit_ID")]
+        [ForeignKey("Deposit_ID"), Display(Name = "Deposito")]
         public virtual Deposit Deposit { get; set; }
         [Required, SensitiveData]
-        [Display(Name = "Pasillo")]
         public Guid Aisle_ID { get; set; }
-        [ForeignKey("Aisle_ID")]
+        [ForeignKey("Aisle_ID"), Display(Name = "Pasillo")]
         public virtual Aisle Aisle { get; set; }
         [Required, SensitiveData, RegularExpression("^[0-9]*$"), Range(1, int.MaxValue)]
         [Display(Name = "Columna")]

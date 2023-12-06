@@ -163,8 +163,10 @@ namespace UI.Forms
         }
         private void btnLayout_Click(object sender, EventArgs e)
         {
-            Form layoutfrm = new frmLayout();
+            Cursor = Cursors.WaitCursor;
+            Form layoutfrm = frmLayout.GetInstance();
             openChildFormInPanel(layoutfrm);
+            Cursor = Cursors.Default;
         }
         private void btnEtiq_Click(object sender, EventArgs e)
         {
